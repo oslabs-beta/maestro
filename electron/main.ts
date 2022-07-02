@@ -19,6 +19,7 @@ function createWindow (): void {
       // preload: __dirname + "/preload.js"
   }
   })
-  mainWindow.loadFile("./app/index.html");
+  mainWindow.loadURL('http://localhost:8080/');
+  //mainWindow.loadFile("./app/index.html");
   mainWindow.on("ready-to-show", () => mainWindow.show());
 }
