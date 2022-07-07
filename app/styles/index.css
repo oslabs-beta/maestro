@@ -1,3 +1,21 @@
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
+body {
+    margin: 0
+}
+
+.summary-data-container {
+    display: flex;
+    text-align: center;
+    margin: 1em;
+
+}
+.summary-card {
+    border: 1px solid black;
+    max-width: 10em;
+    min-width: 5em;
+    margin: .5em;
+    padding: .5em;
+    border-radius: 5px;
+}
