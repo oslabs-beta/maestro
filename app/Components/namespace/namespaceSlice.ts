@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 
 interface NamespaceState {
     currentNamespace: string,
@@ -8,6 +8,7 @@ const initialState: NamespaceState = {
         currentNamespace: '',
         allNamespaces: []
     }
+    
 
 export const namespaceSlice = createSlice({
     name: 'namespace',
@@ -19,6 +20,9 @@ export const namespaceSlice = createSlice({
         setCurrentNamespace: (state, action: PayloadAction<string>) => {
             state.currentNamespace = action.payload
         }
+    },
+    extraReducers: () => {
+
     }
 })
 
