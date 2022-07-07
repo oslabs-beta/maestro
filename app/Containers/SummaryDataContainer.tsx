@@ -5,10 +5,10 @@ import SummaryDataCard from '../Components/SummaryDataCard';
 
 const SummaryDataContainer = () => {
 
-    const [ nodeQuant, setNodeQuant ] = useState([])
-    const [ deploymentQuant, setDeploymentQuant ] = useState([])
-    const [ podQuant, setPodQuant ] = useState([])
-    const [ servicesQuant, setServicesQuant ] = useState([])
+    const [ nodeQuant, setNodeQuant ] = useState()
+    const [ deploymentQuant, setDeploymentQuant ] = useState()
+    const [ podQuant, setPodQuant ] = useState()
+    const [ servicesQuant, setServicesQuant ] = useState()
 
     const getNodesForState = async (): Promise<any> => {
         const nodes: any = await window.electron.getNodeList();
@@ -26,7 +26,7 @@ const SummaryDataContainer = () => {
     }
 
     const getServicesForState = async (): Promise<any> => {
-        const services: any = await window.electron.getServices;
+        const services: any = await window.electron.getServices();
         setServicesQuant(services.length)
     }
     

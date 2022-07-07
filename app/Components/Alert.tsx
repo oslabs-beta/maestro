@@ -14,13 +14,15 @@ const Alert = ({ group, state, name, severity, description, summary }: Alert): J
 
     return (
         <>
-            <p>Group: {group}</p>
-            <p>State: {state}</p>
-            <p>Name: {name}</p>
-            <p>Severity: {severity}</p>
-            <p>Description: {description}</p>
-            <p>Summary: {summary}</p>
-            {/* <p>Alerts: {alerts}</p> */}
+            <div className='alert'>
+                <p>Group: {group}</p>
+                <p>State: {state}</p>
+                <p>Name: {name}</p>
+                <p>Severity: {severity}</p>
+                <p>Description: {description}</p>
+                <p>Summary: {summary}</p>
+                {/* <p>Alerts: {alerts}</p> */}
+            </div>
         </>
     );
 };
