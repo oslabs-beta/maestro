@@ -4,8 +4,16 @@ import { contextBridge, ipcRenderer } from 'electron';
 contextBridge.exposeInMainWorld('electron', {
   getAlerts: async () =>
     ipcRenderer.invoke('getAlerts'),
-  getStats: async () =>
+  getEvents: async () =>
     ipcRenderer.invoke('getEvents'),
-  getNamespace: async () =>
-    ipcRenderer.invoke('getNamespace'),
+  getNamespaces: async () =>
+    ipcRenderer.invoke('getNamespaces'),
+  getNodeList: async () =>
+    ipcRenderer.invoke('getNodeList'),
+  getServices: async () =>
+    ipcRenderer.invoke('getServices'),
+  getPods: async () =>
+    ipcRenderer.invoke('getPods'),
+  getDeployments: async () =>
+    ipcRenderer.invoke('getDeployments'),
 });
