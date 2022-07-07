@@ -34,7 +34,9 @@ const AlertsContainer = (alert: any) => {
    
    return (
        <>
-        {allAlerts}
+        <div className='alerts-container'>
+                {allAlerts}
+        </div>
        </>
    );
 }
