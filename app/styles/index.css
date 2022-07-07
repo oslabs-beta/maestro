@@ -1,8 +1,29 @@
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
+/* remove text align from body after mvp */
 body {
-    margin: 0
+    margin: 0;
+    text-align: center;
+}
+
+
+.main-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* remove text align on alerts-container */
+.alerts-container {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+    padding: 1em;
+    max-width: 50%;
+    max-height: 80vh;
+    margin: 1em;
+    overflow-y: scroll;
+    text-align: left;
 }
 
 .summary-data-container {
@@ -12,10 +33,16 @@ body {
 
 }
 .summary-card {
+    flex-direction: column;
     border: 1px solid black;
     max-width: 10em;
     min-width: 5em;
+    max-height: 5em;
     margin: .5em;
     padding: .5em;
     border-radius: 5px;
+}
+
+.alert {
+    border-bottom: 2px solid lightgray;
 }
