@@ -23,9 +23,6 @@ export const namespaceSlice = createSlice({
     name: 'namespace',
     initialState,
     reducers: {
-        // getAllNamespaces: (state, action: PayloadAction<string[]>) => {
-        //     state.allNamespaces = action.payload
-        // },
         setCurrentNamespace: (state, action: PayloadAction<string>) => {
             state.currentNamespace = action.payload
         }
