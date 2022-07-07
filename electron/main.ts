@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, protocol } from 'electron';
 const fetch:any = (...args:any) =>
   import('node-fetch').then(({ default: fetch }:any) => fetch(...args));
 import * as child_process from 'child_process'; 
@@ -6,7 +6,7 @@ import * as child_process from 'child_process';
 const prometheusURL = 'http://127.0.0.1:9090/api/v1/';
 
 // import electronReload from 'electron-reload';
-// import path from 'path';
+import path from 'path';
 
 //require('electron-reload')(__dirname);
 
