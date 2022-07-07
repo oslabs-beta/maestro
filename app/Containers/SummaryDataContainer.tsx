@@ -26,7 +26,7 @@ const SummaryDataContainer = () => {
     }
 
     const getServicesForState = async (): Promise<any> => {
-        const services: any = await window.electron.getServices;
+        const services: any = await window.electron.getServices();
         setServicesQuant(services.length)
     }
     
