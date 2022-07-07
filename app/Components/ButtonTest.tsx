@@ -27,4 +27,4 @@ const ButtonTest = (): JSX.Element => {
     );
 };
 
-export default ButtonTest
+export default ButtonTest;

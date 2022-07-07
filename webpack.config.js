@@ -20,7 +20,11 @@ module.exports = {
       test: /\.(ts|tsx)$/,
       exclude: /node_modules/,
       use: ['ts-loader'],
-    }
+    },
+    {
+      test: /\.s?css$/,
+      use: ['style-loader', 'css-loader', 'postcss-loader'],
+    },
   ],
   },
   mode: 'development', 
