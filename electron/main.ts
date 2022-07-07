@@ -112,10 +112,10 @@ ipcMain.handle('getNamespaces', async () => {
 const formatNamespaces = (data:any) => {
   const array = data
     .split(" ")
-    .filter((el:string) => {
+    .filter((el :string) => {
     return el !== '';
     })
-    .filter((el:string, i:number) => {
+    .filter((el :string, i :number) => {
       return i % 2 === 0;
     })
   array.shift();
@@ -133,7 +133,8 @@ ipcMain.handle('getNodeList', async () => {
   //specific namespace kubesctl get nodes -n kube-node-lease
 
   const response:any = child_process.execSync('kubectl get nodes', { encoding: 'utf8'});
-  return response;
+  const formattedNodeList = [response.split(' ').filter((el: string) => el !== '').slice(4, 5)[0].substring(8)]
+  return formattedNodeList;
 
   //FOR USING K8S
   // let nodeArr;
@@ -163,7 +164,8 @@ ipcMain.handle('getNodeList', async () => {
 ipcMain.handle('getServices', async (namespace) => {
   // if(!namespace){
     const response:any =  child_process.execSync('kubectl get services --all-namespaces', { encoding: 'utf8'});
-    return response;
+    const formattedServices = response.split(' ').filter((el: string) => el !== '').slice(7).filter((el: string, i: number) => i % 6 === 0)
+    return formattedServices;
   // }
   // else{
   //   const response:any =  child_process.execSync(`kubectl get services -n ${namespace} `, { encoding: 'utf8'});
@@ -180,7 +182,8 @@ ipcMain.handle('getPods', async (namespace) => {
   // }
   // else{
     const response:any =  child_process.execSync('kubectl get pods --all-namespaces', { encoding: 'utf8'});
-    return response;
+    const formattedPods = response.split(' ').filter((el :string) => el !== '').slice(6).filter((el: string, i: number) => i % 7 === 0)
+    return formattedPods;
   // }
   
 })
@@ -193,7 +196,8 @@ ipcMain.handle('getDeployments', async (namespace) => {
   // }
   // else{
     const response:any =  child_process.execSync('kubectl get deployments --all-namespaces', { encoding: 'utf8'});
-    return response;
+    const formattedDeployments = response.split(" ").filter((el :string) => el !== '' && el !== '1' && el !== '1/1').slice(6).filter((el: string, i: number) => i % 2 === 0)
+    return formattedDeployments;
   // }
   
 })
