@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import Alerts from '../Components/Alerts';
+import Alert from '../Components/Alert';
 
 
 
@@ -10,7 +10,7 @@ const AlertsContainer = (alert: any) => {
     const renderThis = async (): Promise<any> => {
    
         const alerts: any = await window.electron.getAlerts();
-        console.log(alerts)
+        // console.log(alerts)
         setAlerts(alerts)
       }
     
@@ -18,13 +18,26 @@ const AlertsContainer = (alert: any) => {
        renderThis()
    }, [])
    console.log(alerts)
-   const someAlerts = alerts
+
+   const allAlerts: any = alerts.map((el: any, i: number) => 
+        <Alert
+            key={`alert${i}`}
+            group={el.group}
+            state={el.state}
+            name={el.name}
+            severity={el.sever}
+            description={el.description}
+            summary={el.summary}
+            // alerts={el.alerts}
+        />
+    );
    
    return (
        <>
-        {someAlerts}
+        {allAlerts}
        </>
    );
 }
+
 
 export default AlertsContainer
