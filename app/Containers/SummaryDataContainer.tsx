@@ -9,7 +9,7 @@ const SummaryDataContainer = () => {
     const [ deploymentQuant, setDeploymentQuant ] = useState([])
     const [ podQuant, setPodQuant ] = useState([])
     const [ servicesQuant, setServicesQuant ] = useState([])
-    
+
     const getNodesForState = async (): Promise<any> => {
         const nodes: any = await window.electron.getNodeList();
         setNodeQuant(nodes.length)
