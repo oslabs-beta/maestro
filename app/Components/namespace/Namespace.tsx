@@ -15,12 +15,25 @@ const Namespace: React.FC = () => {
     useEffect(() => {
       initApp();
     }, [])
-  
+
     const namespaceData = useAppSelector(state => state.namespace.allNamespaces);
     console.log(namespaceData)
+
+    // const options = namespaceData.map((el: string) => { 
+    //   return {value: el, label: el} 
+    // })
+    
+    const options = [
+      {value: 'default', label: 'default'},
+      {value: 'kube-node-lease', label: 'kube-node-lease'},
+      {value: 'kube-public', label: 'kube-public'},
+      {value: 'kube-system', label: 'kube-system'},
+      {value: 'kubernetes-dashboard', label: 'kubernetes-dashboard'},
+    ]
+
     return (
       <>
-        <Select />
+        <Select options={options} />
       </>
     );
 };
