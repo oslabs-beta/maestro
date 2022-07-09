@@ -12,15 +12,8 @@ const renderThis= async (): Promise<any> => {
     // const services = await window.electron.getServices();
     // const pods = await window.electron.getPods();
     // const deployments = await window.electron.getDeployments();
-    const bytes = await window.electron.bytesTransmittedPerNode()
+    const cpuUsagePerNode = await window.electron.getCPUUsageByNode()
 
-    let now = new Date();
-    let nowCopy = new Date(now.getTime());
-    nowCopy.setHours(nowCopy.getHours() - 24);
-    let endDateTime = now.toISOString();
-    console.log('endDateTime', endDateTime);
-    let startDateTime = nowCopy.toISOString();
-    console.log('startDateTime', startDateTime);
 
     // console.log("alerts", alerts)
     // console.log("events", events)
@@ -29,7 +22,7 @@ const renderThis= async (): Promise<any> => {
     // console.log("services", services)
     // console.log("pods", pods)
     // console.log("deployments", deployments)
-    console.log('bytes', bytes)
+    console.log('cpuUsagePerNode', cpuUsagePerNode)
     // setDeployments(cpuUsage)
   }
 
