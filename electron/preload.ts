@@ -16,4 +16,8 @@ contextBridge.exposeInMainWorld('electron', {
     ipcRenderer.invoke('getPods'),
   getDeployments: async () =>
     ipcRenderer.invoke('getDeployments'),
+  getCPUUsageByNode: async () => 
+    ipcRenderer.invoke('getCPUUsageByNode'),
+  bytesTransmittedPerNode: async () => 
+    ipcRenderer.invoke('bytesTransmittedPerNode'),
 });
