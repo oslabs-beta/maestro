@@ -198,3 +198,57 @@ ipcMain.handle('getDeployments', async (namespace) => {
   // }
   
 })
+
+//timestamp unit is based off unix timestamp.. seconds since January 1st 1970
+//metrics by node
+// ipcMain.handle('getCPUUsageByNode', async () => {
+//   try{
+//     const query = `${prometheusURL}query?query=100 * avg by (instance) (rate(node_cpu_seconds_total{mode!="idle"}[1m]))`
+//     const response = await fetch(query);
+//     const data: any = await response.json();
+
+//     return data.data.result[0].value[1];
+//   } catch (err) {
+//     console.log(`Error in 'getCPUUsageByNode function: ERROR: ${err}`);
+//   }
+  
+// })
+
+ipcMain.handle('getCPUUsageByNode', async () => {
+  try{
+    const query = `${prometheusURL}query?query=100 - (avg by (instance) 
+                   (irate(node_cpu_seconds_total{mode="idle"}[10m]) * 100)
+                   * on(instance) group_left(nodename) (node_uname_info))`
+
+    const response = await fetch(query);
+    const data: any = await response.json();
+    return formatNodeData(data);
+
+  } catch (err) {
+    console.log(`Error in 'getCPUUsageByNode function: ERROR: ${err}`);
+  }
+})
+
+function formatNodeData(data: any) {
+  return data.data.result.reduce((acc: any, curr: any) => {
+    acc.instance = curr.metric.instance;
+    acc.nodename = curr.metric.nodename;
+    acc.timestamp = convertUnixToISOString(curr.value[0]);
+    acc.percentCpuUsage = curr.value[1];
+    return acc;
+  }, {});
+}
+
+function convertUnixToISOString (unixTimestamp: number) {
+  return new Date(unixTimestamp*1000).toISOString()
+}
+
+ipcMain.handle('bytesTransmittedPerNode', async () => {
+  let query = `${prometheusURL}query_range?query=sum(rate(node_network_transmit_bytes_total[1m])) by (instance) * on(instance) group_left(nodename) (node_uname_info)`;
+  query += `&start=${'2022-07-07T17:11:43.844Z'}&end=${'2022-07-08T17:11:43.844Z'}&step=${'30m'}`
+  const response = await fetch(query);
+  const data = await response.json();
+  return data;
+})
+
+

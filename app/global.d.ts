@@ -14,6 +14,8 @@ declare global {
       getServices: ()=> Promise<any>;
       getPods: ()=> Promise<any>;
       getDeployments: ()=> Promise<any>;
+      getCPUUsageByNode: () => Promise<any>
+      bytesTransmittedPerNode: () => Promise<any>
       // Add any additional "APIs" here
     };
   }
