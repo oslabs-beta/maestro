@@ -17,7 +17,7 @@ const Namespace: React.FC = () => {
     }, [])
 
     const namespaceData = useAppSelector(state => state.namespace.allNamespaces);
-    console.log(namespaceData)
+    // console.log(namespaceData)
 
     // const options = namespaceData.map((el: string) => { 
     //   return {value: el, label: el} 

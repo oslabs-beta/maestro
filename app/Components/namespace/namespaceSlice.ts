@@ -11,6 +11,8 @@ const initialState: NamespaceState = {
         allNamespaces: []
     }
 
+    // Potentially add 'loading' property to state
+
 export const getNamespaces = createAsyncThunk<string[]>(
     'namespace/getNamespaces',
     async (_, thunkAPI) => {
@@ -31,9 +33,9 @@ export const namespaceSlice = createSlice({
         builder.addCase(getNamespaces.fulfilled, (state, action) => {
             state.allNamespaces = action.payload
         })
+        // TO DO : add cases for pending, rejected
     }
 })
-
 
 export const { setCurrentNamespace } = namespaceSlice.actions
 export default namespaceSlice.reducer;

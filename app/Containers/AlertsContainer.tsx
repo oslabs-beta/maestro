@@ -17,7 +17,7 @@ const AlertsContainer = (alert: any) => {
    useEffect(() => {
        renderThis()
    }, [])
-   console.log(alerts)
+//    console.log(alerts)
 
    const allAlerts: any = alerts.map((el: any, i: number) => 
         <Alert
@@ -34,7 +34,9 @@ const AlertsContainer = (alert: any) => {
    
    return (
        <>
+
         <div className='alerts-container'>
+            {/* <h1 className='alerts-header'>Alerts</h1> */}
                 {allAlerts}
         </div>
        </>

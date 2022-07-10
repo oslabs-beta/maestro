@@ -9,8 +9,8 @@ interface summaryCardDataProps {
 const SummaryDataCard = ({ name, quantity }: summaryCardDataProps): JSX.Element => {
     return (
         <div className='summary-card'>
-            <p>{name}:</p>
-            <p>{quantity}</p>
+            <p className='summary-name'>{name}:</p>
+            <p className='summary-quantity'>{quantity}</p>
         </div>
     );
 };
