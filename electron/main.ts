@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, protocol } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 const fetch:any = (...args:any) =>
   import('node-fetch').then(({ default: fetch }:any) => fetch(...args));
 import * as child_process from 'child_process'; 
@@ -7,9 +7,6 @@ import { convertUnixToISOString, getStartAndEndDateTime, fetchMetricsData } from
 const prometheusURL = 'http://127.0.0.1:9090/api/v1/';
 
 // import electronReload from 'electron-reload';
-import path from 'path';
-import { start } from 'repl';
-
 //require('electron-reload')(__dirname);
 
 let mainWindow: BrowserWindow;
@@ -75,8 +72,8 @@ const formatAlerts = (data:any) => {
   return tableData;
 };
 
-ipcMain.handle('getEvents', async () => {
-  const response:any = await child_process.execSync('kubectl get events --all-namespaces',{ encoding: 'utf8'});
+ipcMain.handle('getEvents', () => {
+  const response:any = child_process.execSync('kubectl get events --all-namespaces',{ encoding: 'utf8'});
   const data = response.split('\n');
   const formattedEvents = formatEvents(data);
   return formattedEvents;
@@ -105,8 +102,8 @@ const formatEvents = (arr: string[]) => {
   });
 };
 
-ipcMain.handle('getNamespaces', async () => {
-  const response:any = await child_process.execSync('kubectl get namespace', { encoding: 'utf8'});
+ipcMain.handle('getNamespaces', () => {
+  const response:any = child_process.execSync('kubectl get namespace', { encoding: 'utf8'});
   const formattedNamespaces = formatNamespaces(response)
   return formattedNamespaces;
 })
@@ -130,7 +127,7 @@ const formatNamespaces = (data:any) => {
 
 
 // NEW CODE
-ipcMain.handle('getNodeList', async () => {
+ipcMain.handle('getNodeList', () => {
   //all namespaces --all-namespaces otherwise goes to default
   //specific namespace kubesctl get nodes -n kube-node-lease
 
@@ -157,15 +154,14 @@ ipcMain.handle('getNodeList', async () => {
 // 						// return next();
 // 					})
 //         })
-
   
   // return nodeArr;
 })
 
 //services from all namespaces
-ipcMain.handle('getServices', async (namespace) => {
+ipcMain.handle('getServices', (namespace) => {
   // if(!namespace){
-    const response:any =  child_process.execSync('kubectl get services --all-namespaces', { encoding: 'utf8'});
+    const response:any = child_process.execSync('kubectl get services --all-namespaces', { encoding: 'utf8'});
     const formattedServices = response.split(' ').filter((el: string) => el !== '').slice(7).filter((el: string, i: number) => i % 6 === 0)
     return formattedServices;
   // }
@@ -176,7 +172,7 @@ ipcMain.handle('getServices', async (namespace) => {
   
 })
 
-ipcMain.handle('getPods', async (namespace) => {
+ipcMain.handle('getPods', (namespace) => {
   //services from all namespaces
   // if(namespace){
   //   const response:any =  child_process.execSync(`kubectl get pods -n ${namespace} `, { encoding: 'utf8'});
@@ -232,7 +228,10 @@ ipcMain.handle('getDeployments', async (namespace) => {
 //   }, {});
 // }
 
-// ipcMain.handle('bytesTransmittedPerNode', async (event, namespace: string) => {
+    // const response = await fetch(query);
+    // const data: any = await response.json();
+    // return data;
+    // return formatNodeData(data);
 
 //   const { startDateTime, endDateTime } = getStartAndEndDateTime();
 

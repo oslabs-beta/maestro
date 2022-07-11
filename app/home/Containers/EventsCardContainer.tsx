@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import Alert from '../Components/Alert';
+import AlertCard from '../Components/AlertCard';
 
 
 
-const AlertsContainer = (alert: any) => {
+const EventsCardContainer = (alert: any) => {
 
     const [ alerts, setAlerts ] = useState([])
 
@@ -17,10 +17,10 @@ const AlertsContainer = (alert: any) => {
    useEffect(() => {
        renderThis()
    }, [])
-   console.log(alerts)
+//    console.log(alerts)
 
    const allAlerts: any = alerts.map((el: any, i: number) => 
-        <Alert
+        <AlertCard
             key={`alert${i}`}
             group={el.group}
             state={el.state}
@@ -34,12 +34,15 @@ const AlertsContainer = (alert: any) => {
    
    return (
        <>
+
         <div className='alerts-container'>
+            {/* <h1 className='alerts-header'>Alerts</h1> */}
                 {allAlerts}
+                {/* or Events or Logs */}
         </div>
        </>
    );
 }
 
 
-export default AlertsContainer
+export default EventsCardContainer
