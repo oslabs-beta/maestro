@@ -8,7 +8,7 @@ declare global {
   interface Window {
     electron: {
       getAlerts: () => Promise<fetchData>;
-      getEvents: () => Promise<fetchData>;
+      getEvents: () => Promise<any>;
       getNamespaces: () => Promise<any>;
       getNodeList: ()=> Promise<any>;
       getServices: ()=> Promise<any>;

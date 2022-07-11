@@ -11,6 +11,8 @@ const initialState: NamespaceState = {
         allNamespaces: []
     }
 
+    // Potentially add 'loading' property to state
+
 export const getNamespaces = createAsyncThunk<string[]>(
     'namespace/getNamespaces',
     async (_, thunkAPI) => {
@@ -39,7 +41,6 @@ export const namespaceSlice = createSlice({
         })
     }
 })
-
 
 export const { setCurrentNamespace } = namespaceSlice.actions
 export default namespaceSlice.reducer;

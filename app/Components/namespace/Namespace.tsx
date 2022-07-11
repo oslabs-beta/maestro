@@ -19,6 +19,7 @@ const Namespace: React.FC = () => {
     }, [])
 
     const namespaceData = useAppSelector(state => state.namespace.allNamespaces);
+    // console.log(namespaceData)
     //add dispatch to current namespace reducers 
     // console.log(namespaceData, "namespace")
 

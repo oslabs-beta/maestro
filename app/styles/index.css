@@ -3,15 +3,37 @@
 @tailwind utilities; */
 /* remove text align from body after mvp */
 body {
-    margin: 0;
+    margin: 0 auto;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
+    /* font-weight: 700; */
+    background-color: rgb(235, 235, 235);
+    max-width: 1100px;
 }
-
 
 .main-container {
     display: flex;
-    justify-content: space-evenly;
 }
+
+.sidebar-container {
+    width: 10em
+}
+
+.overview-container{
+    display: flex;
+}
+
+.status-card {
+    display: flex;
+
+}
+
+
+/* .main-container {
+    display: flex;
+    
+    justify-content: space-evenly;
+} */
 
 /* remove text align on alerts-container */
 .alerts-container {
@@ -19,30 +41,41 @@ body {
     flex-direction: column;
     /* border: 1px solid black; */
     padding: 1em;
-    max-width: 50%;
     max-height: 80vh;
     margin: 1em;
     overflow-y: scroll;
     text-align: left;
+    /* font-weight: 700; */
 }
 
-.summary-data-container {
+.status-container {
+    display: flex;
+    flex-direction: column;
     display: flex;
     text-align: center;
     margin: 1em;
 
 }
 .summary-card {
-    flex-direction: column;
-    border: 1px solid black;
+    /* flex-direction: row; */
+    border: 1px solid #3371E3;
     max-width: 10em;
-    min-width: 5em;
-    max-height: 5em;
+    min-width: 6em;
+    max-height: 6em;
     margin: .5em;
     padding: .5em;
     border-radius: 5px;
 }
 
 .alert {
-    border-bottom: 2px solid lightgray;
+    border-bottom: 2px solid #3371E3;
+}
+
+.summary-name {
+    font-weight: bold;
+}
+
+.select-namespace {
+  margin: 0 auto;
+  max-width: 70%;
 }
