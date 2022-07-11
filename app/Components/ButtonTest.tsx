@@ -1,3 +1,4 @@
+import { ipcRenderer } from 'electron/renderer';
 import { setMaxListeners } from 'process';
 import React, { useEffect, useState } from 'react';
 import { setConstantValue } from 'typescript';
@@ -13,6 +14,8 @@ const renderThis= async (): Promise<any> => {
     // const pods = await window.electron.getPods();
     // const deployments = await window.electron.getDeployments();
     const cpuUsagePerNode = await window.electron.getCPUUsageByNode()
+    // ipcRenderer.send('bytesTransmittedPerNode', 'default')
+    const bytesTransmitedPerNode = await window.electron.bytesTransmittedPerNode('default')
 
 
     // console.log("alerts", alerts)
@@ -23,7 +26,7 @@ const renderThis= async (): Promise<any> => {
     // console.log("pods", pods)
     // console.log("deployments", deployments)
     console.log('cpuUsagePerNode', cpuUsagePerNode)
-    // setDeployments(cpuUsage)
+    console.log('bytesTransmitedPerNode', bytesTransmitedPerNode)
   }
 
 const ButtonTest = (): JSX.Element => {

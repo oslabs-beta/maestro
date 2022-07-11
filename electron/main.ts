@@ -2,11 +2,13 @@ import { app, BrowserWindow, ipcMain, protocol } from 'electron';
 const fetch:any = (...args:any) =>
   import('node-fetch').then(({ default: fetch }:any) => fetch(...args));
 import * as child_process from 'child_process'; 
+import convertUnixToISOString from './utils/formatData'
 
 const prometheusURL = 'http://127.0.0.1:9090/api/v1/';
 
 // import electronReload from 'electron-reload';
 import path from 'path';
+import { start } from 'repl';
 
 //require('electron-reload')(__dirname);
 
@@ -218,17 +220,16 @@ ipcMain.handle('getDeployments', async (namespace) => {
 // })
 
 ipcMain.handle('getCPUUsageByNode', async () => {
-  try{
-    const query = `${prometheusURL}query?query=100 - (avg by (instance) 
+  const query = `${prometheusURL}query?query=100 - (avg by (instance) 
                    (irate(node_cpu_seconds_total{mode="idle"}[10m]) * 100)
-                   * on(instance) group_left(nodename) (node_uname_info))`
+                   * on(instance) group_left(nodename) (node_uname_info))`;
 
+  try{
     const response = await fetch(query);
     const data: any = await response.json();
     return formatNodeData(data);
-
   } catch (err) {
-    console.log(`Error in 'getCPUUsageByNode function: ERROR: ${err}`);
+    console.log(`Error in 'getCPUUsageByNode' function: ERROR: ${err}`);
   }
 })
 
@@ -242,16 +243,43 @@ function formatNodeData(data: any) {
   }, {});
 }
 
-function convertUnixToISOString (unixTimestamp: number) {
-  return new Date(unixTimestamp*1000).toISOString()
-}
+// function convertUnixToISOString (unixTimestamp: number) {
+//   return new Date(unixTimestamp*1000).toISOString()
+// }
 
-ipcMain.handle('bytesTransmittedPerNode', async () => {
-  let query = `${prometheusURL}query_range?query=sum(rate(node_network_transmit_bytes_total[1m])) by (instance) * on(instance) group_left(nodename) (node_uname_info)`;
-  query += `&start=${'2022-07-07T17:11:43.844Z'}&end=${'2022-07-08T17:11:43.844Z'}&step=${'30m'}`
-  const response = await fetch(query);
-  const data = await response.json();
-  return data;
-})
+ipcMain.handle('bytesTransmittedPerNode', async (event, namespace: string) => {
+  console.log('namespace', namespace)
+  const { startDateTime, endDateTime } = getStartAndEndDateTime()
+  let namespaceStr = namespace && namespace !== 'ALL' ? `{namespace="${namespace}"` : '';
+
+  const query = `${prometheusURL}query_range?query=sum(rate(node_network_transmit_bytes_total${namespaceStr}[1m]))
+               by (instance) * on(instance) group_left(nodename) (node_uname_info)
+               &start=${startDateTime}&end=${endDateTime}&step=${'1m'}`;
+
+  try {
+    const response = await fetch(query);
+    const data = await response.json();
+    console.log('yo', data.data.result.pop())
+    return data;
+  } catch (err) {
+    console.log(`Error in 'bytesTransmittedPerNode' function: ERROR: ${err}`);
+  }
+});
+
+function getStartAndEndDateTime() {
+  let now: Date = new Date();
+  let nowCopy: Date = new Date(now.getTime());
+
+  nowCopy.setHours(nowCopy.getHours() - 24);
+  let startDateTime: string = nowCopy.toISOString();
+  let endDateTime: string = now.toISOString();
+  console.log('startDateTime', startDateTime)
+  console.log('endDateTime', endDateTime)
+
+  return {
+    startDateTime: startDateTime,
+    endDateTime: endDateTime
+  }
+}
 
 
