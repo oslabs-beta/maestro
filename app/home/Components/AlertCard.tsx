@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface Alert {
+interface AlertCard {
     group: any,
     state: any,
     name: any,
@@ -10,7 +10,7 @@ interface Alert {
     // alerts: any
 }
 
-const Alert = ({ group, state, name, severity, description, summary }: Alert): JSX.Element => {
+const AlertCard = ({ group, state, name, severity, description, summary }: AlertCard): JSX.Element => {
 
     return (
         <>
@@ -27,4 +27,4 @@ const Alert = ({ group, state, name, severity, description, summary }: Alert): J
     );
 };
 
-export default Alert;
+export default AlertCard;

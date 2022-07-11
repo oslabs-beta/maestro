@@ -222,7 +222,8 @@ ipcMain.handle('getCPUUsageByNode', async () => {
 
     const response = await fetch(query);
     const data: any = await response.json();
-    return formatNodeData(data);
+    return data;
+    // return formatNodeData(data);
 
   } catch (err) {
     console.log(`Error in 'getCPUUsageByNode function: ERROR: ${err}`);

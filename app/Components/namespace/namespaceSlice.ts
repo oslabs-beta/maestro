@@ -25,7 +25,7 @@ export const namespaceSlice = createSlice({
     name: 'namespace',
     initialState,
     reducers: {
-        setCurrentNamespace: (state, action: PayloadAction<string>) => {
+        setCurrentNamespace: (state:any, action: PayloadAction<string>) => {
             state.currentNamespace = action.payload
         }
     },
@@ -33,7 +33,12 @@ export const namespaceSlice = createSlice({
         builder.addCase(getNamespaces.fulfilled, (state, action) => {
             state.allNamespaces = action.payload
         })
-        // TO DO : add cases for pending, rejected
+        builder.addCase(getNamespaces.pending, (state, action) => {
+            state.allNamespaces = action.payload
+        })
+        builder.addCase(getNamespaces.rejected, (state:any, action) => {
+            state.error = action.error.message
+        })
     }
 })
 

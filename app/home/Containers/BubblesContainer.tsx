@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import SummaryDataCard from '../Components/SummaryDataCard';
+import StatusCard from '../Components/StatusCard';
 
-
-
-const SummaryDataContainer = () => {
+const StatusContainer = () => {
 
     const [ nodeQuant, setNodeQuant ] = useState()
     const [ deploymentQuant, setDeploymentQuant ] = useState()
@@ -38,14 +36,15 @@ const SummaryDataContainer = () => {
    }, [])
    
    return (
-       <div className='summary-data-container'>
-        <SummaryDataCard name={'Nodes'} quantity={nodeQuant}/>
-        <SummaryDataCard name={'Deployments'} quantity={deploymentQuant}/>
-        <SummaryDataCard name={'Pods'} quantity={podQuant}/>
-        <SummaryDataCard name={'Services'} quantity={servicesQuant}/>
+    <div>
+       <div className='status-container'>
+        <StatusCard name={'Nodes'} quantity={nodeQuant}/>
+        <StatusCard name={'Deployments'} quantity={deploymentQuant}/>
+        <StatusCard name={'Pods'} quantity={podQuant}/>
+        <StatusCard name={'Services'} quantity={servicesQuant}/>
        </div>
-
+    </div>
    );
 }
 
-export default SummaryDataContainer
+export default StatusContainer
