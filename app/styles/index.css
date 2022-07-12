@@ -7,8 +7,8 @@ body {
     text-align: center;
     font-family: 'Roboto', sans-serif;
     /* font-weight: 700; */
-    background-color: rgb(235, 235, 235);
-    max-width: 1100px;
+    background-color: rgb(255, 255, 255);
+    /* max-width: 1800px; */
 }
 
 .main-container {
@@ -21,9 +21,40 @@ body {
 
 .overview-container{
     display: flex;
-    max-width: 90%;
+    width: 100%
 }
 
+.status-card {
+    display: flex;
+}
+
+.namespace-container {
+    width: 20em;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    color: #3371E3;
+}
+
+.events-container {
+    border-left: 1px dotted #797676;
+    width: 50%;
+}
+
+.events-dropdown-container {
+    display: flex;
+    margin-left: 30px
+}
+
+.events-dropdown {
+    width: 9em;
+    margin-right: 2em;
+    color: #3371E3;
+}
+
+.severity-dropdown {
+    width: 9em;
+    color: #3371E3;
+}
 /* .main-container {
     display: flex;
     
@@ -31,13 +62,13 @@ body {
 } */
 
 /* remove text align on alerts-container */
-.alerts-container {
+.events-card-container {
     display: flex;
     flex-direction: column;
     /* border: 1px solid black; */
     padding: 1em;
     max-height: 80vh;
-    margin: 1em;
+    margin: 5px;
     overflow-y: scroll;
     text-align: left;
     /* min-width: 20%; */
@@ -55,10 +86,54 @@ body {
     border-radius: 5px;
 }
 
-.alert {
-    border-bottom: 2px solid #3371E3;
+.alert-card {
+    /* border-bottom: 2px solid #3371E3; */
+    padding: 10px;
+    padding-left: 15px;
+    padding-top: 15x;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.1), 0 8px 8px rgba(0,0,0,0.01);
+    border-radius: 20px;
+    border: 1px dotted  #797676;
+    color: #333;
 }
 
+.alert-content-group,
+.alert-content-state,
+.alert-content-name,
+.alert-content-severity,
+.alert-content-description,
+.alert-content-summary {
+    color:#797676;
+}
+
+.alert-content-group { 
+    margin-left: 49px;
+}
+.alert-content-state { 
+    margin-left: 55px;
+}
+.alert-content-name { 
+    margin-left: 49px;
+}
+.alert-content-severity { 
+    margin-left: 35px;
+}
+.alert-content-description { 
+    margin-left: 10px;
+}
+.alert-content-summary { 
+    margin-left: 22px;
+}
+
+.alert-description {
+    color:#3371E3;
+    font-weight: 500;
+}
+
+.alert-line {
+    display: flex;
+}
 .summary-name {
     font-weight: bold;
     
@@ -69,9 +144,7 @@ body {
   max-width: 70%;
 }
 
-
 /* --- Status Container Stuff --- */
-
 
 .status-container {
     display: flex;
