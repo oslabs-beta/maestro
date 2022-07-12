@@ -71,21 +71,15 @@ body {
     margin: 5px;
     overflow-y: scroll;
     text-align: left;
+    /* min-width: 20%; */
     /* font-weight: 700; */
-}
-
-.status-container {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    margin: 1em;
 }
 
 .summary-card {
     /* flex-direction: row; */
     border: 1px solid #3371E3;
     max-width: 10em;
-    min-width: 6em;
+    min-width: 2em;
     max-height: 6em;
     margin: .5em;
     padding: .5em;
@@ -132,10 +126,6 @@ body {
     margin-left: 22px;
 }
 
-
-
-
-
 .alert-description {
     color:#3371E3;
     font-weight: 500;
@@ -146,9 +136,70 @@ body {
 }
 .summary-name {
     font-weight: bold;
+    
 }
 
 .select-namespace {
   margin: 0 auto;
-  max-width: 10%;
+  max-width: 70%;
+}
+
+/* --- Status Container Stuff --- */
+
+.status-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 1em;
+    min-width: 60%;
+    max-width: 70%;
+
+}
+/* holds all status cards */
+.bubble-container {
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    border-radius: 1em;
+    padding: 1em;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+/* holds the status name, bubbles and qty */
+.status-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-bottom: 1em;
+
+}
+
+/* holds all the status bubbles */
+.bubble-box {
+    display: flex;  
+    min-width: 70%;
+    flex-wrap: wrap;
+}
+
+/* individual status bubbles */
+.status-box {
+    background-color: #3dce2d;
+    border: 1px solid #39ba2a;
+    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+    margin: 1px;
+   
+}
+
+/* name of type of status */
+.status-name{
+    text-align: left;
+    min-width: 25%;
+    padding-right: 1em;
+    
+}
+/* quantity of type of status */
+.quantity-box{
+    padding-right: 1em;
 }

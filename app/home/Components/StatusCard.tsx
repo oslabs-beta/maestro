@@ -3,16 +3,17 @@ import StatusBubble from './StatusBubble'
 
 interface StatusDataProps {
     name: string,
-    quantity: number
+    quantity: number,
+    boxes?: any,
 }
 
 
-const StatusCard = ({ name, quantity }: StatusDataProps): JSX.Element => {
+const StatusCard = ({ name, quantity, boxes }: StatusDataProps): JSX.Element => {
     return (
-        <div className="status-card">
-            <div>Name</div>
-            <StatusBubble />
-            <div>qty</div>
+        <div key='name' className="status-card">
+            <div className='status-name'>{name}</div>
+            <div className='bubble-box'>{boxes}</div>
+            <div className='quantity-box'>{quantity}</div>
         </div>
 
         // <div className='summary-card'>
