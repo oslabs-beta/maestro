@@ -7,8 +7,8 @@ import './styles/index.css'
 
 function App() {
     return (
-        <MainContainer />
-        // <Button Test />
+        // <MainContainer />
+        <ButtonTest />
     );
 }
 

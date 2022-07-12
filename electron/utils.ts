@@ -1,6 +1,3 @@
-const fetch:any = (...args:any) =>
-  import('node-fetch').then(({ default: fetch }:any) => fetch(...args));
-
 export function convertUnixToISOString (unixTimestamp: number) {
     return new Date(unixTimestamp*1000).toISOString()
   }
@@ -21,12 +18,12 @@ export function getStartAndEndDateTime() {
     }
   }
 
-export async function fetchMetricsData(query: string) {
-    try {
-        const res = await fetch(query);
-        const data = await res.json();
-        return data.data
-    } catch (err) {
-        console.log(err)
-    }
+  export function bytesToGb(num: number) {
+    if (num === 0) return 0;
+
+    const k = 1024;
+
+    const i = Math.floor(Math.log(num) / Math.log(k));
+
+    return (num / Math.pow(k, i));
 }

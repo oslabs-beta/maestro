@@ -2,7 +2,8 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 const fetch:any = (...args:any) =>
   import('node-fetch').then(({ default: fetch }:any) => fetch(...args));
 import * as child_process from 'child_process'; 
-import { convertUnixToISOString, getStartAndEndDateTime, fetchMetricsData } from './utils/formatData'
+import { getStartAndEndDateTime } from './utils'
+import { fetchMetricsData } from './dataController/getData/getMatrixData';
 
 const prometheusURL = 'http://127.0.0.1:9090/api/v1/';
 
@@ -200,57 +201,6 @@ ipcMain.handle('getDeployments', async (namespace) => {
   
 })
 
-
-// ipcMain.handle('getCPUUsageByNode', async () => {
-
-//query_range?query=sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate)
-//by (node)&start=2022-07-10T21:12:57.427Z&end=2022-07-11T21:12:57.427Z&step=10m
-//   const query = `${prometheusURL}query?query=100 - (avg by (instance) 
-//                    (irate(node_cpu_seconds_total{mode="idle"}[10m]) * 100)
-//                    * on(instance) group_left(nodename) (node_uname_info))`;
-
-//   try{
-//     const response = await fetch(query);
-//     const data: any = await response.json();
-//     return formatNodeData(data);
-//   } catch (err) {
-//     console.log(`Error in 'getCPUUsageByNode' function: ERROR: ${err}`);
-//   }
-// })
-
-// function formatNodeData(data: any) {
-//   return data.data.result.reduce((acc: any, curr: any) => {
-//     acc.instance = curr.metric.instance;
-//     acc.nodename = curr.metric.nodename;
-//     acc.timestamp = convertUnixToISOString(curr.value[0]);
-//     acc.percentCpuUsage = curr.value[1];
-//     return acc;
-//   }, {});
-// }
-
-    // const response = await fetch(query);
-    // const data: any = await response.json();
-    // return data;
-    // return formatNodeData(data);
-
-//   const { startDateTime, endDateTime } = getStartAndEndDateTime();
-
-//   let namespaceStr = namespace && namespace !== 'ALL' ? `{namespace="${namespace}"` : '';
-
-//   const query = `${prometheusURL}query_range?query=sum(rate(node_network_transmit_bytes_total${namespaceStr}[1m]))
-//                by (instance) * on(instance) group_left(nodename) (node_uname_info)
-//                &start=${startDateTime}&end=${endDateTime}&step=${'1m'}`;
-
-//   try {
-//     const response = await fetch(query);
-//     const data = await response.json();
-//     console.log('yo', data.data.result.pop())
-//     return data;
-//   } catch (err) {
-//     console.log(`Error in 'bytesTransmittedPerNode' function: ERROR: ${err}`);
-//   }
-// });
-
 //Namespacnamespace
 //get cpu usage by namespace (%)
 ipcMain.handle('getCPUUsageByNamespace', async(event, namespace: string) => {
@@ -274,7 +224,7 @@ ipcMain.handle('getMemoryUsageByNamespace', async(event, namespace: string) => {
   const query = `${prometheusURL}query_range?query=sum(container_memory_working_set_bytes${namespaceStr})
                 by (namespace)&start=${startDateTime}&end=${endDateTime}&step=${'10m'}`;
 
-  const data = await fetchMetricsData(query)
+  const data = await fetchMetricsData(query, 'bytes')
   
   return data
 });
@@ -324,7 +274,7 @@ ipcMain.handle('getMemoryUsageByNode', async(event, namespace: string) => {
   const query = `${prometheusURL}query_range?query=sum(container_memory_working_set_bytes) 
                 by (node)&start=${startDateTime}&end=${endDateTime}&step=${'10m'}`;
 
-  const data = await fetchMetricsData(query);
+  const data = await fetchMetricsData(query, 'bytes');
   return data
 });
 
@@ -373,7 +323,7 @@ ipcMain.handle('getMemoryUsageByPod', async(event, namespace: string) => {
   const query = `${prometheusURL}query_range?query=sum(container_memory_working_set_bytes${namespaceStr}) 
                 by (pod)&start=${startDateTime}&end=${endDateTime}&step=${'1m'}`;
 
-  const data = await fetchMetricsData(query);
+  const data = await fetchMetricsData(query, 'bytes');
   return data;
 });
 
