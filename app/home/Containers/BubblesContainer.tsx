@@ -37,7 +37,7 @@ const StatusContainer = () => {
    
    return (
     <div>
-       <div className='status-container'>
+       <div className='bubbles-container'>
         <StatusCard name={'Nodes'} quantity={nodeQuant}/>
         <StatusCard name={'Deployments'} quantity={deploymentQuant}/>
         <StatusCard name={'Pods'} quantity={podQuant}/>

@@ -1,49 +1,45 @@
 import React, { Fragment, useState, FC, useEffect, useCallback } from 'react';
-import {useAppDispatch, useAppSelector} from '../../state/hooks';
+import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { setCurrentNamespace } from './namespaceSlice';
-import { getNamespaces } from './namespaceSlice';
+import { getNamespacesForState } from './namespaceSlice';
 import Select from 'react-select'
 
 
 const Namespace: React.FC = () => {
-    const dispatch = useAppDispatch();
-    const [namespace, setNamespace] = useState([])
+  const dispatch = useAppDispatch();
+  const [namespaces, setNamespaces] = useState([])
 
-    const initApp = useCallback(async () => {
-      await dispatch(getNamespaces());
-    }, [dispatch]);
+  const initApp = useCallback(async () => {
+    await dispatch(getNamespacesForState());
+  }, [dispatch]);
 
-    useEffect(() => {
-      initApp();
-      getNamespace();
-    }, [])
+  useEffect(() => {
+    initApp();
+    getNamespaces();
+  }, [])
 
-    const namespaceData = useAppSelector(state => state.namespace.allNamespaces);
-    // console.log(namespaceData)
-    //add dispatch to current namespace reducers 
-    // console.log(namespaceData, "namespace")
+  const getNamespaces = async () =>{
+    const namespaces = await window.electron.getNamespaces();
+    setNamespaces(namespaces)
+  }
 
-    // const options = namespaceData.map((el: string) => { 
-    //   return {value: el, label: el} 
-    // })
+  const options: any = namespaces.map((el: string) => { 
+    return {value: el, label: el} 
+  })
     
-    const getNamespace = async () =>{
-      const namespace= await window.electron.getNamespaces();
-      setNamespace(namespace)
-    }
+  const handleNamespaceChange = (e: any) => dispatch(setCurrentNamespace(e.value))
 
-    const options = namespace.map((el: string) => { 
-        return {value: el, label: el} 
-      })
-
-    console.log(options,"namespace", namespace)
-    
-
-    return (
-      <>
-        <Select options={options} />
-      </>
-    );
+  return (
+    <div className='namespace-container'>
+      <Select 
+        className='namespace-dropdown'
+        defaultValue='default'
+        onChange={handleNamespaceChange}
+        options={options} 
+        placeholder='Namespace'
+      />
+    </div>
+  );
 };
 
 export default Namespace;
