@@ -1,3 +1,4 @@
+import { ipcRenderer } from 'electron/renderer';
 import { setMaxListeners } from 'process';
 import React, { useEffect, useState } from 'react';
 import { setConstantValue } from 'typescript';
@@ -12,7 +13,32 @@ const renderThis= async (): Promise<any> => {
     // const services = await window.electron.getServices();
     // const pods = await window.electron.getPods();
     // const deployments = await window.electron.getDeployments();
-    const cpuUsagePerNode = await window.electron.getCPUUsageByNode()
+    const getCPUUsageByNode = await window.electron.getCPUUsageByNode('default')
+    const getMemoryUsageByNode = await window.electron.getMemoryUsageByNode('default')
+    const bytesRecievedByNode = await window.electron.bytesTransmittedByNode('default')
+    const bytesTransmittedByNode = await window.electron.bytesTransmittedByNode('default')
+    const getCPUUsageByNamespace = await window.electron.getCPUUsageByNamespace('default')
+    const getMemoryUsageByNamespace = await window.electron.getMemoryUsageByNamespace('default')
+    const bytesRecievedByNamespace = await window.electron.bytesRecievedByNamespace('default')
+    const bytesTransmittedByNamespace = await window.electron.bytesTransmittedByNamespace('default')
+    const getCPUUsageByPod = await  window.electron.getCPUUsageByPod('default')
+    const getMemoryUsageByPod = await window.electron.getMemoryUsageByPod('default')
+    const bytesRecievedByPod = await window.electron.bytesRecievedByPod('default')
+    const bytesTransmittedByPod = await window.electron.bytesTransmittedByPod('default')
+
+
+    console.log('getCPUUsageByNode', getCPUUsageByNode)
+    console.log('getMemoryUsageByNode', getMemoryUsageByNode)
+    console.log('bytesRecievedByNode', bytesRecievedByNode)
+    console.log('bytesTransmittedByNode', bytesTransmittedByNode)
+    console.log('getCPUUsageByNamespace', getCPUUsageByNamespace)
+    console.log('getMemoryUsageByNamespace', getMemoryUsageByNamespace)
+    console.log('bytesRecievedByNamespace', bytesRecievedByNamespace)
+    console.log('bytesTransmittedByNamespace', bytesTransmittedByNamespace)
+    console.log('getCPUUsageByPod', getCPUUsageByPod)
+    console.log('getMemoryUsageByPod', getMemoryUsageByPod)
+    console.log('bytesRecievedByPod', bytesRecievedByPod)
+    console.log('bytesTransmittedByPod', bytesTransmittedByPod)
 
 
     // console.log("alerts", alerts)
@@ -22,8 +48,8 @@ const renderThis= async (): Promise<any> => {
     // console.log("services", services)
     // console.log("pods", pods)
     // console.log("deployments", deployments)
-    console.log('cpuUsagePerNode', cpuUsagePerNode)
-    // setDeployments(cpuUsage)
+
+
   }
 
 const ButtonTest = (): JSX.Element => {

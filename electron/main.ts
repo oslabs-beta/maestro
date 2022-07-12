@@ -2,6 +2,8 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 const fetch:any = (...args:any) =>
   import('node-fetch').then(({ default: fetch }:any) => fetch(...args));
 import * as child_process from 'child_process'; 
+import { getStartAndEndDateTime } from './utils'
+import { fetchMetricsData } from './dataController/getData/getMatrixData';
 
 const prometheusURL = 'http://127.0.0.1:9090/api/v1/';
 
@@ -199,57 +201,154 @@ ipcMain.handle('getDeployments', async (namespace) => {
   
 })
 
-//timestamp unit is based off unix timestamp.. seconds since January 1st 1970
-//metrics by node
-// ipcMain.handle('getCPUUsageByNode', async () => {
-//   try{
-//     const query = `${prometheusURL}query?query=100 * avg by (instance) (rate(node_cpu_seconds_total{mode!="idle"}[1m]))`
-//     const response = await fetch(query);
-//     const data: any = await response.json();
+//Namespacnamespace
+//get cpu usage by namespace (%)
+ipcMain.handle('getCPUUsageByNamespace', async(event, namespace: string) => {
+  const { startDateTime, endDateTime } = getStartAndEndDateTime();
+  const namespaceStr = namespace && namespace !== 'ALL' ? `{namespace="${namespace}"}` : '';
 
-//     return data.data.result[0].value[1];
-//   } catch (err) {
-//     console.log(`Error in 'getCPUUsageByNode function: ERROR: ${err}`);
-//   }
-  
-// })
+  const query = `${prometheusURL}query_range?query=sum
+                (node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate${namespaceStr}) 
+                by (namespace) &start=${startDateTime}&end=${endDateTime}&step=${'1m'}`
 
-ipcMain.handle('getCPUUsageByNode', async () => {
-  try{
-    const query = `${prometheusURL}query?query=100 - (avg by (instance) 
-                   (irate(node_cpu_seconds_total{mode="idle"}[10m]) * 100)
-                   * on(instance) group_left(nodename) (node_uname_info))`
-
-    const response = await fetch(query);
-    const data: any = await response.json();
-    return data;
-    // return formatNodeData(data);
-
-  } catch (err) {
-    console.log(`Error in 'getCPUUsageByNode function: ERROR: ${err}`);
-  }
-})
-
-function formatNodeData(data: any) {
-  return data.data.result.reduce((acc: any, curr: any) => {
-    acc.instance = curr.metric.instance;
-    acc.nodename = curr.metric.nodename;
-    acc.timestamp = convertUnixToISOString(curr.value[0]);
-    acc.percentCpuUsage = curr.value[1];
-    return acc;
-  }, {});
-}
-
-function convertUnixToISOString (unixTimestamp: number) {
-  return new Date(unixTimestamp*1000).toISOString()
-}
-
-ipcMain.handle('bytesTransmittedPerNode', async () => {
-  let query = `${prometheusURL}query_range?query=sum(rate(node_network_transmit_bytes_total[1m])) by (instance) * on(instance) group_left(nodename) (node_uname_info)`;
-  query += `&start=${'2022-07-07T17:11:43.844Z'}&end=${'2022-07-08T17:11:43.844Z'}&step=${'30m'}`
-  const response = await fetch(query);
-  const data = await response.json();
+  const data = await fetchMetricsData(query)
   return data;
-})
+
+});
+
+//get memory usage by namespace (GB)
+ipcMain.handle('getMemoryUsageByNamespace', async(event, namespace: string) => {
+  const { startDateTime, endDateTime } = getStartAndEndDateTime();
+  const namespaceStr = namespace && namespace !== 'ALL' ? `{namespace="${namespace}"}` : '';
+
+  const query = `${prometheusURL}query_range?query=sum(container_memory_working_set_bytes${namespaceStr})
+                by (namespace)&start=${startDateTime}&end=${endDateTime}&step=${'10m'}`;
+
+  const data = await fetchMetricsData(query, 'bytes')
+  
+  return data
+});
+
+//get network I/O recieved by namespace
+ipcMain.handle('bytesRecievedByNamespace', async(event, namespace: string) => {
+  const { startDateTime, endDateTime } = getStartAndEndDateTime();
+  const namespaceStr = namespace && namespace !== 'ALL' ? `{namespace="${namespace}"}` : '';
+
+  const query = `${prometheusURL}query_range?query=sum(irate(container_network_receive_bytes_total${namespaceStr}[${'1m'}]))
+                 by (namespace)&start=${startDateTime}&end=${endDateTime}&step=${'10m'}`;
+
+  const data = await fetchMetricsData(query)
+  return data;
+});
+
+//get network I/O transmitted by namespace
+ipcMain.handle('bytesTransmittedByNamespace', async(event, namespace: string) => {
+  const { startDateTime, endDateTime } = getStartAndEndDateTime();
+  const namespaceStr = namespace && namespace !== 'ALL' ? `{namespace="${namespace}"}` : '';
+
+  let query = `${prometheusURL}query_range?query=sum(irate(container_network_transmit_bytes_total${namespaceStr}[${'1m'}])) 
+              by (namespace)&start=${startDateTime}&end=${endDateTime}&step=${'10m'}`;
+
+  const data = await fetchMetricsData(query);
+  return data;
+});
+
+//Node metrics
+//get cpu usage by node (%)
+ipcMain.handle('getCPUUsageByNode', async(event, namespace: string) => {
+  const { startDateTime, endDateTime } = getStartAndEndDateTime();
+  const namespaceStr = namespace && namespace !== 'ALL' ? `{namespace="${namespace}"}` : '';
+
+  const query = `${prometheusURL}query_range?query=sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate)
+                by (node)&start=${startDateTime}&end=${endDateTime}&step=${'10m'}`;
+
+  const data = await fetchMetricsData(query);
+  return data;
+});
+
+//get memory usage by node (GB)
+ipcMain.handle('getMemoryUsageByNode', async(event, namespace: string) => {
+  const { startDateTime, endDateTime } = getStartAndEndDateTime();
+  //const namespaceStr = namespace && namespace !== 'ALL' ? `{namespace="${namespace}"}` : '';
+  const namespaceStr = ''
+  const query = `${prometheusURL}query_range?query=sum(container_memory_working_set_bytes) 
+                by (node)&start=${startDateTime}&end=${endDateTime}&step=${'10m'}`;
+
+  const data = await fetchMetricsData(query, 'bytes');
+  return data
+});
+
+//get network I/O recieved by node
+ipcMain.handle('bytesRecievedByNode', async(event, namespace: string) => {
+  const { startDateTime, endDateTime } = getStartAndEndDateTime();
+  const namespaceStr = namespace && namespace !== 'ALL' ? `{namespace="${namespace}"}` : '';
+
+  const query = `${prometheusURL}query_range?query=sum(irate(container_network_receive_bytes_total[${'1m'}])) 
+                by (node)&start=${startDateTime}&end=${endDateTime}&step=${'1m'}`;
+
+  const data = await fetchMetricsData(query);
+  return data;
+});
+
+//get network I/O transmitted by node
+ipcMain.handle('bytesTransmittedByNode', async(event, namespace: string) => {
+  const { startDateTime, endDateTime } = getStartAndEndDateTime();
+  const namespaceStr = namespace && namespace !== 'ALL' ? `{namespace="${namespace}"}` : '';
+
+  const query = `${prometheusURL}query_range?query=sum(irate(container_network_transmit_bytes_total[${'10m'}])) 
+                by (node)&start=${startDateTime}&end=${endDateTime}&step=${'1m'}`;
+
+  const data = await fetchMetricsData(query);
+  return data;
+});
+
+//pod metrics
+//get cpu usage by pod (%)
+ipcMain.handle('getCPUUsageByPod', async(event, namespace: string) => {
+  const { startDateTime, endDateTime } = getStartAndEndDateTime();
+  const namespaceStr = namespace && namespace !== 'ALL' ? `{namespace="${namespace}"}` : '';
+
+  const query = `${prometheusURL}query_range?query=sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate${namespaceStr}) 
+                by (pod)&start=${startDateTime}&end=${endDateTime}&step=${'10m'}`;
+
+  const data = await fetchMetricsData(query);
+  return data;
+});
+
+//get memory usage by pod (GB)
+ipcMain.handle('getMemoryUsageByPod', async(event, namespace: string) => {
+  const { startDateTime, endDateTime } = getStartAndEndDateTime()
+  const namespaceStr = namespace && namespace !== 'ALL' ? `{namespace="${namespace}"}` : '';
+
+  const query = `${prometheusURL}query_range?query=sum(container_memory_working_set_bytes${namespaceStr}) 
+                by (pod)&start=${startDateTime}&end=${endDateTime}&step=${'1m'}`;
+
+  const data = await fetchMetricsData(query, 'bytes');
+  return data;
+});
+
+//get network I/O recieved by pod
+ipcMain.handle('bytesRecievedByPod', async(event, namespace: string) => {
+  const { startDateTime, endDateTime } = getStartAndEndDateTime();
+  const namespaceStr = namespace && namespace !== 'ALL' ? `{namespace="${namespace}"}` : '';
+
+  const query = `${prometheusURL}query_range?query=sum(irate(container_network_receive_bytes_total${namespaceStr}[${'10m'}])) 
+                by (pod)&start=${startDateTime}&end=${endDateTime}&step=${'10m'}`;
+
+  const data = await fetchMetricsData(query);
+  return data;
+});
+
+//get network I/O transmitted by pod
+ipcMain.handle('bytesTransmittedByPod', async(event, namespace: string) => {
+  const { startDateTime, endDateTime } = getStartAndEndDateTime();
+  const namespaceStr = namespace && namespace !== 'ALL' ? `{namespace="${namespace}"}` : '';
+
+  const query = `${prometheusURL}query_range?query=sum(irate(container_network_transmit_bytes_total${namespaceStr}[${'10m'}])) 
+                by (pod)&start=${startDateTime}&end=${endDateTime}&step=${'10m'}`;
+
+  const data = await fetchMetricsData(query);
+  return data;
+});
 
 

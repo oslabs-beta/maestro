@@ -10,12 +10,22 @@ declare global {
       getAlerts: () => Promise<fetchData>;
       getEvents: () => Promise<any>;
       getNamespaces: () => Promise<any>;
-      getNodeList: ()=> Promise<any>;
-      getServices: ()=> Promise<any>;
-      getPods: ()=> Promise<any>;
-      getDeployments: ()=> Promise<any>;
-      getCPUUsageByNode: () => Promise<any>
-      bytesTransmittedPerNode: () => Promise<any>
+      getNodeList: () => Promise<any>;
+      getServices: () => Promise<any>;
+      getPods: () => Promise<any>;
+      getDeployments: () => Promise<any>;
+      getCPUUsageByNode: (namespace: string) => Promise<any>
+      getMemoryUsageByNode: (namespace: string) => Promise<any>
+      bytesRecievedByNode: (namespace: string) => Promise<any>
+      bytesTransmittedByNode: (namespace: string) => Promise<any>
+      getCPUUsageByNamespace: (namespace: string) => Promise<any>
+      getMemoryUsageByNamespace: (namespace: string) => Promise<any>
+      bytesRecievedByNamespace: (namespace: string) => Promise<any>
+      bytesTransmittedByNamespace: (namespace: string) => Promise<any>
+      getCPUUsageByPod: (namespace: string) => Promise<any>
+      getMemoryUsageByPod: (namespace: string) => Promise<any>
+      bytesRecievedByPod: (namespace: string) => Promise<any>
+      bytesTransmittedByPod: (namespace: string) => Promise<any>
       // Add any additional "APIs" here
     };
   }
