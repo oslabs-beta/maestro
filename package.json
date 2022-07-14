@@ -16,8 +16,10 @@
   "dependencies": {
     "@headlessui/react": "^1.6.5",
     "@heroicons/react": "^1.0.6",
+    "@mui/icons-material": "^5.8.4",
     "@reduxjs/toolkit": "^1.8.3",
     "@types/node-fetch": "^2.6.2",
+    "@types/react-router-dom": "^5.3.3",
     "electron": "^19.0.7",
     "express": "^4.18.1",
     "node-cmd": "^5.0.0",
@@ -26,6 +28,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
+    "react-router-dom": "^6.3.0",
     "react-select": "^5.4.0",
     "redux-thunk": "^2.4.1",
     "ts-node": "^10.8.1"
