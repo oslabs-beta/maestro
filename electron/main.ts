@@ -212,6 +212,7 @@ ipcMain.handle('getCPUUsageByNamespace', async(event, namespace: string) => {
                 by (namespace) &start=${startDateTime}&end=${endDateTime}&step=${'1m'}`
 
   const data = await fetchMetricsData(query)
+  console.log(data.timeSeriesData[0])
   return data;
 
 });
