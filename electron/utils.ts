@@ -9,15 +9,15 @@ export function getStartAndEndDateTime() {
     nowCopy.setHours(nowCopy.getHours() - 24);
     let startDateTime: string = nowCopy.toISOString();
     let endDateTime: string = now.toISOString();
-    console.log('startDateTime', startDateTime)
-    console.log('endDateTime', endDateTime)
+    console.log('start',startDateTime)
+    console.log('end',endDateTime)
   
     return {
-      startDateTime: '2022-07-08T21:43:40.141Z',
+      startDateTime: startDateTime,
       endDateTime: endDateTime
     }
   }
- // '2022-07-1T21:43:40.141Z'
+
   export function bytesToGb(num: number) {
     if (num === 0) return 0;
 

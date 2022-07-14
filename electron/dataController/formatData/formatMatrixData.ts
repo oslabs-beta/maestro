@@ -8,6 +8,13 @@ interface matrixData {
     resultType: string,
 }
 
+interface output {
+    [key: string]: {
+        timestamps: string[]
+        timeSeriesValues: number[]
+    }
+}
+
 /**
  * 
  * @param data 
@@ -17,13 +24,24 @@ interface matrixData {
  */
 
 export function formatMatrixData(data: matrixData, unitType?: string) {
-    return data.result.reduce((acc: any, curr: any) => {
-        const group = Object.keys(curr.metric)[0]
-        acc[group] = {}
-        acc[group].timestamps = curr.values.map((el: [number, string]) => convertUnixToISOString(el[0]));
-        acc[group].timeSeriesValue = unitType === 'bytes' ? 
-        curr.values.map((el: [number, string]) => bytesToGb(parseInt(el[1]))) :
-        curr.values.map((el: [number, string]) => parseInt(el[1]));
-        return acc;
-    }, {});
+    const output: output = {};
+
+    data.result.forEach((obj: any) => {
+        const group: string = obj.metric[Object.keys(obj.metric)[0]];
+
+        output[group] = {
+            timestamps: [],
+            timeSeriesValues: []
+        };
+
+        output[group].timestamps = obj.values.map((el: [number, string]) => convertUnixToISOString(el[0]));
+
+        //convert bytes to GB when unit type is bytes
+        output[group].timeSeriesValues = unitType === 'bytes' ? 
+        obj.values.map((el: [number, string]) => bytesToGb(Number(el[1])).toFixed(5)) :
+        obj.values.map((el: [number, string]) => Number(el[1]).toFixed(5));
+    });
+
+    return output;
 }
+

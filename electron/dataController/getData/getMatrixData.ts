@@ -7,8 +7,8 @@ export async function fetchMetricsData(query: string, unitType?: string) {
         const res = await fetch(query);
         const data = await res.json();
         
-        //return data
         return formatMatrixData(data.data, unitType);
+        // return data
     } catch (err) {
         console.log(err);
     }
