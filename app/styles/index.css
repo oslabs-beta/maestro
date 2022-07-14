@@ -3,41 +3,51 @@
 @tailwind utilities; */
 /* remove text align from body after mvp */
 body {
-    margin: 0 auto;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    /* font-weight: 700; */
-    background-color: rgb(255, 255, 255);
-    /* max-width: 1800px; */
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  /* font-weight: 700; */
+  background-color: rgb(255, 255, 255);
+  /* max-width: 1800px; */
 }
 
 .main-container {
-    display: flex;
+  display: flex;
 }
 
 .sidebar-container {
-    width: 10em
+  width: 15em;
+  background-color: rgb(235, 235, 235);
 }
 
-.overview-container{
-    display: flex;
-    /* width: 100% */
+.sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-link {
+  margin: 3px;
+}
+
+.overview-container {
+  display: flex;
+  /* width: 100%; */
 }
 
 .status-card {
-    display: flex;
+  display: flex;
 }
 
 .namespace-container {
-    width: 20em;
-    margin-left: 20px;
-    margin-bottom: 15px;
-    color: #3371E3;
+  width: 20em;
+  margin-left: 20px;
+  margin-bottom: 15px;
+  color: #3371e3;
 }
 
 .events-container {
-    border-left: 1px dotted #797676;
-    width: 50%;
+  border-left: 1px dotted #797676;
+  width: 50%;
 }
 
 .events-dropdown-container {
@@ -48,14 +58,14 @@ body {
 }
 
 .events-dropdown {
-    width: 9em;
-    margin-right: 2em;
-    color: #3371E3;
+  width: 9em;
+  margin-right: 2em;
+  color: #3371e3;
 }
 
 .severity-dropdown {
-    width: 9em;
-    color: #3371E3;
+  width: 9em;
+  color: #3371e3;
 }
 /* .main-container {
     display: flex;
@@ -120,23 +130,23 @@ body {
     max-width: 82%;
 }
 
-.alert-content-group { 
-    margin-left: 49px;
+.alert-content-group {
+  margin-left: 49px;
 }
-.alert-content-state { 
-    margin-left: 55px;
+.alert-content-state {
+  margin-left: 55px;
 }
-.alert-content-name { 
-    margin-left: 49px;
+.alert-content-name {
+  margin-left: 49px;
 }
-.alert-content-severity { 
-    margin-left: 35px;
+.alert-content-severity {
+  margin-left: 35px;
 }
-.alert-content-description { 
-    margin-left: 10px;
+.alert-content-description {
+  margin-left: 10px;
 }
-.alert-content-summary { 
-    margin-left: 22px;
+.alert-content-summary {
+  margin-left: 22px;
 }
 
 .event-content-last_seen {
@@ -187,28 +197,27 @@ body {
 }
 /* holds all status cards */
 .bubble-container {
-    display: flex;
-    flex-direction: column;
-    background-color: whitesmoke;
-    border-radius: 1em;
-    padding: 1em;
-    justify-content: space-between;
-    margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+  border-radius: 1em;
+  padding: 1em;
+  justify-content: space-between;
+  margin-bottom: 1em;
 }
 /* holds the status name, bubbles and qty */
 .status-card {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding-bottom: 1em;
-
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-bottom: 1em;
 }
 
 /* holds all the status bubbles */
 .bubble-box {
-    display: flex;  
-    min-width: 70%;
-    flex-wrap: wrap;
+  display: flex;
+  min-width: 70%;
+  flex-wrap: wrap;
 }
 
 /* individual status bubbles */
@@ -223,13 +232,12 @@ body {
 }
 
 /* name of type of status */
-.status-name{
-    text-align: left;
-    min-width: 25%;
-    padding-right: 1em;
-    
+.status-name {
+  text-align: left;
+  min-width: 25%;
+  padding-right: 1em;
 }
 /* quantity of type of status */
-.quantity-box{
-    padding-right: 1em;
+.quantity-box {
+  padding-right: 1em;
 }
