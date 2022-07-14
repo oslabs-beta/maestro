@@ -9,8 +9,8 @@ export function getStartAndEndDateTime() {
     nowCopy.setHours(nowCopy.getHours() - 24);
     let startDateTime: string = nowCopy.toISOString();
     let endDateTime: string = now.toISOString();
-    console.log('startDateTime', startDateTime)
-    console.log('endDateTime', endDateTime)
+    console.log('start',startDateTime)
+    console.log('end',endDateTime)
   
     return {
       startDateTime: startDateTime,
@@ -22,7 +22,6 @@ export function getStartAndEndDateTime() {
     if (num === 0) return 0;
 
     const k = 1024;
-
     const i = Math.floor(Math.log(num) / Math.log(k));
 
     return (num / Math.pow(k, i));
