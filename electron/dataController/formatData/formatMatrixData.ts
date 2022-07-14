@@ -38,8 +38,8 @@ export function formatMatrixData(data: matrixData, unitType?: string) {
 
         //convert bytes to GB when unit type is bytes
         output[group].timeSeriesValues = unitType === 'bytes' ? 
-        obj.values.map((el: [number, string]) => bytesToGb(Number(el[1])).toFixed(5)) :
-        obj.values.map((el: [number, string]) => Number(el[1]).toFixed(5));
+        obj.values.map((el: [number, string]) => bytesToGb(Number(el[1]))) :
+        obj.values.map((el: [number, string]) => Number(el[1]));
     });
 
     return output;

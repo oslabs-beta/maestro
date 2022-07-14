@@ -283,51 +283,6 @@ ipcMain.handle('bytesTransmittedByNamespace', async(event, namespace: string) =>
   return await fetchMetricsData(query);
 });
 
-//get memory usage by namespace (GB)
-ipcMain.handle(
-  "getMemoryUsageByNamespace",
-  async (event, namespace: string) => {
-    const { startDateTime, endDateTime } = getStartAndEndDateTime();
-    const namespaceStr =
-      namespace && namespace !== "ALL" ? `{namespace="${namespace}"}` : "";
-
-    const query = `${prometheusURL}query_range?query=sum(container_memory_working_set_bytes${namespaceStr})
-                by (namespace)&start=${startDateTime}&end=${endDateTime}&step=${"10m"}`;
-
-    const data = await fetchMetricsData(query, "bytes");
-
-    return data;
-  }
-);
-
-//get network I/O recieved by namespace
-ipcMain.handle("bytesRecievedByNamespace", async (event, namespace: string) => {
-  const { startDateTime, endDateTime } = getStartAndEndDateTime();
-  const namespaceStr =
-    namespace && namespace !== "ALL" ? `{namespace="${namespace}"}` : "";
-
-  const query = `${prometheusURL}query_range?query=sum(irate(container_network_receive_bytes_total${namespaceStr}[${"1m"}]))
-                 by (namespace)&start=${startDateTime}&end=${endDateTime}&step=${"10m"}`;
-
-  const data = await fetchMetricsData(query);
-  return data;
-});
-
-//get network I/O transmitted by namespace
-ipcMain.handle(
-  "bytesTransmittedByNamespace",
-  async (event, namespace: string) => {
-    const { startDateTime, endDateTime } = getStartAndEndDateTime();
-    const namespaceStr =
-      namespace && namespace !== "ALL" ? `{namespace="${namespace}"}` : "";
-
-    let query = `${prometheusURL}query_range?query=sum(irate(container_network_transmit_bytes_total${namespaceStr}[${"1m"}])) 
-              by (namespace)&start=${startDateTime}&end=${endDateTime}&step=${"10m"}`;
-
-    const data = await fetchMetricsData(query);
-    return data;
-  }
-);
 
 //Node metrics
 //get cpu usage by node (%)
