@@ -13,16 +13,15 @@ export function getStartAndEndDateTime() {
     console.log('endDateTime', endDateTime)
   
     return {
-      startDateTime: startDateTime,
+      startDateTime: '2022-07-08T21:43:40.141Z',
       endDateTime: endDateTime
     }
   }
-
+ // '2022-07-1T21:43:40.141Z'
   export function bytesToGb(num: number) {
     if (num === 0) return 0;
 
     const k = 1024;
-
     const i = Math.floor(Math.log(num) / Math.log(k));
 
     return (num / Math.pow(k, i));
