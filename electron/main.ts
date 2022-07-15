@@ -48,8 +48,30 @@ app.on("window-all-closed", () => {
 ipcMain.handle('getNodesList', async () => {
   const data = await k8sApiCore.listNode('default')
   return JSON.stringify(data.body)
-
 });
+
+ipcMain.handle('getNamespacesList', async () => {
+  const data = await k8sApiCore.listNamespace()
+  return JSON.stringify(data.body)
+});
+
+ipcMain.handle('getDeploymentsList', async () => {
+  const data = await k8sApiApps.listDeploymentForAllNamespaces()
+  return JSON.stringify(data.body)
+});
+
+ipcMain.handle('getServicesList', async () => {
+  const data = await k8sApiCore.listServiceForAllNamespaces()
+  return JSON.stringify(data.body)
+});
+
+ipcMain.handle('getPodsList', async () => {
+  const data = await k8sApiCore.listPodForAllNamespaces()
+  return JSON.stringify(data.body)
+});
+
+
+
 
 // fetch alerts from Prometheus for Alerts page
 ipcMain.handle("getAlerts", async () => {
@@ -148,7 +170,7 @@ const formatNamespaces = (data: any) => {
 };
 
 // NEW CODE
-ipcMain.handle("getNodeList", () => {
+ipcMain.handle("getNodes", () => {
   //all namespaces --all-namespaces otherwise goes to default
   //specific namespace kubesctl get nodes -n kube-node-lease
 

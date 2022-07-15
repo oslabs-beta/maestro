@@ -23,7 +23,7 @@ const StatusContainer = () => {
 
     const getNodesForState = async (): Promise<any> => {
         let boxesArr =[];
-        const nodes: any = await window.electron.getNodeList();
+        const nodes: any = await window.electron.getNodes();
         setNodeName(nodes)
         setNodeQuant(nodes.length)
         for(let i =0; i < nodes.length; i++){
