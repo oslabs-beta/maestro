@@ -1,3 +1,4 @@
+import { WindowOutlined } from '@mui/icons-material';
 import { ipcRenderer } from 'electron/renderer';
 import { setMaxListeners } from 'process';
 import React, { useEffect, useState } from 'react';
@@ -13,6 +14,9 @@ const renderThis= async (): Promise<any> => {
     const deploymentList = await window.electron.getDeploymentsList()
     const servicesList = await window.electron.getServicesList()
     const podsList = await window.electron.getPodsList()
+    // const componentStatus = await window.electron.getComponentStatus()
+
+    // const componentStatus = await window.electron.getComponentStatus()
 
     // const namespaces = await window.electron.getNamespaces();
     // const node = await window.electron.getNodes();
@@ -36,6 +40,7 @@ const renderThis= async (): Promise<any> => {
     console.log('deploymentList', JSON.parse(deploymentList))
     console.log('servicestList', JSON.parse(servicesList))
     console.log('podsList', JSON.parse(podsList))
+    // console.log('componentStatus', JSON.parse(componentStatus))
 
     // console.log('events', events)
     // console.log('getCPUUsageByNode', getCPUUsageByNode)
