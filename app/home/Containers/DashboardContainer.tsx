@@ -8,7 +8,7 @@ import MainContainer from "./MainContainer";
 const DashboardContainer = () => {
     return (
     <Router>
-        <div className="home-container">
+        <div className="home-container overview-container">
             <Namespace />
         </div>
         <div className="main-container">

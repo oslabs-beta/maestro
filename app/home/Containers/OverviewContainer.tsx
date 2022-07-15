@@ -6,8 +6,8 @@ import EventsContainer from "./EventsContainer";
 const OverviewContainer = () => {
   return (
     <div className="overview-container">
-    <StatusContainer />
-    <EventsContainer />
+        <StatusContainer />
+        <EventsContainer />
     </div>
   );
 };

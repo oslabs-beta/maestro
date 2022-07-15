@@ -12,17 +12,26 @@ body {
 }
 
 .sidebar-container {
-  width: 15em;
-  background-color: rgb(235, 235, 235);
+  width: 50px;
+  background-color: #333;
+  justify-content: space-around;
 }
 
 .sidebar-buttons {
   display: flex;
   flex-direction: column;
+  color: #fff;
+  font-size: 30px;
+  padding: 10px;
 }
 
 .sidebar-link {
-  margin: 3px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.sidebar-link:hover {
+    color: #797676;
 }
 
 .overview-container {
@@ -74,7 +83,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 1em;
-    max-height: 80vh;
+    max-height: 85vh;
     margin: 5px;
     margin-top: 0px;
     overflow-y: scroll;
@@ -242,3 +251,4 @@ body {
     border: 1px dotted  #797676;
     margin-right: 20px;
 }
+
