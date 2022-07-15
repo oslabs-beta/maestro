@@ -203,7 +203,8 @@ body {
 /* holds all the status bubbles */
 .bubble-box {
   display: flex;
-  min-width: 70%;
+  width: 200px;
+  /* min-width: 70%; */
   flex-wrap: wrap;
 }
 
@@ -223,6 +224,8 @@ body {
   text-align: left;
   min-width: 25%;
   padding-right: 1em;
+  width: 6em;
+
 }
 /* quantity of type of status */
 .quantity-box {

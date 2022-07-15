@@ -48,32 +48,32 @@ app.on("window-all-closed", () => {
 
 ipcMain.handle('getNodesList', async () => {
   const data = await k8sApiCore.listNode('default')
-  return JSON.stringify(formatk8sApiData(data.body))
+  return formatk8sApiData(data.body)
 });
 
 ipcMain.handle('getNamespacesList', async () => {
   const data = await k8sApiCore.listNamespace()
-  return JSON.stringify(formatk8sApiData(data.body))
+  return formatk8sApiData(data.body)
 });
 
 ipcMain.handle('getDeploymentsList', async () => {
   const data = await k8sApiApps.listDeploymentForAllNamespaces()
-  return JSON.stringify(formatk8sApiData(data.body))
+  return formatk8sApiData(data.body)
 });
 
 ipcMain.handle('getServicesList', async () => {
   const data = await k8sApiCore.listServiceForAllNamespaces()
-  return JSON.stringify(formatk8sApiData(data.body))
+  return formatk8sApiData(data.body)
 });
 
 ipcMain.handle('getPodsList', async () => {
   const data = await k8sApiCore.listPodForAllNamespaces()
-  return JSON.stringify(formatk8sApiData(data.body))
+  return formatk8sApiData(data.body)
 });
 
 ipcMain.handle('getComponentStatus', async () => {
   const data = await k8sApiCore.listComponentStatus()
-  return JSON.stringify(data.body)
+  return data.body
 })
 
 // fetch alerts from Prometheus for Alerts page
