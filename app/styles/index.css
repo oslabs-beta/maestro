@@ -13,7 +13,8 @@ body {
 
 .sidebar-container {
   width: 15em;
-  background-color: rgb(235, 235, 235);
+  background-color: rgb(83, 83, 83);
+  color: white;
 }
 
 .sidebar-buttons {
@@ -41,7 +42,7 @@ body {
 }
 
 .events-container {
-  border-left: 1px dotted #797676;
+  border-left: 1px solid #f0efef;
   width: 50%;
 }
 
@@ -185,7 +186,7 @@ body {
 .bubble-container {
   display: flex;
   flex-direction: column;
-  background-color: whitesmoke;
+  background-color: rgb(255, 255, 255);
   border-radius: 1em;
   padding: 1em;
   justify-content: space-between;
@@ -202,7 +203,8 @@ body {
 /* holds all the status bubbles */
 .bubble-box {
   display: flex;
-  min-width: 70%;
+  width: 200px;
+  /* min-width: 70%; */
   flex-wrap: wrap;
 }
 
@@ -222,6 +224,8 @@ body {
   text-align: left;
   min-width: 25%;
   padding-right: 1em;
+  width: 6em;
+
 }
 /* quantity of type of status */
 .quantity-box {

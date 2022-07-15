@@ -19,9 +19,9 @@ const MainContainer = () => {
             <StatusContainer />
             <EventsContainer />
           </div>
-          <div className='metrics-container'>
+          {/* <div className='metrics-container'>
             <MetricsContainer />
-          </div>
+          </div> */}
         </div>
       </div>
     </Router>

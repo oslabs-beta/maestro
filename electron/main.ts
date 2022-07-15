@@ -4,6 +4,7 @@ const fetch: any = (...args: any) =>
 import * as child_process from "child_process";
 import { getStartAndEndDateTime } from "./utils";
 import { fetchMetricsData } from "./dataController/getData/getMatrixData";
+import { formatk8sApiData } from "./dataController/formatData/formatk8sApiData";
 import * as k8s from '@kubernetes/client-node';
 // K8s API
 const kc = new k8s.KubeConfig();
@@ -47,9 +48,33 @@ app.on("window-all-closed", () => {
 
 ipcMain.handle('getNodesList', async () => {
   const data = await k8sApiCore.listNode('default')
-  return JSON.stringify(data.body)
-
+  return formatk8sApiData(data.body)
 });
+
+ipcMain.handle('getNamespacesList', async () => {
+  const data = await k8sApiCore.listNamespace()
+  return formatk8sApiData(data.body)
+});
+
+ipcMain.handle('getDeploymentsList', async () => {
+  const data = await k8sApiApps.listDeploymentForAllNamespaces()
+  return formatk8sApiData(data.body)
+});
+
+ipcMain.handle('getServicesList', async () => {
+  const data = await k8sApiCore.listServiceForAllNamespaces()
+  return formatk8sApiData(data.body)
+});
+
+ipcMain.handle('getPodsList', async () => {
+  const data = await k8sApiCore.listPodForAllNamespaces()
+  return formatk8sApiData(data.body)
+});
+
+ipcMain.handle('getComponentStatus', async () => {
+  const data = await k8sApiCore.listComponentStatus()
+  return data.body
+})
 
 // fetch alerts from Prometheus for Alerts page
 ipcMain.handle("getAlerts", async () => {
@@ -148,7 +173,7 @@ const formatNamespaces = (data: any) => {
 };
 
 // NEW CODE
-ipcMain.handle("getNodeList", () => {
+ipcMain.handle("getNodes", () => {
   //all namespaces --all-namespaces otherwise goes to default
   //specific namespace kubesctl get nodes -n kube-node-lease
 
