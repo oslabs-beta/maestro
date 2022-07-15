@@ -1,9 +1,8 @@
-import React from 'react';
-import ButtonTest from './ButtonTest';
-import Namespace from './Components/namespace/Namespace';
-import MainContainer from './home/Containers/MainContainer'
-import './styles/index.css'
-
+import React from "react";
+import ButtonTest from "./ButtonTest";
+import Namespace from "./Components/namespace/Namespace";
+import MainContainer from "./home/Containers/MainContainer";
+import "./styles/index.css";
 
 function App() {
     return (
@@ -12,5 +11,4 @@ function App() {
     );
 }
 
-export default App
-
+export default App;

@@ -21,23 +21,23 @@ const getData = async (): Promise<any> =>{
   if(source === 'Namespace'){
     if(type === 'Memory'){
       console.log(source, type)
-      const getMemoryUsageByNamespace = await window.electron.getMemoryUsageByNamespace(namespace)
-      setGraphData(getMemoryUsageByNamespace)
+      // const getMemoryUsageByNamespace:any = await window.electron.getMemoryUsageByNamespace(namespace)
+      // setGraphData(getMemoryUsageByNamespace)
      
       
 
     }else if(type === 'CPU'){
       console.log(source, type)
-      const getCPUUsageByNamespace = await window.electron.getCPUUsageByNamespace(namespace)
-      setGraphData(getCPUUsageByNamespace)
+      // const getCPUUsageByNamespace = await window.electron.getCPUUsageByNamespace(namespace)
+      // setGraphData(getCPUUsageByNamespace)
       
       
 
     }else if(type === 'Bytes'){
       console.log(source, type)
-      const bytesRecievedByNamespace = await window.electron.bytesRecievedByNamespace(namespace)
-      const bytesTransmittedByNamespace = await window.electron.bytesTransmittedByNamespace(namespace)
-      setGraphData(bytesRecievedByNamespace)
+      // const bytesRecievedByNamespace = await window.electron.bytesRecievedByNamespace(namespace)
+      // const bytesTransmittedByNamespace = await window.electron.bytesTransmittedByNamespace(namespace)
+      // setGraphData(bytesRecievedByNamespace)
       
     }
   }
