@@ -4,6 +4,7 @@ import StatusContainer from "./StatusContainer";
 import EventsContainer from "./EventsContainer";
 import Namespace from "../../Components/namespace/Namespace";
 import SidebarContainer from "../../Containers/SidebarContainer";
+import MetricsContainer from "../../metrics/Container/MetricsContainer";
 
 const MainContainer = () => {
   return (
@@ -18,6 +19,9 @@ const MainContainer = () => {
             <StatusContainer />
             <EventsContainer />
           </div>
+          {/* <div className='metrics-container'>
+            <MetricsContainer />
+          </div> */}
         </div>
       </div>
     </Router>

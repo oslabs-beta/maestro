@@ -3,27 +3,51 @@ import AlertCard from '../Components/AlertCard';
 import EventCard from '../Components/EventCard';
 import LogCard from '../Components/LogCard';
 import { useAppSelector } from '../../state/hooks';
+import { noEventsAvailable, noAlertsAvailable } from './utils/edgeCaseHandling'
+
 
 const EventsCardContainer = (props: any) => {
-  // let allNamespaces: string[] = useAppSelector(state => state.namespace.allNamespaces) 
-  // console.log(allNamespaces)
   let namespace: string = useAppSelector(state => state.namespace.currentNamespace) 
-  const [ alerts, setAlerts ] = useState([])
-  const [ logs, setLogs ] = useState([])
-  const [ events, setEvents ] = useState([])
+  const [ alertsBySeverity, setAlertsBySeverity ] = useState([])
+  const [ namespaceEventsBySeverity, setNamespaceEventsBySeverity ] = useState([])
 
   const renderThis = async (): Promise<any> => {
-    if (props.eventType === 'alerts') {
-      const alerts: any = await window.electron.getAlerts(/*namespace*/);
-      setAlerts(alerts)
+    if (namespace === '') namespace = 'default'
+  
+    // logic for alerts
+    let allAlerts: any = await window.electron.getAlerts();
+
+    if ((props.severity).toLowerCase() !== 'all' && allAlerts.length !== 0) {
+      let alertsBySeverity = allAlerts.reduce((acc:any, el:any) => {
+        if ((el.severity).toLowerCase() === props.severity) acc.push(el);
+        return acc;
+      }, [])
+      setAlertsBySeverity(alertsBySeverity)
     }
-    else if (props.eventType === 'logs') {
-      // const logs: any = await window.electron.getLogs(namespace)
-      setLogs(logs)
+
+    else {
+      if (!allAlerts.length) allAlerts = [noAlertsAvailable]
+      setAlertsBySeverity(allAlerts)
     }
-    else if (props.eventType === 'events') {
-      // const events: any = await window.electron.getEvents(namespace)
-      setEvents(events)
+  
+    // logic for events
+    const allEvents: any = await window.electron.getEvents()
+    let namespaceEvents = allEvents.reduce((acc: any, el: any) => {
+      if (el.namespace === namespace) acc.push(el);
+      return acc;       
+    }, [])
+
+    if ((props.severity).toLowerCase() !== 'all' && namespaceEvents.length !== 0) {
+      let namespaceEventsBySeverity = namespaceEvents.reduce((acc:any, el:any) => {
+        if ((el.type).toLowerCase() === props.severity) acc.push(el);
+        return acc;
+      }, [])
+      setNamespaceEventsBySeverity(namespaceEventsBySeverity)
+    }
+
+    else {
+      if (!namespaceEvents.length) namespaceEvents = [noEventsAvailable]
+      setNamespaceEventsBySeverity(namespaceEvents)
     }
   }
 
@@ -36,7 +60,7 @@ const EventsCardContainer = (props: any) => {
     renderThis()
   }, [props, namespace])
 
-  const allAlerts: any = alerts.map((el: any, i: number) => 
+  const alertsCard: any = alertsBySeverity.map((el: any, i: number) => 
     <AlertCard
       key={`alert${i}`}
       group={el.group}
@@ -49,37 +73,22 @@ const EventsCardContainer = (props: any) => {
     />
   );
 
-  const allLogs: any = logs.map((el: any, i: number) => 
-    <LogCard
-      // key={`alert${i}`}
-      // group={el.group}
-      // state={el.state}
-      // name={el.name}
-      // severity={el.sever}
-      // description={el.description}
-      // summary={el.summary}
-      // alerts={el.alerts}
+  const namespaceEventCards: any = namespaceEventsBySeverity.map((el: any, i: number) => 
+
+    <EventCard
+      key={`events${i}`}
+      last_seen={el.last_seen}
+      message={el.message}
+      object={el.object}
+      reason={el.reason}
+      severity={el.type}
     />
   );
   
-  const allEvents: any = events.map((el: any, i: number) => 
-    <LogCard
-      // key={`alert${i}`}
-      // group={el.group}
-      // state={el.state}
-      // name={el.name}
-      // severity={el.sever}
-      // description={el.description}
-      // summary={el.summary}
-      // alerts={el.alerts}
-    />
-); 
-  
   return (
     <div className='events-card-container'>
-      {props.eventType === 'alerts' && allAlerts}
-      {props.eventType === 'logs' && allLogs}
-      {props.eventType === 'events' && allEvents}
+      {props.eventType === 'alerts' && alertsCard}
+      {props.eventType === 'events' && namespaceEventCards}
     </div>
   );
 }

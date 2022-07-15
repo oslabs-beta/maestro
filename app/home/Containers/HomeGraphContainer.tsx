@@ -19,7 +19,7 @@ function HomeGraphContainer() {
   const [dataChoice, setDataChoice] = useState('Memory');
 
   //state for chosen source 
-  const [sourceChoice, setSourceChoice] = useState('Namespace');
+  const [sourceChoice, setSourceChoice] = useState('Pods');
   
 const handleDataSelect = (e: any) =>{
   setDataChoice(e.value)
