@@ -85,19 +85,6 @@ const EventsCardContainer = (props: any) => {
     />
   );
   
-//   const allLogs: any = events.map((el: any, i: number) => 
-//     <LogCard
-//       // key={`alert${i}`}
-//       // group={el.group}
-//       // state={el.state}
-//       // name={el.name}
-//       // severity={el.sever}
-//       // description={el.description}
-//       // summary={el.summary}
-//       // alerts={el.alerts}
-//     />
-// ); 
-  
   return (
     <div className='events-card-container'>
       {props.eventType === 'alerts' && alertsCard}
