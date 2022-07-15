@@ -26,6 +26,7 @@ declare global {
       getMemoryUsageByPod: (namespace: string) => Promise<any>
       bytesRecievedByPod: (namespace: string) => Promise<any>
       bytesTransmittedByPod: (namespace: string) => Promise<any>
+      getNodesList: () => Promise<any>
       // Add any additional "APIs" here
     };
   }

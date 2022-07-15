@@ -15,10 +15,10 @@ const MainContainer = () => {
         </div>
         <div className="home-container">
           <Namespace />
-          {/* <div className="overview-container">
+          <div className="overview-container">
             <StatusContainer />
             <EventsContainer />
-          </div> */}
+          </div>
           <div className='metrics-container'>
             <MetricsContainer />
           </div>
