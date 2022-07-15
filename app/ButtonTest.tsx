@@ -7,38 +7,38 @@ import { setConstantValue } from 'typescript';
 const renderThis= async (): Promise<any> => {
     // Use IPC API to query Electron's main thread and run this method
     // const alerts = await window.electron.getAlerts();
-    // const events = await window.electron.getEvents();
+    const events = await window.electron.getEvents();
     // const namespaces = await window.electron.getNamespaces();
     // const node = await window.electron.getNodeList();
     // const services = await window.electron.getServices();
     // const pods = await window.electron.getPods();
     // const deployments = await window.electron.getDeployments();
-    const getCPUUsageByNode = await window.electron.getCPUUsageByNode('default')
-    const getMemoryUsageByNode = await window.electron.getMemoryUsageByNode('default')
-    const bytesRecievedByNode = await window.electron.bytesTransmittedByNode('default')
-    const bytesTransmittedByNode = await window.electron.bytesTransmittedByNode('default')
-    const getCPUUsageByNamespace = await window.electron.getCPUUsageByNamespace('default')
-    const getMemoryUsageByNamespace = await window.electron.getMemoryUsageByNamespace('default')
-    const bytesRecievedByNamespace = await window.electron.bytesRecievedByNamespace('default')
-    const bytesTransmittedByNamespace = await window.electron.bytesTransmittedByNamespace('default')
-    const getCPUUsageByPod = await  window.electron.getCPUUsageByPod('default')
-    const getMemoryUsageByPod = await window.electron.getMemoryUsageByPod('default')
-    const bytesRecievedByPod = await window.electron.bytesRecievedByPod('default')
-    const bytesTransmittedByPod = await window.electron.bytesTransmittedByPod('default')
+    // const getCPUUsageByNode = await window.electron.getCPUUsageByNode('default')
+    // const getMemoryUsageByNode = await window.electron.getMemoryUsageByNode('default')
+    // const bytesRecievedByNode = await window.electron.bytesTransmittedByNode('default')
+    // const bytesTransmittedByNode = await window.electron.bytesTransmittedByNode('default')
+    // const getCPUUsageByNamespace = await window.electron.getCPUUsageByNamespace('default')
+    // const getMemoryUsageByNamespace = await window.electron.getMemoryUsageByNamespace('default')
+    // const bytesRecievedByNamespace = await window.electron.bytesRecievedByNamespace('default')
+    // const bytesTransmittedByNamespace = await window.electron.bytesTransmittedByNamespace('default')
+    // const getCPUUsageByPod = await  window.electron.getCPUUsageByPod('default')
+    // const getMemoryUsageByPod = await window.electron.getMemoryUsageByPod('default')
+    // const bytesRecievedByPod = await window.electron.bytesRecievedByPod('default')
+    // const bytesTransmittedByPod = await window.electron.bytesTransmittedByPod('default')
 
-
-    console.log('getCPUUsageByNode', getCPUUsageByNode)
-    console.log('getMemoryUsageByNode', getMemoryUsageByNode)
-    console.log('bytesRecievedByNode', bytesRecievedByNode)
-    console.log('bytesTransmittedByNode', bytesTransmittedByNode)
-    console.log('getCPUUsageByNamespace', getCPUUsageByNamespace)
-    console.log('getMemoryUsageByNamespace', getMemoryUsageByNamespace)
-    console.log('bytesRecievedByNamespace', bytesRecievedByNamespace)
-    console.log('bytesTransmittedByNamespace', bytesTransmittedByNamespace)
-    console.log('getCPUUsageByPod', getCPUUsageByPod)
-    console.log('getMemoryUsageByPod', getMemoryUsageByPod)
-    console.log('bytesRecievedByPod', bytesRecievedByPod)
-    console.log('bytesTransmittedByPod', bytesTransmittedByPod)
+    console.log('events', events)
+    // console.log('getCPUUsageByNode', getCPUUsageByNode)
+    // console.log('getMemoryUsageByNode', getMemoryUsageByNode)
+    // console.log('bytesRecievedByNode', bytesRecievedByNode)
+    // console.log('bytesTransmittedByNode', bytesTransmittedByNode)
+    // console.log('getCPUUsageByNamespace', getCPUUsageByNamespace)
+    // console.log('getMemoryUsageByNamespace', getMemoryUsageByNamespace)
+    // console.log('bytesRecievedByNamespace', bytesRecievedByNamespace)
+    // console.log('bytesTransmittedByNamespace', bytesTransmittedByNamespace)
+    // console.log('getCPUUsageByPod', getCPUUsageByPod)
+    // console.log('getMemoryUsageByPod', getMemoryUsageByPod)
+    // console.log('bytesRecievedByPod', bytesRecievedByPod)
+    // console.log('bytesTransmittedByPod', bytesTransmittedByPod)
 
 
     // console.log("alerts", alerts)

@@ -31,7 +31,7 @@ body {
 
 .overview-container {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .status-card {
@@ -51,8 +51,10 @@ body {
 }
 
 .events-dropdown-container {
-  display: flex;
-  margin-left: 30px;
+    display: flex;
+    margin-left: 30px;
+    margin-top: 14px;
+    margin-bottom: 10px
 }
 
 .events-dropdown {
@@ -71,50 +73,61 @@ body {
     justify-content: space-evenly;
 } */
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+
 /* remove text align on alerts-container */
 .events-card-container {
-  display: flex;
-  flex-direction: column;
-  /* border: 1px solid black; */
-  padding: 1em;
-  max-height: 80vh;
-  margin: 5px;
-  overflow-y: scroll;
-  text-align: left;
-  /* min-width: 20%; */
-  /* font-weight: 700; */
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+    padding: 1em;
+    max-height: 80vh;
+    margin: 5px;
+    margin-top: 0px;
+    overflow-y: scroll;
+    text-align: left;
+    min-width: 20%;
+    overflow-x: hidden;
+    
+    /* font-weight: 700; */
 }
 
-.summary-card {
-  /* flex-direction: row; */
-  border: 1px solid #3371e3;
-  max-width: 10em;
-  min-width: 2em;
-  max-height: 6em;
-  margin: 0.5em;
-  padding: 0.5em;
-  border-radius: 5px;
+.alert-card,
+.event-card {
+    /* border-bottom: 2px solid #3371E3; */
+    padding: 10px;
+    padding-left: 15px;
+    padding-top: 15x;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.1), 0 8px 8px rgba(0,0,0,0.01);
+    border-radius: 20px;
+    /* border: 1px dotted  #797676; */
+    color: #333;
 }
 
-.alert-card {
-  /* border-bottom: 2px solid #3371E3; */
-  padding: 10px;
-  padding-left: 15px;
-  padding-top: 15x;
-  margin-bottom: 20px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.01);
-  border-radius: 20px;
-  border: 1px dotted #797676;
-  color: #333;
-}
+.alert-card:hover,
+.event-card:hover {
+    background-color: rgb(250, 250, 250);
+    box-shadow: 0 8px 8px rgba(0,0,0,0.1), 0 12px 12px rgba(0,0,0,0.01);
+} 
 
 .alert-content-group,
 .alert-content-state,
 .alert-content-name,
 .alert-content-severity,
 .alert-content-description,
-.alert-content-summary {
-  color: #797676;
+.alert-content-summary,
+.event-content-last_seen,
+.event-content-message,
+.event-content-object,
+.event-content-reason,
+.event-content-severity {
+    color:#797676;
+    overflow-wrap: break-word;
+    max-width: 82%;
 }
 
 .alert-content-group {
@@ -136,16 +149,34 @@ body {
   margin-left: 22px;
 }
 
-.alert-description {
-  color: #3371e3;
-  font-weight: 500;
+.event-content-last_seen {
+    margin-left: 10px
+}
+.event-content-message {
+    margin-left: 15px
+}
+.event-content-object {
+    margin-left: 34px
+}
+.event-content-reason {
+    margin-left: 27px
+}
+.event-content-severity {
+    margin-left: 23px
 }
 
-.alert-line {
-  display: flex;
+.alert-description,
+.event-description {
+    color:#3371E3;
+    font-weight: 500;
+}
+
+.alert-line,
+.event-line {
+    display: flex;
 }
 .summary-name {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .select-namespace {
@@ -156,12 +187,13 @@ body {
 /* --- Status Container Stuff --- */
 
 .status-container {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin: 1em;
-  min-width: 60%;
-  max-width: 70%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 1em;
+    /* min-width: 60%; */
+    max-width: 70%;
+
 }
 /* holds all status cards */
 .bubble-container {
@@ -190,12 +222,13 @@ body {
 
 /* individual status bubbles */
 .status-box {
-  background-color: #3dce2d;
-  border: 1px solid #39ba2a;
-  border-radius: 3px;
-  width: 20px;
-  height: 20px;
-  margin: 1px;
+    background-color: #28a745;
+    border: 1px solid #228d3b;
+    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+    margin: 1px;
+   
 }
 
 /* name of type of status */

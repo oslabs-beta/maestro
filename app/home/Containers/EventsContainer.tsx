@@ -4,19 +4,19 @@ import Select from 'react-select'
 
 const eventTypes: any = [
   {value:'alerts', label:'Alerts'}, 
-  {value:'logs', label: 'Logs'},
   {value:'events', label: 'Events'}
 ]; 
 
 const severityTypes: any = [
   {value:'critical', label:'Critical'}, 
-  {value:'warning', label: 'Normal'},
-  {value:'low', label: 'Low'}
+  {value:'warning', label: 'Warning'},
+  {value:'normal', label: 'Normal'},
+  {value:'all', label: 'All'}
 ]
 
 function EventsContainer() {
   const [eventOption, setEventOption] = useState('alerts');
-  const [severityOption, setSeverityOption] = useState('normal')
+  const [severityOption, setSeverityOption] = useState('all')
 
   const handleEventChange = (e: any) => {
     setEventOption(e.value)
