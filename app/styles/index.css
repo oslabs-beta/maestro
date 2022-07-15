@@ -1,14 +1,10 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
+
 /* remove text align from body after mvp */
 body {
   margin: 0 auto;
   text-align: center;
   font-family: "Roboto", sans-serif;
-  /* font-weight: 700; */
   background-color: rgb(255, 255, 255);
-  /* max-width: 1800px; */
 }
 
 .main-container {
@@ -31,7 +27,6 @@ body {
 
 .overview-container {
   display: flex;
-  /* width: 100%; */
 }
 
 .status-card {
@@ -67,12 +62,8 @@ body {
   width: 9em;
   color: #3371e3;
 }
-/* .main-container {
-    display: flex;
-    
-    justify-content: space-evenly;
-} */
 
+/* hides the scrollbar while maintainig functionality */
 ::-webkit-scrollbar {
     display: none;
 }
@@ -82,7 +73,6 @@ body {
 .events-card-container {
     display: flex;
     flex-direction: column;
-    /* border: 1px solid black; */
     padding: 1em;
     max-height: 80vh;
     margin: 5px;
@@ -91,20 +81,16 @@ body {
     text-align: left;
     min-width: 20%;
     overflow-x: hidden;
-    
-    /* font-weight: 700; */
 }
 
 .alert-card,
 .event-card {
-    /* border-bottom: 2px solid #3371E3; */
     padding: 10px;
     padding-left: 15px;
     padding-top: 15x;
     margin-bottom: 10px;
     box-shadow: 0 5px 5px rgba(0,0,0,0.1), 0 8px 8px rgba(0,0,0,0.01);
     border-radius: 20px;
-    /* border: 1px dotted  #797676; */
     color: #333;
 }
 
@@ -240,4 +226,19 @@ body {
 /* quantity of type of status */
 .quantity-box {
   padding-right: 1em;
+}
+
+
+/* /metrics */
+.graph-container {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.metrics-graph-card {
+    width: 500px;
+    height: 200px;
+    border: 1px dotted  #797676;
+    margin-right: 20px;
 }
