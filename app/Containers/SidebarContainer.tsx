@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 
 const SidebarContainer = () => {
   return (
-    <div>
+    <div className="sidebar-container">
       <div className="sidebar-buttons">
-        <Link className="sidebar-link" to="/home">
+        <Link className="sidebar-link" to="/">
           Home
         </Link>
         <Link className="sidebar-link" to="/metrics">
           Metrics
         </Link>
-        <Link className="sidebar-link" to="/metrics">
+        <Link className="sidebar-link" to="/queries">
           Queries
         </Link>
         <p>HOME</p>
