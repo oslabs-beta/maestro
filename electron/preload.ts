@@ -40,4 +40,6 @@ contextBridge.exposeInMainWorld('electron', {
     ipcRenderer.invoke('bytesRecievedByPod', namespace),
   bytesTransmittedByPod: async (namespace: string) => 
     ipcRenderer.invoke('bytesTransmittedByPod', namespace),
+  getNodesList: async () => 
+    ipcRenderer.invoke('getNodesList')
 });

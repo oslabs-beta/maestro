@@ -8,6 +8,7 @@ const renderThis= async (): Promise<any> => {
     // Use IPC API to query Electron's main thread and run this method
     // const alerts = await window.electron.getAlerts();
     const events = await window.electron.getEvents();
+    const nodeList = await window.electron.getNodesList()
     // const namespaces = await window.electron.getNamespaces();
     // const node = await window.electron.getNodeList();
     // const services = await window.electron.getServices();
@@ -25,7 +26,7 @@ const renderThis= async (): Promise<any> => {
     // const getMemoryUsageByPod = await window.electron.getMemoryUsageByPod('default')
     // const bytesRecievedByPod = await window.electron.bytesRecievedByPod('default')
     // const bytesTransmittedByPod = await window.electron.bytesTransmittedByPod('default')
-
+    console.log('nodeslist', JSON.parse(nodeList))
     console.log('events', events)
     // console.log('getCPUUsageByNode', getCPUUsageByNode)
     // console.log('getMemoryUsageByNode', getMemoryUsageByNode)

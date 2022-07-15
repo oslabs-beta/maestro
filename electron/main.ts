@@ -4,6 +4,12 @@ const fetch: any = (...args: any) =>
 import * as child_process from "child_process";
 import { getStartAndEndDateTime } from "./utils";
 import { fetchMetricsData } from "./dataController/getData/getMatrixData";
+import * as k8s from '@kubernetes/client-node';
+// K8s API
+const kc = new k8s.KubeConfig();
+kc.loadFromDefault();
+const k8sApiCore = kc.makeApiClient(k8s.CoreV1Api);
+const k8sApiApps = kc.makeApiClient(k8s.AppsV1Api);
 
 const prometheusURL = "http://127.0.0.1:9090/api/v1/";
 
@@ -38,6 +44,12 @@ app.on("window-all-closed", () => {
 // TO DO: add error handling to fetch request
 // TO DO: Type data/responses
 //functions
+
+ipcMain.handle('getNodesList', async () => {
+  const data = await k8sApiCore.listNode('default')
+  return JSON.stringify(data.body)
+
+});
 
 // fetch alerts from Prometheus for Alerts page
 ipcMain.handle("getAlerts", async () => {
