@@ -5,10 +5,10 @@ import MainContainer from "./home/Containers/MainContainer";
 import "./styles/index.css";
 
 function App() {
-  return (
-    <MainContainer />
-    // <ButtonTest />
-  );
+    return (
+        <MainContainer />
+        // <ButtonTest />
+    );
 }
 
 export default App;

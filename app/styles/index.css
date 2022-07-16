@@ -228,8 +228,15 @@ body {
 
 }
 /* quantity of type of status */
-.quantity-box {
-  padding-right: 1em;
+.quantity-box{
+    padding-right: 1em;
+}
+
+/*----- Graph Container ---*/
+.graph-dropdown-container{
+    display: flex;
+    /* align-content: space-around; */
+    justify-content: space-around;
 }
 
 
