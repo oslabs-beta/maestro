@@ -5,29 +5,47 @@ body {
   text-align: center;
   font-family: "Roboto", sans-serif;
   background-color: rgb(255, 255, 255);
+  overflow: hidden;
 }
 
 .main-container {
   display: flex;
+  overflow-y: scroll;
 }
 
 .sidebar-container {
-  width: 15em;
-  background-color: rgb(83, 83, 83);
-  color: white;
+  postition: fixed;
+  width: 50px;
+  background-color: #333;
+  justify-content: space-around;
+  height: 100vh;
+  /* z-index: 1;
+  top: 0;
+  left: 0; */
 }
 
 .sidebar-buttons {
+  postition: fixed;
   display: flex;
   flex-direction: column;
+  color: #fff;
+  font-size: 30px;
+  padding: 10px;
+  height: 100%
 }
 
 .sidebar-link {
-  margin: 3px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.sidebar-link:hover {
+    color: #797676;
 }
 
 .overview-container {
   display: flex;
+  /* margin-left: 300px; */
 }
 
 .status-card {
@@ -75,13 +93,14 @@ body {
     display: flex;
     flex-direction: column;
     padding: 1em;
-    max-height: 80vh;
+    max-height: 85vh;
     margin: 5px;
     margin-top: 0px;
     overflow-y: scroll;
     text-align: left;
-    min-width: 20%;
+    /* min-width: 20%; */
     overflow-x: hidden;
+    width: 90%;
 }
 
 .alert-card,
@@ -178,8 +197,8 @@ body {
     flex-direction: column;
     text-align: center;
     margin: 1em;
-    /* min-width: 60%; */
-    max-width: 70%;
+    width: 50%;
+    /* max-width: 70%; */
 
 }
 /* holds all status cards */
@@ -191,6 +210,7 @@ body {
   padding: 1em;
   justify-content: space-between;
   margin-bottom: 1em;
+  /* width: 1000px; */
 }
 /* holds the status name, bubbles and qty */
 .status-card {
@@ -198,12 +218,13 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   padding-bottom: 1em;
+  /* width: 100%; */
 }
 
 /* holds all the status bubbles */
 .bubble-box {
   display: flex;
-  width: 200px;
+  width: 100%;
   /* min-width: 70%; */
   flex-wrap: wrap;
 }
@@ -253,3 +274,27 @@ body {
     border: 1px dotted  #797676;
     margin-right: 20px;
 }
+
+.dashboard {
+    display: flex;
+    heigth: 100%
+    /* position: fixed; */
+    /* overflow-y: scroll; */
+} 
+/* .homepage {
+    margin-left: 100px;
+}
+.home-container {
+    overflow-y: scroll;
+}
+
+@media (max-width: 1500px) {
+   body {
+       overflow-y: scroll;
+   }
+    .overview-container {
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+    }
+} */

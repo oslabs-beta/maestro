@@ -1,21 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import MainContainer from "../home/Containers/MainContainer";
+import { MdHome, MdOutlineQueryStats } from "react-icons/md";
+import { VscGraphLine } from "react-icons/vsc";
 
 const SidebarContainer = () => {
   return (
-    <div>
+    <div className="sidebar-container">
       <div className="sidebar-buttons">
-        <Link className="sidebar-link" to="/home">
-          Home
+        <Link className="sidebar-link" to="/">
+          <MdHome />
         </Link>
         <Link className="sidebar-link" to="/metrics">
-          Metrics
+          <VscGraphLine />
         </Link>
-        <Link className="sidebar-link" to="/metrics">
-          Queries
+        <Link className="sidebar-link" to="/queries">
+          <MdOutlineQueryStats />
         </Link>
-        <p>HOME</p>
       </div>
     </div>
   );
