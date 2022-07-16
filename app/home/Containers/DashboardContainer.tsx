@@ -8,13 +8,14 @@ import MainContainer from "./MainContainer";
 const DashboardContainer = () => {
     return (
     <Router>
+         
         <div className="dashboard">
-            <SidebarContainer />
+           <SidebarContainer />
             <div className="homepage">
                 <div className="home-container">
                     <Namespace />
                 </div>
-                <div className="main-container">
+                <div>
                     <MainContainer />
                 </div>
             </div>
@@ -22,5 +23,6 @@ const DashboardContainer = () => {
     </Router>
     );
 }
-
+//className="main-container"
+//className="home-container"
 export default DashboardContainer

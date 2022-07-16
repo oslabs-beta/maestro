@@ -14,14 +14,14 @@ body {
 }
 
 .sidebar-container {
-  postition: fixed;
+  /* postition: fixed; */
   width: 50px;
   background-color: #333;
   justify-content: space-around;
   height: 100vh;
-  /* z-index: 1;
-  top: 0;
-  left: 0; */
+  z-index: 1;
+  /* top: 0;
+  left: 0;  */
 }
 
 .sidebar-buttons {
@@ -224,8 +224,10 @@ body {
 /* holds all the status bubbles */
 .bubble-box {
   display: flex;
+  flex-direction: start;
   width: 100%;
   /* min-width: 70%; */
+  /* font-size: 10em; */
   flex-wrap: wrap;
 }
 
@@ -234,8 +236,8 @@ body {
     background-color: #28a745;
     border: 1px solid #228d3b;
     border-radius: 3px;
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
     margin: 1px;
    
 }
@@ -281,20 +283,53 @@ body {
     /* position: fixed; */
     /* overflow-y: scroll; */
 } 
-/* .homepage {
-    margin-left: 100px;
+ .homepage {
+    overflow-y: scroll;
 }
+/*
 .home-container {
     overflow-y: scroll;
 }
-
+*/
 @media (max-width: 1500px) {
-   body {
-       overflow-y: scroll;
-   }
+    body {
+        overflow-y: scroll;
+    }
+    .sidebar-container {
+        position: fixed;
+    }
+    /* .dashboard {
+        display: flex;
+        heigth: 100%;
+        position: fixed;
+        overflow-y: scroll;
+    } 
+    */
     .overview-container {
         display: flex;
         flex-direction: column;
+        justify-content: space-around;
         overflow-y: scroll;
+        margin-left: 60px;
     }
-} */
+
+    /* .bubble-container {
+        width: 100%;
+    }
+
+    .graph-display-container {
+        width: 100%;
+    } */
+    .status-container {
+        width: 90%;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .events-container {
+        margin-top: 0;
+        padding-top: 0;
+        width: 100%;
+    }
+
+}
