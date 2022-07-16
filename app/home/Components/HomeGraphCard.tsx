@@ -28,13 +28,13 @@ const HomeGraphCard = ({ type, source}: HomeGraphCard): JSX.Element => {
 
 const getData = async (): Promise<any> =>{
   if(!namespace) namespace='default'
-  console.log(namespace, 'namespace')
 
   //namespace
   if(source === 'Namespace'){
     if(type === 'Memory'){
       console.log(source, type)
       const getMemoryUsageByNamespace = await window.electron.getMemoryUsageByNamespace(namespace)
+      console.log(getMemoryUsageByNamespace);
       const data = Object.entries(getMemoryUsageByNamespace)
       setGraphData(data)
      
@@ -126,9 +126,14 @@ const getData = async (): Promise<any> =>{
 
   return (
     <>
-      <div>{source}{type}</div>
+      <div className='graph-card-title'>
+        {`${type} Usage by ${source}`}
+      </div>
       {formattedData}
-     <LineChart chartData={graphData} title={source} />
+      <LineChart 
+        chartData={graphData}
+        title={source} 
+      />
     </>
   )
 }
