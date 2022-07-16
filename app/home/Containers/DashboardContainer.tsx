@@ -13,9 +13,12 @@ const DashboardContainer = () => {
            <SidebarContainer />
             <div className="homepage">
                 <div className="home-container">
-                    <Namespace />
+                    <div className="header">
+                        <Namespace />
+                        <h1 className="logo">Maestro</h1>
+                    </div>
                 </div>
-                <div>
+                <div className="main-container">
                     <MainContainer />
                 </div>
             </div>
