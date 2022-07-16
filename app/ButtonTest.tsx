@@ -1,3 +1,4 @@
+import { WindowOutlined } from '@mui/icons-material';
 import { ipcRenderer } from 'electron/renderer';
 import { setMaxListeners } from 'process';
 import React, { useEffect, useState } from 'react';
@@ -7,9 +8,18 @@ import { setConstantValue } from 'typescript';
 const renderThis= async (): Promise<any> => {
     // Use IPC API to query Electron's main thread and run this method
     // const alerts = await window.electron.getAlerts();
-    const events = await window.electron.getEvents();
+    // const events = await window.electron.getEvents();
+    const nodesList = await window.electron.getNodesList()
+    const namespaceList = await window.electron.getNamespacesList()
+    const deploymentList = await window.electron.getDeploymentsList()
+    const servicesList = await window.electron.getServicesList()
+    const podsList = await window.electron.getPodsList()
+    // const componentStatus = await window.electron.getComponentStatus()
+
+    // const componentStatus = await window.electron.getComponentStatus()
+
     // const namespaces = await window.electron.getNamespaces();
-    // const node = await window.electron.getNodeList();
+    // const node = await window.electron.getNodes();
     // const services = await window.electron.getServices();
     // const pods = await window.electron.getPods();
     // const deployments = await window.electron.getDeployments();
@@ -25,8 +35,14 @@ const renderThis= async (): Promise<any> => {
     // const getMemoryUsageByPod = await window.electron.getMemoryUsageByPod('default')
     // const bytesRecievedByPod = await window.electron.bytesRecievedByPod('default')
     // const bytesTransmittedByPod = await window.electron.bytesTransmittedByPod('default')
+    console.log('nodeslist', JSON.parse(nodesList))
+    console.log('namespaceList', JSON.parse(namespaceList))
+    console.log('deploymentList', JSON.parse(deploymentList))
+    console.log('servicestList', JSON.parse(servicesList))
+    console.log('podsList', JSON.parse(podsList))
+    // console.log('componentStatus', JSON.parse(componentStatus))
 
-    console.log('events', events)
+    // console.log('events', events)
     // console.log('getCPUUsageByNode', getCPUUsageByNode)
     // console.log('getMemoryUsageByNode', getMemoryUsageByNode)
     // console.log('bytesRecievedByNode', bytesRecievedByNode)

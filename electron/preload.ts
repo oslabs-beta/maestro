@@ -8,8 +8,8 @@ contextBridge.exposeInMainWorld('electron', {
     ipcRenderer.invoke('getEvents'),
   getNamespaces: async () =>
     ipcRenderer.invoke('getNamespaces'),
-  getNodeList: async () =>
-    ipcRenderer.invoke('getNodeList'),
+  getNodes: async () =>
+    ipcRenderer.invoke('getNodes'),
   getServices: async () =>
     ipcRenderer.invoke('getServices'),
   getPods: async () =>
@@ -40,4 +40,16 @@ contextBridge.exposeInMainWorld('electron', {
     ipcRenderer.invoke('bytesRecievedByPod', namespace),
   bytesTransmittedByPod: async (namespace: string) => 
     ipcRenderer.invoke('bytesTransmittedByPod', namespace),
+  getNodesList: async () => 
+    ipcRenderer.invoke('getNodesList'),
+  getNamespacesList: async () => 
+    ipcRenderer.invoke('getNamespacesList'),
+  getDeploymentsList: async () => 
+    ipcRenderer.invoke('getDeploymentsList'),
+  getServicesList: async () => 
+    ipcRenderer.invoke('getServicesList'),
+  getPodsList: async () => 
+    ipcRenderer.invoke('getPodsList'),
+  getComponentStatus: async () => 
+    ipcRenderer.invoke('getComponentStatus'),
 });

@@ -10,7 +10,7 @@ declare global {
       getAlerts: () => Promise<fetchData>;
       getEvents: () => Promise<any>;
       getNamespaces: () => Promise<any>;
-      getNodeList: () => Promise<any>;
+      getNodes: () => Promise<any>;
       getServices: () => Promise<any>;
       getPods: () => Promise<any>;
       getDeployments: () => Promise<any>;
@@ -26,6 +26,12 @@ declare global {
       getMemoryUsageByPod: (namespace: string) => Promise<any>
       bytesRecievedByPod: (namespace: string) => Promise<any>
       bytesTransmittedByPod: (namespace: string) => Promise<any>
+      getNodesList: () => Promise<any>
+      getNamespacesList: () => Promise<any>
+      getDeploymentsList: () => Promise<any>
+      getServicesList: () => Promise<any>
+      getPodsList: () => Promise<any>
+      getComponentStatus: () => Promise<any>
       // Add any additional "APIs" here
     };
   }
