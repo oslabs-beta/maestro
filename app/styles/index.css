@@ -13,6 +13,10 @@ body {
   overflow-y: scroll;
 }
 
+.home-container {
+  background-color: #20C997;
+}
+
 .sidebar-container {
   /* postition: fixed; */
   width: 50px;
@@ -109,6 +113,10 @@ body {
 
 
 /* remove text align on alerts-container */
+.events-dropdown-container {
+  /* background-color: #797676; */
+}
+
 .events-card-container {
     display: flex;
     flex-direction: column;
@@ -193,7 +201,7 @@ body {
 
 .alert-description,
 .event-description {
-    color:#3371E3;
+    color:#333;
     font-weight: 500;
 }
 
@@ -253,8 +261,9 @@ body {
 
 /* individual status bubbles */
 .status-box {
-    background-color: #28a745;
-    border: 1px solid #228d3b;
+    /* background-color: #28a745; */
+    background-color: #3371e3;
+    /* border: 1px solid #228d3b; */
     border-radius: 3px;
     width: 2rem;
     height: 2rem;
@@ -268,20 +277,34 @@ body {
   min-width: 25%;
   padding-right: 1em;
   width: 6em;
-
+  color:#333;
 }
 /* quantity of type of status */
 .quantity-box{
     padding-right: 1em;
+    color:#333;
 }
 
 /*----- Graph Container ---*/
 .graph-dropdown-container{
     display: flex;
     /* align-content: space-around; */
-    justify-content: space-around;
+    /* justify-content: space-around; */
 }
 
+.data-type-dropdown {
+  margin-right: 30px;
+}
+
+.graph-card-title {
+  color:#3371e3;
+  background-color: #faf6f6;
+  text-align: start;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  padding: 1em;
+  border-radius: 9px;
+}
 
 /* /metrics */
 .graph-container {

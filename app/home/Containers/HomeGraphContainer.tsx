@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import HomeGraphCard from '../Components/HomeGraphCard'
 import Select from 'react-select'
 
-
-
 function HomeGraphContainer() {
   const dataOptions: any = [
     {value:'memory', label:'Memory'}, 
@@ -28,7 +26,6 @@ const handleSourceSelect = (e: any) =>{
   setSourceChoice(e.value)
 }
   
-  
   return (
     <div>
       <div className='graph-dropdown-container'>
@@ -36,7 +33,7 @@ const handleSourceSelect = (e: any) =>{
         options={dataOptions}
         defaultValue={dataChoice}
         onChange={handleDataSelect}
-        placeholder='Memory/CPU/Bytes'
+        placeholder='RAM/CPU/Bytes'
         />
         <Select className='data-source-dropdown'
         options={sourceOptions}
