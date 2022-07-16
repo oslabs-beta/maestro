@@ -10,7 +10,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-// import mdColors from './MaterialColors';
+import mdColors from './GraphColors';
 import { Button } from '@mui/material';
 import { LabelSharp } from '@mui/icons-material';
 
@@ -36,20 +36,43 @@ const LineChart = ({ chartData, title, label }: LineChart): JSX.Element => {
   const [labelsState, setLabelsState] = useState('');
 
   
-const options = {
+const options: any = {
     responsive: true,
+    pointRadius: 0,
+    indexAxis: 'x',
+
+    // maintainAspectRatio: false,
+
+
     plugins: {
       legend: {
         display: buttonClicked,
-        position: 'left' as const,
+        // position: 'left' as const,
       },
       title: {
-        display: true,
-        text: 'Cluster Data',
+        // display: true,
+        // text: 'Cluster Data',
       },
       datalabels: {
         // hide datalabels for all datasets
         display: false,
+      },
+    },
+    scales: {
+      xAxes: {
+        display: true,
+        ticks: {
+          color: '#797676',
+          font: {
+            size: 12,
+          },
+        },
+      },
+      yAxes: {
+        display: true,
+        ticks: {
+          color: '#797676',
+        },
       },
     },
   };
@@ -63,15 +86,20 @@ const options = {
   // Format chart data for line chart with varying colors
   const objArr:any = [];
   //can be used for labels
-  let times =  ['2022-07-14T19:02:41.093Z','2022-07-14T19:03:41.093Z','2022-07-14T19:04:41.093Z','2022-07-14T19:05:41.093Z','2022-07-14T19:06:41.093Z','2022-07-14T19:07:41.093Z','2022-07-14T19:08:41.093Z','2022-07-14T19:09:41.093Z','2022-07-14T19:10:41.093Z','2022-07-14T19:11:41.093Z','2022-07-14T19:12:41.093Z','2022-07-14T19:13:41.093Z','2022-07-14T19:14:41.093Z','2022-07-14T19:15:41.093Z','2022-07-14T19:16:41.093Z'] 
-
+  let now: Date = new Date();
+  console.log('now', now)
+  // while
+  let times = ['00:12', '02:12', '04:12', '06:12', '08:12', '10:12', '12:12', '14:12', '16:12', '18:12', '20:12', '22:12']
+  
 for(let i = 0; i < chartData.length; i++){
     // console.log(chartData[1][1].timestamps)
+    console.log('mdColors[i*3]',mdColors[i*3])
+    const colors: any = mdColors;
     objArr.push({
       data: chartData[i][1].timeSeriesValues,
       label: chartData[i][0],
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      borderColor: `${colors[i * 3 % mdColors.length]}`,
+      // backgroundColor: 'rgba(255, 99, 132, 0.5)',
     });
   };
   
