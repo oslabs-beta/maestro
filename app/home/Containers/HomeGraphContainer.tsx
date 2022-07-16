@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import HomeGraphCard from '../Components/HomeGraphCard'
 import Select from 'react-select'
+import { customSelectTheme } from '../Components/utils/customSelectTheme';
+
 
 function HomeGraphContainer() {
   const dataOptions: any = [
@@ -34,12 +36,14 @@ const handleSourceSelect = (e: any) =>{
         defaultValue={dataChoice}
         onChange={handleDataSelect}
         placeholder='RAM/CPU/Bytes'
+        theme={customSelectTheme}
         />
         <Select className='data-source-dropdown'
         options={sourceOptions}
         defaultValue={sourceChoice}
         onChange={handleSourceSelect}
         placeholder='Namespace/Nodes/Pods'
+        theme={customSelectTheme}
         />
       </div>
       <div className='graph-display-container'>

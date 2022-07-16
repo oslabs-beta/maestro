@@ -3,6 +3,8 @@ import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { setCurrentNamespace } from "./namespaceSlice";
 import { getNamespacesForState } from "./namespaceSlice";
 import Select from "react-select";
+import { customSelectStyles } from "../../home/Components/utils/customSelectTheme";
+import { customSelectThemeNamespaces } from "../../home/Components/utils/customSelectTheme";
 
 const Namespace: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -37,6 +39,8 @@ const Namespace: React.FC = () => {
         onChange={handleNamespaceChange}
         options={options}
         placeholder="Namespace"
+        styles={customSelectStyles}
+        theme={customSelectThemeNamespaces}
       />
     </div>
   );

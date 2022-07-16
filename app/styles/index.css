@@ -57,10 +57,9 @@ body {
 }
 
 .namespace-container {
-  width: 20em;
-  margin-left: 20px;
+  width: 10em;
+  margin-left: 10px;
   margin-bottom: 15px;
-  color: #3371e3;
 }
 
 .events-container {
@@ -216,8 +215,10 @@ body {
   background-color: rgb(255, 255, 255);
   border-radius: 1em;
   padding: 1em;
+  padding-bottom: 0.5em;
+  padding-top: 0em;
   justify-content: space-between;
-  margin-bottom: 1em;
+  /* margin-bottom: 0.5em; */
   /* width: 1000px; */
 }
 /* holds the status name, bubbles and qty */
@@ -241,6 +242,8 @@ body {
 .status-box {
     /* background-color: #28a745; */
     background-color: #3371e3;
+    /* background-color: #28a745; */ 
+    /* background-color: rgb(11, 150, 34); */
     /* border: 1px solid #228d3b; */
     border-radius: 3px;
     width: 20px;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import EventsCardContainer from './EventsCardContainer'
 import Select from 'react-select'
+import { customSelectTheme, customSelectThemeSeverity } from '../Components/utils/customSelectTheme';
 
 const eventTypes: any = [
   {value:'alerts', label:'Alerts'}, 
@@ -30,6 +31,7 @@ function EventsContainer() {
     <div className='events-container'>
       <div className='events-dropdown-container'>
         <Select
+          theme={customSelectTheme}
           className='events-dropdown'
           defaultValue={eventOption}
           onChange={handleEventChange}
@@ -37,6 +39,7 @@ function EventsContainer() {
           placeholder='Event Type'
         />
         <Select
+          theme={customSelectThemeSeverity}
           className='severity-dropdown'
           defaultValue={severityOption}
           onChange={handleSeverityChange}

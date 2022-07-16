@@ -40,18 +40,14 @@ const options: any = {
     responsive: true,
     pointRadius: 0,
     indexAxis: 'x',
-
+    // background-color: 'red',
     // maintainAspectRatio: false,
 
 
     plugins: {
       legend: {
         display: buttonClicked,
-        // position: 'left' as const,
-      },
-      title: {
-        // display: true,
-        // text: 'Cluster Data',
+        position: 'left' as const,
       },
       datalabels: {
         // hide datalabels for all datasets
@@ -59,20 +55,21 @@ const options: any = {
       },
     },
     scales: {
-      xAxes: {
-        display: true,
+      x: {
+        grid: {
+          color: 'rgb(240, 240, 240)'
+        },
         ticks: {
           color: '#797676',
-          font: {
-            size: 12,
-          },
-        },
+        }
       },
-      yAxes: {
-        display: true,
+      y: {
+        grid: {
+          color: 'rgb(240, 240, 240)'
+        },
         ticks: {
           color: '#797676',
-        },
+        }
       },
     },
   };
@@ -93,7 +90,7 @@ const options: any = {
   
 for(let i = 0; i < chartData.length; i++){
     // console.log(chartData[1][1].timestamps)
-    console.log('mdColors[i*3]',mdColors[i*3])
+    // console.log('mdColors[i*3]',mdColors[i*3])
     const colors: any = mdColors;
     objArr.push({
       data: chartData[i][1].timeSeriesValues,
