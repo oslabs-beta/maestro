@@ -10,13 +10,13 @@ const DashboardContainer = () => {
     <Router>
         <div className="dashboard">
             <SidebarContainer />
-            <div>
-            <div className="home-container overview-container">
-                <Namespace />
-            </div>
-            <div className="main-container">
-                <MainContainer />
-            </div>
+            <div className="homepage">
+                <div className="home-container">
+                    <Namespace />
+                </div>
+                <div className="main-container">
+                    <MainContainer />
+                </div>
             </div>
         </div>
     </Router>
