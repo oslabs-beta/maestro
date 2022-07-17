@@ -1,5 +1,3 @@
-
-
 export const noEventsAvailable = {
   last_seen: '',
   message: "There are no events for this namespace...",
