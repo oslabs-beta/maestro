@@ -5,10 +5,14 @@ import OverviewContainer from "./OverviewContainer";
 
 const MainContainer = () => {
   return (
-    <Routes>
-      <Route path="/" element={<OverviewContainer/>} />
-      <Route path="/metrics" element={<MetricsContainer />} />
-    </Routes>
+    <div className="main">
+      <Routes>
+        
+          <Route path="/" element={<OverviewContainer/>} />
+          <Route path="/metrics" element={<MetricsContainer />} />
+        
+      </Routes>
+    </div>
   );
 };
 

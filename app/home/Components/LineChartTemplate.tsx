@@ -116,7 +116,7 @@ for(let i = 0; i < chartData.length; i++){
   };
 
   return (
-    <div style={{ height: 800 }}>
+    <div style={{ height: 300 }}>
       <Line options={options} data={data} />
       <Button
         onClick={handleLegendClick}

@@ -1,15 +1,69 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import MetricsGraphCard from '../Components/MetricsGraphCard'
+import LineChart from '../../home/Components/LineChartTemplate'
 
 function GraphContainer() {
+  const [memoryUsageByNode, setMemoryUsageByNode] = useState([])
+  const [memoryUsageByNamespace, setMemoryUsageByNamespace] = useState([])
+  const [memoryUsageByPod, setMemoryUsageByPod] = useState([])
+  const [cpuUsageByNode, setCpuUsageByNode] = useState([])
+  const [cpuUsageByNamespace, setCpuUsageByNamespace] = useState([])
+  const [cpuUsageByPod, setCpuUsageByPod] = useState([])
+  const [bytesRecievedByNode, setBytesRecievedByNode] = useState([])
+  const [bytesRecievedByNamespace, setBytesRecievedByNamespace] = useState([])
+  const [bytesRecievedByPod,setBytesRecievedByPod] = useState([])
+  const [bytesTransmittedByNamespace, setBytesTransmittedByNamespace] = useState([])
+  const [bytesTransmittedByNode, setBytesTransmittedByNode] = useState([])
+  const [bytesTransmittedByPod, setBytesTransmittedByPod] = useState([])
+
+  const setStateForData = async (namespace?: string) => {
+    if(!namespace) namespace = '';
+
+    const getCPUUsageByNode = await window.electron.getCPUUsageByNode(namespace)
+    const getMemoryUsageByNode = await window.electron.getMemoryUsageByNode(namespace)
+    const bytesRecievedByNode = await window.electron.bytesRecievedByNode(namespace)
+    const bytesTransmittedByNode = await window.electron.bytesTransmittedByNode(namespace)
+    const getCPUUsageByNamespace = await window.electron.getCPUUsageByNamespace(namespace)
+    const getMemoryUsageByNamespace = await window.electron.getMemoryUsageByNamespace(namespace)
+    const bytesRecievedByNamespace = await window.electron.bytesRecievedByNamespace(namespace)
+    const bytesTransmittedByNamespace = await window.electron.bytesTransmittedByNamespace(namespace)
+    const getCPUUsageByPod = await  window.electron.getCPUUsageByPod(namespace)
+    const getMemoryUsageByPod = await window.electron.getMemoryUsageByPod(namespace)
+    const bytesRecievedByPod = await window.electron.bytesRecievedByPod(namespace)
+    const bytesTransmittedByPod = await window.electron.bytesTransmittedByPod(namespace)
+
+    setCpuUsageByNode(Object.entries(getCPUUsageByNode))
+    setMemoryUsageByNode(Object.entries(getMemoryUsageByNode))
+    setBytesRecievedByNode(Object.entries(bytesRecievedByNode))
+    setBytesRecievedByNode(Object.entries(bytesTransmittedByNode))
+    setCpuUsageByNamespace(Object.entries(getCPUUsageByNamespace))
+    setMemoryUsageByNamespace(Object.entries(getMemoryUsageByNamespace))
+    setBytesRecievedByNamespace(Object.entries(bytesRecievedByNamespace))
+    setBytesTransmittedByNamespace(Object.entries(bytesTransmittedByNamespace))
+    setCpuUsageByPod(Object.entries(getCPUUsageByPod))
+    setMemoryUsageByPod(Object.entries(getMemoryUsageByPod))
+    setBytesRecievedByPod(Object.entries(bytesRecievedByPod))
+    setBytesTransmittedByPod(Object.entries(bytesTransmittedByPod))
+  }
+    
+  useEffect(() => {
+    setStateForData()
+  }, [])
+
   return (
     <div className='graph-container'>
-      {/* for namespaces */}
-      <MetricsGraphCard/> 
-      {/* for nodes */}
-      <MetricsGraphCard/>
-      {/* for pods */}
-      <MetricsGraphCard/>
+     <LineChart chartData={cpuUsageByNode}/>
+     <LineChart chartData={memoryUsageByNode}/>
+     <LineChart chartData={bytesRecievedByNode}/>
+     <LineChart chartData={bytesTransmittedByNode}/>
+     <LineChart chartData={cpuUsageByNamespace}/>
+     <LineChart chartData={memoryUsageByNamespace}/>
+     <LineChart chartData={bytesRecievedByNamespace}/>
+     <LineChart chartData={bytesTransmittedByNamespace}/>
+     <LineChart chartData={cpuUsageByPod}/>
+     <LineChart chartData={memoryUsageByPod}/>
+     <LineChart chartData={bytesRecievedByPod}/>
+     <LineChart chartData={bytesTransmittedByPod}/>
     </div>
   )
 }

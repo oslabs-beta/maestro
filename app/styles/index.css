@@ -8,9 +8,16 @@ body {
   overflow: hidden;
 }
 
-.main-container {
+/* .main-container {
   display: flex;
   overflow-y: scroll;
+} */
+.main {
+    margin: 0 auto;
+    margin-top: 70px;
+    width: 90%;
+    /* border: 1px solid black; */
+    overflow-y: scroll;
 }
 
 .home-container {
@@ -68,6 +75,7 @@ body {
 }
 
 .header {
+    position: fixed;
     display: flex;
     width: 100%;
     background-color: #20C997;
@@ -76,9 +84,15 @@ body {
     padding: 0.5em;
 }
 
+.header-elements {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
 .logo {
     margin: 0;
-    margin-right: 2em;
+    /* margin-right: 2em; */
 
 }
 
@@ -308,9 +322,20 @@ body {
 
 /* /metrics */
 .graph-container {
-    display: flex;
+    /* margin-top: 100px; */
+    /* display: grid; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    /* flex-wrap: wrap; */
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 150px;
+    margin-right: 90px;
+    padding-right: 150px;
+    overflow-y: scroll;
+    /* width: 90%; */
 }
 
 .metrics-graph-card {
@@ -352,7 +377,7 @@ body {
     }
 
     .events-container {
-        margin-top: 0;
+        margin-top: 400px;
         padding-top: 0;
         width: 100%;
     }

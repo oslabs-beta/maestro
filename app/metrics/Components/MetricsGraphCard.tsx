@@ -14,7 +14,9 @@ import {
 import { Line } from 'react-chartjs-2';
 // import LineChart from './LineChartTemplate';
 
+
 function MetricsGraphCard() {
+
   return (
     <div className='metrics-graph-card'>
       MetricsGraphCard

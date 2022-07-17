@@ -11,11 +11,13 @@ const DashboardContainer = () => {
          
         <div className="dashboard">
            <SidebarContainer />
-            <div className="homepage">
+            <div> 
                 <div className="home-container">
                     <div className="header">
-                        <Namespace />
-                        <h1 className="logo">Maestro</h1>
+                        <div className="header-elements">
+                            <Namespace />
+                            <h1 className="logo">Maestro</h1>
+                        </div>
                     </div>
                 </div>
                 <div className="main-container">
@@ -26,6 +28,6 @@ const DashboardContainer = () => {
     </Router>
     );
 }
-//className="main-container"
+//className="//className="homepage"main-container"
 //className="home-container"
 export default DashboardContainer

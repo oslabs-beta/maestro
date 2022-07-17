@@ -5,8 +5,6 @@ function MetricsContainer() {
   return (
     <div className="metrics-container">
       <GraphContainer/>
-      <GraphContainer/>
-      <GraphContainer/>
     </div>
   )
 }
