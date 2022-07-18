@@ -37,6 +37,7 @@ const LineChart = ({ chartData, title, label }: LineChart): JSX.Element => {
 
   
 const options: any = {
+
     responsive: true,
     pointRadius: 0,
     indexAxis: 'x',
@@ -57,7 +58,8 @@ const options: any = {
     scales: {
       x: {
         grid: {
-          color: 'rgb(240, 240, 240)'
+          color: 'rgb(240, 240, 240)',
+          // tickMarkLength: 0,
         },
         ticks: {
           color: '#797676',
@@ -65,7 +67,8 @@ const options: any = {
       },
       y: {
         grid: {
-          color: 'rgb(240, 240, 240)'
+          color: 'rgb(240, 240, 240)',
+          // tickMarkLength: 0,
         },
         ticks: {
           color: '#797676',
@@ -76,27 +79,25 @@ const options: any = {
 
   // if chart data is empty render "No data available"
   if (!chartData) return <div>No data available in </div>;
-//   if(chartData[1]) {
-//       setLabelsState(chartData[1][1].timestamps)
-//   }
   
   // Format chart data for line chart with varying colors
   const objArr:any = [];
   //can be used for labels
+  const zeroPad = (num: number, places: number) => String(num).padStart(places, '0')
   let now: Date = new Date();
-  console.log('now', now)
-  // while
-  let times = ['00:12', '02:12', '04:12', '06:12', '08:12', '10:12', '12:12', '14:12', '16:12', '18:12', '20:12', '22:12']
-  console.log(chartData)
+  let nowHours = now.getHours();
+  let nowMinutes = now.getMinutes();
+  const times = []
+  for (let i = 1; i <= 12; i++){
+    times.push(`${zeroPad((nowHours + i * 2) % 24, 2)}:${nowMinutes}`)
+  }
+  
 for(let i = 0; i < chartData.length; i++){
-    // console.log(chartData[1][1].timestamps)
-    // console.log('mdColors[i*3]',mdColors[i*3])
     const colors: any = mdColors;
     objArr.push({
       data: chartData[i][1].timeSeriesValues,
       label: chartData[i][0],
       borderColor: `${colors[i * 3 % mdColors.length]}`,
-      // backgroundColor: 'rgba(255, 99, 132, 0.5)',
     });
   };
   

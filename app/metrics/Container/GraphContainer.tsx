@@ -17,7 +17,7 @@ function GraphContainer() {
   const [bytesTransmittedByPod, setBytesTransmittedByPod] = useState([])
 
   const setStateForData = async (namespace?: string) => {
-    if(!namespace) namespace = '';
+    if(!namespace) namespace = 'default';
 
     const getCPUUsageByNode = await window.electron.getCPUUsageByNode(namespace)
     const getMemoryUsageByNode = await window.electron.getMemoryUsageByNode(namespace)
@@ -52,18 +52,79 @@ function GraphContainer() {
 
   return (
     <div className='graph-container'>
-     <LineChart chartData={cpuUsageByNode}/>
-     <LineChart chartData={memoryUsageByNode}/>
-     <LineChart chartData={bytesRecievedByNode}/>
-     <LineChart chartData={bytesTransmittedByNode}/>
-     <LineChart chartData={cpuUsageByNamespace}/>
-     <LineChart chartData={memoryUsageByNamespace}/>
-     <LineChart chartData={bytesRecievedByNamespace}/>
-     <LineChart chartData={bytesTransmittedByNamespace}/>
-     <LineChart chartData={cpuUsageByPod}/>
-     <LineChart chartData={memoryUsageByPod}/>
-     <LineChart chartData={bytesRecievedByPod}/>
-     <LineChart chartData={bytesTransmittedByPod}/>
+      <div className='graph-card'>
+        <div className='graph-card-title'>
+          CPU Usage by Node
+        </div>
+        <LineChart chartData={cpuUsageByNode}/>
+      </div>
+     <div className='graph-card'>
+        <div className='graph-card-title'>
+          Memory Usage by Node
+        </div>
+        <LineChart chartData={memoryUsageByNode}/>
+     </div>
+     <div className='graph-card'>
+        <div className='graph-card-title'>
+          Bytes Received by Node
+        </div>
+        <LineChart chartData={bytesRecievedByNode}/>
+     </div>
+     <div className='graph-card'>
+        <div className='graph-card-title'>
+          Bytes Transmitted by Node
+        </div>
+        <LineChart chartData={bytesTransmittedByNode}/>
+     </div>
+     <div className='graph-card'>
+        <div className='graph-card-title'>
+          CPU Usage by Namespace
+        </div>
+        <LineChart chartData={cpuUsageByNamespace}/>
+     </div>
+     <div className='graph-card'>
+        <div className='graph-card-title'>
+          Memory Usage by Namespace
+        </div>
+        <LineChart chartData={memoryUsageByNamespace}/>
+     </div>
+     <div className='graph-card'>
+        <div className='graph-card-title'>
+          Bytes Received by Namespace
+        </div>
+        <LineChart chartData={bytesRecievedByNamespace}/>
+     </div>
+     <div className='graph-card'>
+        <div className='graph-card-title'>
+          Bytes Transmitted by Namespace
+        </div>
+        <LineChart chartData={bytesTransmittedByNamespace}/>
+     </div>
+     <div className='graph-card'>
+        <div className='graph-card-title'>
+          CPU Usage by Pod
+        </div>
+        <LineChart chartData={cpuUsageByPod}/>
+     </div>
+     <div className='graph-card'>
+        <div className='graph-card-title'>
+          Memory Usage by Pod
+        </div>
+        <LineChart chartData={memoryUsageByPod}/>
+     </div>
+     <div className='graph-card'>
+        <div className='graph-card-title'>
+          Bytes Received by Pod
+        </div>
+        <LineChart chartData={bytesRecievedByPod}/>
+     </div>
+     <div className='graph-card'>
+        <div className='graph-card-title'>
+          Bytes Transmitted by Pod
+        </div>
+        <LineChart chartData={bytesTransmittedByPod}/>
+     </div>
+     
     </div>
   )
 }

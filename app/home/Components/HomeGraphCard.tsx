@@ -27,7 +27,7 @@ const HomeGraphCard = ({ type, source}: HomeGraphCard): JSX.Element => {
 //conditional rendering based on type and source options
 
 const getData = async (): Promise<any> =>{
-  if(!namespace) namespace='default'
+  if(!namespace) namespace = 'default'
 
   //namespace
   if(source === 'Namespace'){
@@ -55,11 +55,8 @@ const getData = async (): Promise<any> =>{
       console.log(source, type)
       const bytesRecievedByNamespace = await window.electron.bytesRecievedByNamespace(namespace)
       const bytesTransmittedByNamespace = await window.electron.bytesTransmittedByNamespace(namespace)
-      
       const data = Object.entries(bytesRecievedByNamespace )
-      
       setGraphData(data)
-
     }
     
   }
@@ -93,7 +90,6 @@ const getData = async (): Promise<any> =>{
       const data = Object.entries(bytesRecievedByNode)
    
       setGraphData(data)
-
     }
     
   }
@@ -127,8 +123,6 @@ const getData = async (): Promise<any> =>{
       const data = Object.entries(bytesTransmittedByPod)
       
       setGraphData(data)
-      
-     
       }
       
     }
