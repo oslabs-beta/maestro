@@ -15,7 +15,7 @@ body {
 .main {
     /* margin: 0 auto; */
     margin-top: 70px;
-    width: 90%;
+    width: 100%;
     /* border: 1px solid black; */
     overflow-y: scroll;
 }
@@ -243,6 +243,7 @@ body {
     flex-direction: column;
     text-align: center;
     margin: 1em;
+    margin-right: 0.4em;
     width: 50%;
     /* max-width: 70%; */
 
@@ -345,14 +346,14 @@ body {
     /* margin-top: 100px; */
     /* display: grid; */
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     /* flex-wrap: wrap; */
-    margin-top: 20px;
-    margin-left: 150px;
-    margin-right: 90px;
+    margin-top: 5px;
+    margin-left: 15px;
+    /* margin-right: 90px; */
     padding-right: 150px;
     overflow-y: scroll;
     /* width: 90%; */
@@ -377,7 +378,7 @@ body {
     }
 
     .namespace-container {
-      margin-left: 4em;
+      margin-left: 3.6em;
     }
 
     .sidebar-container {
@@ -402,6 +403,10 @@ body {
         margin-top: 100px;
         padding-top: 0;
         width: 100%;
+    }
+
+    .graph-container {
+      margin-left: 65px;
     }
 
 }

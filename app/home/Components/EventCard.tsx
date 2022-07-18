@@ -21,10 +21,6 @@ const EventCard = ({ last_seen, message, object, reason, severity }: EventCard):
        <div className='event-content-reason'>{reason}</div>
       </div>
       <div className='event-line'>
-       <div className='event-description'>Last Seen:</div>
-       <div className='event-content-last_seen'>{last_seen}</div>
-      </div>
-      <div className='event-line'>
        <div className='event-description'>Message:</div>
        <div className='event-content-message'>{message}</div>
       </div>
@@ -32,7 +28,10 @@ const EventCard = ({ last_seen, message, object, reason, severity }: EventCard):
        <div className='event-description'>Object:</div>
        <div className='event-content-object'>{object}</div>
       </div>
-
+      <div className='event-line'>
+       <div className='event-description'>Last Seen:</div>
+       <div className='event-content-last_seen'>{last_seen}</div>
+      </div>
 
       {/* <div className='event-line'>
        <div className='event-description'>Summary:</div>
