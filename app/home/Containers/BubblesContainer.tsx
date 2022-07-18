@@ -20,13 +20,17 @@ const StatusContainer = () => {
 
   const getNodesForState = async (): Promise<any> => {
     let boxesArr =[];
+    let statusArr = []
     // returns array of objects, each object with name and conditions[{}]
     const nodesList: any = await window.electron.getNodesList();
+    const nodeStatus: any = await window.electron.getComponentStatus()
+    console.log(nodesList,"node Status?")
     setNodeQuant(nodesList.length)
     for(let i =0; i < nodesList.length; i++){
       boxesArr.push(
       <StatusBubble 
         key={`node-bubble${i}`} 
+        type = {'nodes'}
         name={nodesList[i].name}
         status={nodesList[i].conditions}
       />)
@@ -42,10 +46,12 @@ const StatusContainer = () => {
       const deploymentsListByNamespace = deploymentsList.filter((deployment: any) => {
         return deployment.namespace === namespace;
       })
+      // console.log('deploymentList', deploymentsList)
       setDeploymentQuant(deploymentsListByNamespace.length)
       for(let i =0; i < deploymentsListByNamespace.length; i++){
           boxesArr.push(
           <StatusBubble
+            type = {'deployments'}
             key={`deployment-bubble${i}`} 
             name={deploymentsListByNamespace[i].name}
           />)
@@ -56,12 +62,13 @@ const StatusContainer = () => {
   const getPodsForState = async (): Promise<any> => {
       let boxesArr =[];
       const podsList: any = await window.electron.getPodsList();
+      console.log(podsList,"Pod List")
       const podsListByNamespace = podsList.filter((pod: any) => {
         return pod.namespace === namespace;
       })
       setPodQuant(podsListByNamespace.length)
       for(let i =0; i < podsListByNamespace.length; i++){
-          boxesArr.push(<StatusBubble name={podsListByNamespace[i].name}/>)
+          boxesArr.push(<StatusBubble type = {'pods'} name={podsListByNamespace[i].name} status={podsListByNamespace[i].status}/>)
       }
       setPodBoxes(boxesArr)
       //set conditionals for background color based on status
@@ -73,9 +80,10 @@ const StatusContainer = () => {
       const servicesListByNamespace = servicesList.filter((service: any) => {
         return service.namespace === namespace;
       })
+      // console.log(servicesList, "services list")
       setServicesQuant(servicesListByNamespace.length)
       for(let i =0; i < servicesListByNamespace.length; i++){
-          boxesArr.push(<StatusBubble name={servicesListByNamespace[i].name}/>)
+          boxesArr.push(<StatusBubble type = {'services'} name={servicesListByNamespace[i].name}/>)
       }
       setServicesBoxes(boxesArr)
   }

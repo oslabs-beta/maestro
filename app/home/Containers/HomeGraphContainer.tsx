@@ -6,7 +6,7 @@ import { customSelectTheme } from '../Components/utils/customSelectTheme';
 
 function HomeGraphContainer() {
   const dataOptions: any = [
-    {value:'memory', label:'Memory'}, 
+    {value:'Memory', label:'Memory'}, 
     {value:'CPU', label: 'CPU'},
     {value:'Bytes', label: 'Bytes'}
   ]; 
@@ -19,7 +19,7 @@ function HomeGraphContainer() {
   const [dataChoice, setDataChoice] = useState('Memory');
 
   //state for chosen source 
-  const [sourceChoice, setSourceChoice] = useState('Pods');
+  const [sourceChoice, setSourceChoice] = useState('Namespace');
   
 const handleDataSelect = (e: any) =>{
   setDataChoice(e.value)
