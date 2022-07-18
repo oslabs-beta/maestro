@@ -35,14 +35,14 @@ const handleSourceSelect = (e: any) =>{
         options={dataOptions}
         defaultValue={dataChoice}
         onChange={handleDataSelect}
-        placeholder='RAM/CPU/Bytes'
+        placeholder='Memory'
         theme={customSelectTheme}
         />
         <Select className='data-source-dropdown'
         options={sourceOptions}
         defaultValue={sourceChoice}
         onChange={handleSourceSelect}
-        placeholder='Namespace/Nodes/Pods'
+        placeholder='Pods'
         theme={customSelectTheme}
         />
       </div>

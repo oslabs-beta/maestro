@@ -127,7 +127,7 @@ const getData = async (): Promise<any> =>{
   return (
     <>
       <div className='graph-card-title'>
-        {`${type} Usage by ${source}`}
+        {`${type[0].toUpperCase() + type.slice(1)} Usage by ${source}`}
       </div>
       {formattedData}
       <LineChart 

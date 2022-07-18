@@ -120,7 +120,7 @@ body {
 
 .severity-dropdown {
   width: 9em;
-  color: #3371e3;
+  color: #ed6a5a;
 }
 
 /* hides the scrollbar while maintainig functionality */
@@ -154,16 +154,24 @@ body {
     padding-left: 15px;
     padding-top: 15x;
     margin-bottom: 10px;
-    box-shadow: 0 5px 5px rgba(0,0,0,0.1), 0 8px 8px rgba(0,0,0,0.01);
-    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px; */
+    /* box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px; */
+    /* box-shadow: 0 5px 5px rgba(0,0,0,0.1), 0 8px 8px rgba(0,0,0,0.01); */
+    border-radius: 5px;
     color: #333;
+    margin-bottom: 1.5em;
+    /* background-color: rgb(245, 245, 245); */
+
 }
 
 .alert-card:hover,
 .event-card:hover {
     background-color: rgb(250, 250, 250);
     box-shadow: 0 8px 8px rgba(0,0,0,0.1), 0 12px 12px rgba(0,0,0,0.01);
-} 
+    margin-bottom: 1.5em;
+}
 
 .alert-content-group,
 .alert-content-state,
@@ -299,11 +307,13 @@ body {
   padding-right: 1em;
   width: 6em;
   color:#333;
+  font-weight: 500;
 }
 /* quantity of type of status */
 .quantity-box{
     padding-right: 1em;
     color:#333;
+    font-weight: 500;
 }
 
 /*----- Graph Container ---*/
@@ -317,6 +327,12 @@ body {
   margin-right: 30px;
 }
 
+.data-type-dropdown,
+.data-source-dropdown {
+  width: 9em;
+  color: #3371e3;
+}
+
 .graph-card-title {
   color:#3371e3;
   background-color: #faf6f6;
@@ -324,7 +340,8 @@ body {
   margin-top: 15px;
   margin-bottom: 10px;
   padding: 1em;
-  border-radius: 9px;
+  border-radius: 2px;
+  font-weight: 500;
 }
 
 /* /metrics */
