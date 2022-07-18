@@ -87,7 +87,7 @@ const options: any = {
   console.log('now', now)
   // while
   let times = ['00:12', '02:12', '04:12', '06:12', '08:12', '10:12', '12:12', '14:12', '16:12', '18:12', '20:12', '22:12']
-  
+  console.log(chartData)
 for(let i = 0; i < chartData.length; i++){
     // console.log(chartData[1][1].timestamps)
     // console.log('mdColors[i*3]',mdColors[i*3])
