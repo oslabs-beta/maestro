@@ -13,7 +13,7 @@ body {
   overflow-y: scroll;
 } */
 .main {
-    margin: 0 auto;
+    /* margin: 0 auto; */
     margin-top: 70px;
     width: 90%;
     /* border: 1px solid black; */
@@ -36,7 +36,7 @@ body {
 }
 
 .sidebar-buttons {
-  postition: fixed;
+  /* position: fixed; */
   display: flex;
   flex-direction: column;
   color: #fff;
@@ -51,7 +51,7 @@ body {
 }
 
 .sidebar-link:hover {
-    color: #797676;
+    color: #20C997;
 }
 
 .overview-container {
@@ -64,12 +64,13 @@ body {
 }
 
 .namespace-container {
-  width: 20em;
-  margin-left: 2em;
+  width: 15em;
+  margin-left: 4em;
   margin-bottom: 15px;
   margin-bottom: 0;
-  color: #3371e3;
-  /* border: solid 1px black; */
+  /* color: #3371e3; */
+  border: solid 1px #333;
+  border-radius: 5px;
   align-self: center;
   padding: 0;
 }
@@ -241,6 +242,7 @@ body {
 .select-namespace {
   margin: 0 auto;
   max-width: 70%;
+  margin-left: 3.5em;
 }
 
 /* --- Status Container Stuff --- */
@@ -260,7 +262,7 @@ body {
   flex-direction: column;
   background-color: rgb(255, 255, 255);
   border-radius: 1em;
-  padding: 1em;
+  /* padding: 1em; */
   padding-bottom: 0.5em;
   padding-top: 0em;
   justify-content: space-between;
@@ -294,8 +296,8 @@ body {
     /* background-color: rgb(11, 150, 34); */
     /* border: 1px solid #228d3b; */
     border-radius: 3px;
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     margin: 1px;
    
 }
@@ -305,7 +307,8 @@ body {
   text-align: left;
   min-width: 25%;
   padding-right: 1em;
-  width: 6em;
+  padding-top: 0.3em;
+  width: 5em;
   color:#333;
   font-weight: 500;
 }
@@ -334,11 +337,13 @@ body {
 }
 
 .graph-card-title {
-  color:#3371e3;
+  color:#333;
   background-color: #faf6f6;
   text-align: start;
   margin-top: 15px;
+  height: 1em;
   margin-bottom: 10px;
+  margin-right: 16px;
   padding: 1em;
   border-radius: 2px;
   font-weight: 500;
@@ -379,8 +384,9 @@ body {
     body {
         overflow-y: scroll;
     }
+
     .namespace-container {
-        margin-left: 3em;
+        margin-left: 1.5em;
     }
     .sidebar-container {
         position: fixed;
