@@ -10,7 +10,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import mdColors from './GraphColors';
+import mdColors from './utils/GraphColors';
 import { Button } from '@mui/material';
 import { LabelSharp } from '@mui/icons-material';
 

@@ -16,20 +16,21 @@ const AlertCard = ({ group, state, name, severity, description, summary }: Alert
     <>
       <div className='alert-card'>
         <div className='alert-line'>
-         <div className='alert-description'>Group:</div>
-         <div className='alert-content-group'>{group}</div>
+         <div className='alert-description'>Severity:</div>
+         <div className='alert-content-severity'>{severity[0].toUpperCase() + severity.slice(1)}</div>
         </div>
         <div className='alert-line'>
          <div className='alert-description'>State:</div>
-         <div className='alert-content-state'>{state}</div>
+         <div className='alert-content-state'>{state[0].toUpperCase() + state.slice(1)}</div>
         </div>
+        <div className='alert-line'>
+         <div className='alert-description'>Group:</div>
+         <div className='alert-content-group'>{group}</div>
+        </div>
+
         <div className='alert-line'>
          <div className='alert-description'>Name:</div>
          <div className='alert-content-name'>{name}</div>
-        </div>
-        <div className='alert-line'>
-         <div className='alert-description'>Severity:</div>
-         <div className='alert-content-severity'>{severity}</div>
         </div>
         <div className='alert-line'>
          <div className='alert-description'>Description:</div>

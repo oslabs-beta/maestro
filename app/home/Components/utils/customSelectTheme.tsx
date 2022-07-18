@@ -26,9 +26,10 @@ export function customSelectThemeSeverity(theme: any) {
     ...theme,
     colors: {
       ...theme.colors,
-      primary25:  '#f1f6ff',
-      neutral5:'#ed6a5a',
-      neutral10:'#ed6a5a',
+      primary25: '#f1f6ff',
+      primary: '#ed6a5a',
+      neutral5: '#ed6a5a',
+      neutral10: '#ed6a5a',
       neutral20: '#ed6a5a',
       neutral30: '#ed6a5a',
       neutral40: '#ed6a5a',
@@ -49,8 +50,9 @@ export function customSelectThemeNamespaces(theme: any) {
     colors: {
       ...theme.colors,
       primary25:  '#f1f6ff',
-      neutral5:'#333',
-      neutral10:'#333',
+      primary: '#333',
+      neutral5: '#333',
+      neutral10: '#333',
       neutral20: '#333',
       neutral30: '#333',
       neutral40: '#333',
@@ -72,7 +74,7 @@ export const customSelectStyles = {
     // boxShadow: state.isFocused ? null : null,
     "&:hover": {
       // Overwrittes the different states of border
-      borderColor: state.isFocused ? '#3371e3' : '#20C997'
+      borderColor: state.isFocused ? '#333' : '#20C997'
     }
   }),
   placeholder: (defaultStyles: any) => {
@@ -84,10 +86,10 @@ export const customSelectStyles = {
   menu: (provided: any, state: any) => ({
     ...provided,
     width: '100%',
-    borderBottom: '1px dotted pink',
+    // borderBottom: '1px dotted pink',
     colors: {
       primary25:  '#f1f6ff',
-      priamry: '#3371e3',
+      primary: '#333',
       neutral120: '#333',
       neutral150: '#333',
       neutral180: '#333',
