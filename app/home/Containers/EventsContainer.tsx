@@ -4,8 +4,8 @@ import Select from 'react-select'
 import { customSelectTheme, customSelectThemeSeverity } from '../Components/utils/customSelectTheme';
 
 const eventTypes: any = [
+  {value:'events', label: 'Events'},
   {value:'alerts', label:'Alerts'}, 
-  {value:'events', label: 'Events'}
 ]; 
 
 const severityTypes: any = [
@@ -16,7 +16,7 @@ const severityTypes: any = [
 ]
 
 function EventsContainer() {
-  const [eventOption, setEventOption] = useState('alerts');
+  const [eventOption, setEventOption] = useState('events');
   const [severityOption, setSeverityOption] = useState('all')
 
   const handleEventChange = (e: any) => {
