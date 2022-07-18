@@ -76,9 +76,6 @@ const options: any = {
 
   // if chart data is empty render "No data available"
   if (!chartData) return <div>No data available in </div>;
-//   if(chartData[1]) {
-//       setLabelsState(chartData[1][1].timestamps)
-//   }
   
   // Format chart data for line chart with varying colors
   const objArr:any = [];
@@ -89,14 +86,11 @@ const options: any = {
   let times = ['00:12', '02:12', '04:12', '06:12', '08:12', '10:12', '12:12', '14:12', '16:12', '18:12', '20:12', '22:12']
   
 for(let i = 0; i < chartData.length; i++){
-    // console.log(chartData[1][1].timestamps)
-    // console.log('mdColors[i*3]',mdColors[i*3])
     const colors: any = mdColors;
     objArr.push({
       data: chartData[i][1].timeSeriesValues,
       label: chartData[i][0],
       borderColor: `${colors[i * 3 % mdColors.length]}`,
-      // backgroundColor: 'rgba(255, 99, 132, 0.5)',
     });
   };
   
