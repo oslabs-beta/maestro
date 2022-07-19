@@ -17,13 +17,11 @@ const StatusContainer = () => {
   const [podBoxes, setPodBoxes] = useState([])
   const [servicesBoxes, setServicesBoxes] = useState([])
 
-
   const getNodesForState = async (): Promise<any> => {
     let boxesArr =[];
     let statusArr = []
     // returns array of objects, each object with name and conditions[{}]
     const nodesList: any = await window.electron.getNodesList();
-    const nodeStatus: any = await window.electron.getComponentStatus()
     console.log(nodesList,"node Status?")
     setNodeQuant(nodesList.length)
     for(let i =0; i < nodesList.length; i++){

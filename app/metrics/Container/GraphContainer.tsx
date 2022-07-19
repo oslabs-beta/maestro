@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import MetricsGraphCard from '../Components/MetricsGraphCard'
 import LineChart from '../../home/Components/LineChartTemplate'
 import { useAppSelector } from '../../state/hooks'
 
