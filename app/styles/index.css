@@ -29,7 +29,7 @@ body {
   width: 50px;
   background-color: #333;
   justify-content: space-around;
-  height: 100vh;
+  height: 100%;
   z-index: 1;
   /* top: 0;
   left: 0;  */
@@ -56,6 +56,8 @@ body {
 
 .overview-container {
   display: flex;
+  width: 95vw;
+  height: 100vh;
   /* margin-left: 300px; */
 }
 
@@ -87,7 +89,8 @@ body {
 .header-elements {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 95%;
+    /* max-width: 1500px */
 }
 
 .logo {
@@ -96,7 +99,7 @@ body {
 
 .events-container {
   border-left: 1px solid #f0efef;
-  width: 50%;
+  min-width: 50%;
   margin-right: 1em;
 }
 
@@ -244,7 +247,7 @@ body {
     text-align: center;
     margin: 1em;
     margin-right: 0.4em;
-    width: 50%;
+    min-width: 50%;
     /* max-width: 70%; */
 
 }
@@ -371,6 +374,12 @@ body {
     height: 100%;
 } 
 
+.metrics-container {
+  overflow-y: scroll;
+  margin-top: 40px;
+  width: 100vw;
+}
+
 
 @media (max-width: 1400px) {
     body {
@@ -394,13 +403,15 @@ body {
     }
 
     .status-container {
-        width: 90%;
+        /* width: 90%; */
+
+        margin-top: 900px;
         margin-bottom: 0;
         padding-bottom: 0;
     }
 
     .events-container {
-        margin-top: 100px;
+        margin-top: 350px;
         padding-top: 0;
         width: 100%;
     }

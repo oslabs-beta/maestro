@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import MetricsGraphCard from '../Components/MetricsGraphCard'
 import LineChart from '../../home/Components/LineChartTemplate'
+import { useAppSelector } from '../../state/hooks'
 
 function GraphContainer() {
+  const namespace: string = useAppSelector(state => state.namespace.currentNamespace) 
   const [memoryUsageByNode, setMemoryUsageByNode] = useState([])
   const [memoryUsageByNamespace, setMemoryUsageByNamespace] = useState([])
   const [memoryUsageByPod, setMemoryUsageByPod] = useState([])
@@ -17,6 +19,7 @@ function GraphContainer() {
   const [bytesTransmittedByPod, setBytesTransmittedByPod] = useState([])
 
   const setStateForData = async (namespace?: string) => {
+    
     if(!namespace) namespace = 'default';
 
     const getCPUUsageByNode = await window.electron.getCPUUsageByNode(namespace)
@@ -47,8 +50,8 @@ function GraphContainer() {
   }
     
   useEffect(() => {
-    setStateForData()
-  }, [])
+    setStateForData(namespace)
+  }, [namespace])
 
   return (
     <div className='graph-container'>
