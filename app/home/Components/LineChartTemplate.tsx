@@ -12,7 +12,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import mdColors from './utils/GraphColors';
 import { Button } from '@mui/material';
-import { LabelSharp } from '@mui/icons-material';
+
 
 ChartJS.register(
   CategoryScale,
@@ -33,18 +33,11 @@ interface LineChart {
 const LineChart = ({ chartData, title, label }: LineChart): JSX.Element => {
   // React hooks for collapsing/expanding legend
   const [buttonClicked, setButtonClicked] = useState(false);
-  const [labelsState, setLabelsState] = useState('');
-
   
-const options: any = {
-
+  const options: any = {
     responsive: true,
     pointRadius: 0,
     indexAxis: 'x',
-    // background-color: 'red',
-    // maintainAspectRatio: false,
-
-
     plugins: {
       legend: {
         display: buttonClicked,
@@ -59,7 +52,6 @@ const options: any = {
       x: {
         grid: {
           color: 'rgb(240, 240, 240)',
-          // tickMarkLength: 0,
         },
         ticks: {
           color: '#797676',
@@ -68,7 +60,6 @@ const options: any = {
       y: {
         grid: {
           color: 'rgb(240, 240, 240)',
-          // tickMarkLength: 0,
         },
         ticks: {
           color: '#797676',
@@ -79,11 +70,10 @@ const options: any = {
 
   // if chart data is empty render "No data available"
   if (!chartData) return <div>No data available in </div>;
-  
+
   // Format chart data for line chart with varying colors
   const objArr:any = [];
-  //can be used for labels
-  const zeroPad = (num: number, places: number) => String(num).padStart(places, '0')
+  const zeroPad: any = (num: number, places: number) => String(num).padStart(places, '0')
   let now: Date = new Date();
   let nowHours = now.getHours();
   let nowMinutes = now.getMinutes();
@@ -92,7 +82,7 @@ const options: any = {
     times.push(`${zeroPad((nowHours + i * 2) % 24, 2)}:${nowMinutes}`)
   }
   
-for(let i = 0; i < chartData.length; i++){
+  for(let i = 0; i < chartData.length; i++){
     const colors: any = mdColors;
     objArr.push({
       data: chartData[i][1].timeSeriesValues,
@@ -100,13 +90,11 @@ for(let i = 0; i < chartData.length; i++){
       borderColor: `${colors[i * 3 % mdColors.length]}`,
     });
   };
-  
 
   const data:any = {
     labels: times,
     datasets: objArr,
   };
-  let id = 1;
 
   // Collapse or expand legend
   const handleLegendClick = () => {
