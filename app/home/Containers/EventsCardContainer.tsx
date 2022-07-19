@@ -1,18 +1,17 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import AlertCard from '../Components/AlertCard';
 import EventCard from '../Components/EventCard';
-import LogCard from '../Components/LogCard';
 import { useAppSelector } from '../../state/hooks';
-import { noEventsAvailable, noAlertsAvailable } from './utils/edgeCaseHandling'
+import { noEventsAvailable, noAlertsAvailable } from './utils/edgeCaseHandling';
 
 
 const EventsCardContainer = (props: any) => {
   let namespace: string = useAppSelector(state => state.namespace.currentNamespace) 
-  const [ alertsBySeverity, setAlertsBySeverity ] = useState([])
-  const [ namespaceEventsBySeverity, setNamespaceEventsBySeverity ] = useState([])
+  const [alertsBySeverity, setAlertsBySeverity] = useState([])
+  const [namespaceEventsBySeverity, setNamespaceEventsBySeverity] = useState([])
 
   const renderThis = async (): Promise<any> => {
-    if (namespace === '') namespace = 'default'
+    if (namespace === '') namespace = 'default';
   
     // logic for alerts
     let allAlerts: any = await window.electron.getAlerts();
@@ -22,43 +21,42 @@ const EventsCardContainer = (props: any) => {
         if ((el.severity).toLowerCase() === props.severity) acc.push(el);
         return acc;
       }, [])
-      setAlertsBySeverity(alertsBySeverity)
+      setAlertsBySeverity(alertsBySeverity);
     }
 
     else {
-      if (!allAlerts.length) allAlerts = [noAlertsAvailable]
-      setAlertsBySeverity(allAlerts)
+      if (!allAlerts.length) allAlerts = [noAlertsAvailable];
+      setAlertsBySeverity(allAlerts);
     }
   
     // logic for events
-    const allEvents: any = await window.electron.getEvents()
+    const allEvents: any = await window.electron.getEvents();
     let namespaceEvents = allEvents.reduce((acc: any, el: any) => {
       if (el.namespace === namespace) acc.push(el);
       return acc;       
-    }, [])
+    }, []);
 
     if ((props.severity).toLowerCase() !== 'all' && namespaceEvents.length !== 0) {
       let namespaceEventsBySeverity = namespaceEvents.reduce((acc:any, el:any) => {
         if ((el.type).toLowerCase() === props.severity) acc.push(el);
         return acc;
       }, [])
-      setNamespaceEventsBySeverity(namespaceEventsBySeverity)
+      setNamespaceEventsBySeverity(namespaceEventsBySeverity);
     }
 
     else {
-      if (!namespaceEvents.length) namespaceEvents = [noEventsAvailable]
-      setNamespaceEventsBySeverity(namespaceEvents)
+      if (!namespaceEvents.length) namespaceEvents = [noEventsAvailable];
+      setNamespaceEventsBySeverity(namespaceEvents);
     }
   }
 
   useEffect(() => {
-    namespace = 'default';
-    renderThis()
-  }, [])
+    renderThis();
+  }, []);
 
   useEffect(() => {
-    renderThis()
-  }, [props, namespace])
+    renderThis();
+  }, [props, namespace]);
 
   const alertsCard: any = alertsBySeverity.map((el: any, i: number) => 
     <AlertCard
@@ -74,7 +72,6 @@ const EventsCardContainer = (props: any) => {
   );
 
   const namespaceEventCards: any = namespaceEventsBySeverity.map((el: any, i: number) => 
-
     <EventCard
       key={`events${i}`}
       last_seen={el.last_seen}
@@ -93,5 +90,4 @@ const EventsCardContainer = (props: any) => {
   );
 }
 
-
-export default EventsCardContainer
+export default EventsCardContainer;
