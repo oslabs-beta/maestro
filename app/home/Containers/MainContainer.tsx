@@ -7,16 +7,12 @@ const MainContainer = () => {
   return (
     <div className="main">
       <Routes>
-        
-          <Route path="/" element={<OverviewContainer/>} />
-          <Route path="/metrics" element={<MetricsContainer />} />
-        
+        <Route path="/" element={<OverviewContainer/>} />
+        <Route path="/metrics" element={<MetricsContainer />} />
       </Routes>
     </div>
   );
 };
-
-
 
 export default MainContainer;
  
