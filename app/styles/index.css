@@ -5,7 +5,7 @@ body {
   text-align: center;
   font-family: "Roboto", sans-serif;
   background-color: rgb(255, 255, 255);
-  overflow: hidden;
+  /* overflow-y: hidden; */
 }
 
 /* .main-container {
@@ -15,8 +15,10 @@ body {
 .main {
     /* margin: 0 auto; */
     margin-top: 70px;
+    /* margin-bottom:70px; */
     width: 100%;
     /* border: 1px solid black; */
+    height: 100vh;
     overflow-y: scroll;
 }
 
@@ -25,11 +27,11 @@ body {
 }
 
 .sidebar-container {
-  /* postition: fixed; */
+  postition: fixed;
   width: 50px;
   background-color: #333;
-  justify-content: space-around;
-  height: 100%;
+  /* justify-content: space-around; */
+  min-height: 100%;
   z-index: 1;
   /* top: 0;
   left: 0;  */
@@ -57,7 +59,8 @@ body {
 .overview-container {
   display: flex;
   width: 95vw;
-  height: 100vh;
+  /* height: 100%; */
+  /* overflow-y: scroll; */
   /* margin-left: 300px; */
 }
 
@@ -122,9 +125,9 @@ body {
 }
 
 /* hides the scrollbar while maintainig functionality */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     display: none;
-}
+} */
 
 .events-card-container {
     display: flex;
@@ -371,7 +374,9 @@ body {
 
 .dashboard {
     display: flex;
-    height: 100%;
+    /* border: 1px solid black; */
+    overflow: hidden;
+    height: 100vh;
 } 
 
 .metrics-container {
@@ -400,12 +405,13 @@ body {
         justify-content: space-around;
         overflow-y: scroll;
         margin-left: 60px;
+        
     }
 
     .status-container {
         /* width: 90%; */
 
-        margin-top: 900px;
+        /* margin-top: 900px; */
         margin-bottom: 0;
         padding-bottom: 0;
     }
