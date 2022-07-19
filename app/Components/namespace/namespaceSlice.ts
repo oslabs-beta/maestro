@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { response } from 'express';
 
 interface NamespaceState {
   currentNamespace: string,
@@ -10,8 +9,6 @@ const initialState: NamespaceState = {
   currentNamespace: '',
   allNamespaces: []
 }
-
-// Potentially add 'loading' property to state
 
 export const getNamespacesForState = createAsyncThunk<string[]>(
   'namespace/getNamespaces',

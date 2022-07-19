@@ -1,5 +1,5 @@
-import React, { Fragment, useState, FC, useEffect, useCallback } from "react";
-import { useAppDispatch, useAppSelector } from "../../state/hooks";
+import React, { useState, useEffect, useCallback } from "react";
+import { useAppDispatch } from "../../state/hooks";
 import { setCurrentNamespace } from "./namespaceSlice";
 import { getNamespacesForState } from "./namespaceSlice";
 import Select from "react-select";
