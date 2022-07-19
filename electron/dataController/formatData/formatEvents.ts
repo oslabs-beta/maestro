@@ -1,3 +1,4 @@
+// formats events coming from kubectl call for processing in frontend
 export const formatEvents = (arr: string[]) => {
   arr.pop();
   const trimmed: string[][] = arr.map((el: string) => el.split(/[ ]{2,}/));

@@ -1,3 +1,4 @@
+// formats alerts data for processing in the frontend
 export const formatAlerts = (data: any) => {
   const groups = data.data.groups;
   const tableData = [];
