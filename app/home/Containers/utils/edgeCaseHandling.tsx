@@ -1,17 +1,19 @@
+// Shows a message if for the selected namespace there are no events available
 export const noEventsAvailable = {
   last_seen: '',
-  message: "There are no events for this namespace...",
+  message: '',
   object: '',
   reason: '',
-  type: ''
-}
+  type: "There are no events for this namespace...",
+};
 
+// Shows a message if for the selected namespace there are no alerts available
 export const noAlertsAvailable = {
-  group: "There are no events for this namespace...",
+  group: '',
   state: '',
   name: '',
-  severity: '',
+  severity: "There are no alerts for this namespace...",
   description: '',
   summary: '',
-}
+};
 
