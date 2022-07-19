@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import LineChart from '../../home/Components/LineChartTemplate';
 
@@ -10,121 +11,119 @@ function GraphContainer() {
   const [cpuUsageByPod, setCpuUsageByPod] = useState([]);
   const [bytesRecievedByNode, setBytesRecievedByNode] = useState([]);
   const [bytesRecievedByNamespace, setBytesRecievedByNamespace] = useState([]);
-  const [bytesRecievedByPod,setBytesRecievedByPod] = useState([]);
+  const [bytesRecievedByPod, setBytesRecievedByPod] = useState([]);
   const [bytesTransmittedByNamespace, setBytesTransmittedByNamespace] = useState([]);
   const [bytesTransmittedByNode, setBytesTransmittedByNode] = useState([]);
   const [bytesTransmittedByPod, setBytesTransmittedByPod] = useState([]);
 
-  const setStateForData = async (namespace?: string) => {
-    if(!namespace) namespace = 'default';
-
+  const setStateForData = async (namespace = 'default') => {
     const getCPUUsageByNode = await window.electron.getCPUUsageByNode(namespace);
     const getMemoryUsageByNode = await window.electron.getMemoryUsageByNode(namespace);
-    const bytesRecievedByNode = await window.electron.bytesRecievedByNode(namespace);
-    const bytesTransmittedByNode = await window.electron.bytesTransmittedByNode(namespace);
+    const getbytesRecievedByNode = await window.electron.bytesRecievedByNode(namespace);
+    const getbytesTransmittedByNode = await window.electron.bytesTransmittedByNode(namespace);
     const getCPUUsageByNamespace = await window.electron.getCPUUsageByNamespace(namespace);
     const getMemoryUsageByNamespace = await window.electron.getMemoryUsageByNamespace(namespace);
-    const bytesRecievedByNamespace = await window.electron.bytesRecievedByNamespace(namespace);
-    const bytesTransmittedByNamespace = await window.electron.bytesTransmittedByNamespace(namespace);
-    const getCPUUsageByPod = await  window.electron.getCPUUsageByPod(namespace);
+    const getbytesRecievedByNamespace = await window.electron.bytesRecievedByNamespace(namespace);
+    const getbytesTransmittedByNamespace = await window.electron.bytesTransmittedByNamespace(namespace);
+    const getCPUUsageByPod = await window.electron.getCPUUsageByPod(namespace);
     const getMemoryUsageByPod = await window.electron.getMemoryUsageByPod(namespace);
-    const bytesRecievedByPod = await window.electron.bytesRecievedByPod(namespace);
-    const bytesTransmittedByPod = await window.electron.bytesTransmittedByPod(namespace);
+    const getbytesRecievedByPod = await window.electron.bytesRecievedByPod(namespace);
+    const getbytesTransmittedByPod = await window.electron.bytesTransmittedByPod(namespace);
 
     setCpuUsageByNode(Object.entries(getCPUUsageByNode));
     setMemoryUsageByNode(Object.entries(getMemoryUsageByNode));
-    setBytesRecievedByNode(Object.entries(bytesRecievedByNode));
-    setBytesTransmittedByNode(Object.entries(bytesTransmittedByNode));
+    setBytesRecievedByNode(Object.entries(getbytesRecievedByNode));
+    setBytesTransmittedByNode(Object.entries(getbytesTransmittedByNode));
     setCpuUsageByNamespace(Object.entries(getCPUUsageByNamespace));
     setMemoryUsageByNamespace(Object.entries(getMemoryUsageByNamespace));
-    setBytesRecievedByNamespace(Object.entries(bytesRecievedByNamespace));
-    setBytesTransmittedByNamespace(Object.entries(bytesTransmittedByNamespace));
+    setBytesRecievedByNamespace(Object.entries(getbytesRecievedByNamespace));
+    setBytesTransmittedByNamespace(Object.entries(getbytesTransmittedByNamespace));
     setCpuUsageByPod(Object.entries(getCPUUsageByPod));
     setMemoryUsageByPod(Object.entries(getMemoryUsageByPod));
-    setBytesRecievedByPod(Object.entries(bytesRecievedByPod));
-    setBytesTransmittedByPod(Object.entries(bytesTransmittedByPod));
-  }
-    
+    setBytesRecievedByPod(Object.entries(getbytesRecievedByPod));
+    setBytesTransmittedByPod(Object.entries(getbytesTransmittedByPod));
+  };
+
   useEffect(() => {
     setStateForData();
   }, []);
 
   return (
-    <div className='graph-container'>
-      <div className='graph-card'>
-        <div className='graph-card-title'>
+    <div className="graph-container">
+      <div className="graph-card">
+        <div className="graph-card-title">
           CPU Usage by Node
         </div>
-        <LineChart chartData={cpuUsageByNode}/>
+        <LineChart chartData={cpuUsageByNode} />
       </div>
-      <div className='graph-card'>
-        <div className='graph-card-title'>
+      <div className="graph-card">
+        <div className="graph-card-title">
           Memory Usage by Node
         </div>
-        <LineChart chartData={memoryUsageByNode}/>
+        <LineChart chartData={memoryUsageByNode} />
       </div>
-      <div className='graph-card'>
-        <div className='graph-card-title'>
+      <div className="graph-card">
+        <div className="graph-card-title">
           Bytes Received by Node
         </div>
-        <LineChart chartData={bytesRecievedByNode}/>
+        <LineChart chartData={bytesRecievedByNode} />
       </div>
-      <div className='graph-card'>
-        <div className='graph-card-title'>
+      <div className="graph-card">
+        <div className="graph-card-title">
           Bytes Transmitted by Node
         </div>
-        <LineChart chartData={bytesTransmittedByNode}/>
+        <LineChart chartData={bytesTransmittedByNode} />
       </div>
-      <div className='graph-card'>
-        <div className='graph-card-title'>
+      <div className="graph-card">
+        <div className="graph-card-title">
           CPU Usage by Namespace
         </div>
-        <LineChart chartData={cpuUsageByNamespace}/>
+        <LineChart chartData={cpuUsageByNamespace} />
       </div>
-      <div className='graph-card'>
-        <div className='graph-card-title'>
+      <div className="graph-card">
+        <div className="graph-card-title">
           Memory Usage by Namespace
         </div>
-        <LineChart chartData={memoryUsageByNamespace}/>
+        <LineChart chartData={memoryUsageByNamespace} />
       </div>
-      <div className='graph-card'>
-        <div className='graph-card-title'>
+      <div className="graph-card">
+        <div className="graph-card-title">
           Bytes Received by Namespace
         </div>
-        <LineChart chartData={bytesRecievedByNamespace}/>
+        <LineChart chartData={bytesRecievedByNamespace} />
       </div>
-      <div className='graph-card'>
-        <div className='graph-card-title'>
+      <div className="graph-card">
+        <div className="graph-card-title">
           Bytes Transmitted by Namespace
         </div>
-        <LineChart chartData={bytesTransmittedByNamespace}/>
+        <LineChart chartData={bytesTransmittedByNamespace} />
       </div>
-      <div className='graph-card'>
-        <div className='graph-card-title'>
+      <div className="graph-card">
+        <div className="graph-card-title">
           CPU Usage by Pod
         </div>
-        <LineChart chartData={cpuUsageByPod}/>
+        <LineChart chartData={cpuUsageByPod} />
       </div>
-      <div className='graph-card'>
-        <div className='graph-card-title'>
+      <div className="graph-card">
+        <div className="graph-card-title">
           Memory Usage by Pod
         </div>
-        <LineChart chartData={memoryUsageByPod}/>
+        <LineChart chartData={memoryUsageByPod} />
       </div>
-      <div className='graph-card'>
-        <div className='graph-card-title'>
+      <div className="graph-card">
+        <div className="graph-card-title">
           Bytes Received by Pod
         </div>
-        <LineChart chartData={bytesRecievedByPod}/>
+        <LineChart chartData={bytesRecievedByPod} />
       </div>
-      <div className='graph-card'>
-        <div className='graph-card-title'>
+      <div className="graph-card">
+        <div className="graph-card-title">
           Bytes Transmitted by Pod
         </div>
-        <LineChart chartData={bytesTransmittedByPod}/>
+        <LineChart chartData={bytesTransmittedByPod} />
       </div>
     </div>
   );
-};
+}
 
 export default GraphContainer;
