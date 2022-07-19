@@ -88,6 +88,6 @@ const EventsCardContainer = (props: any) => {
       {props.eventType === 'events' && namespaceEventCards}
     </div>
   );
-}
+};
 
 export default EventsCardContainer;

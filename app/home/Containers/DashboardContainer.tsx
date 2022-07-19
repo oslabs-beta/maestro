@@ -25,6 +25,6 @@ const DashboardContainer = () => {
       </div>
     </Router>
   );
-}
+};
 
 export default DashboardContainer;

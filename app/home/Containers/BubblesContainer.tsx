@@ -36,7 +36,7 @@ const StatusContainer = () => {
     const deploymentsList: any = await window.electron.getDeploymentsList();
     const deploymentsListByNamespace = deploymentsList.filter((deployment: any) => {
       return deployment.namespace === namespace;
-    })
+    });
     setDeploymentQuant(deploymentsListByNamespace.length);
     
     let boxesArr =[];
@@ -50,7 +50,7 @@ const StatusContainer = () => {
       );
     }
     setDeploymentBoxes(boxesArr);
-  }
+  };
 
   const getPodsForState = async (): Promise<any> => {
     const podsList: any = await window.electron.getPodsList();
@@ -71,7 +71,7 @@ const StatusContainer = () => {
       );
     }
     setPodBoxes(boxesArr);
-  }
+  };
 
   const getServicesForState = async (): Promise<any> => {
     const servicesList: any = await window.electron.getServicesList();
@@ -91,7 +91,7 @@ const StatusContainer = () => {
       );
     }
     setServicesBoxes(boxesArr);
-  }
+  };
   
   useEffect(() => {
     if (namespace === '') namespace = 'default';
@@ -111,6 +111,6 @@ const StatusContainer = () => {
     </div>
   </div>
   );
-}
+};
 
 export default StatusContainer;
