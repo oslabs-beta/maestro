@@ -14,7 +14,6 @@ const renderThis= async (): Promise<any> => {
     const deploymentList = await window.electron.getDeploymentsList()
     const servicesList = await window.electron.getServicesList()
     const podsList = await window.electron.getPodsList()
-    const componentStatus = await window.electron.getComponentStatus()
 
     // const componentStatus = await window.electron.getComponentStatus()
 
@@ -40,7 +39,6 @@ const renderThis= async (): Promise<any> => {
     console.log('deploymentList', JSON.parse(deploymentList))
     console.log('servicestList', JSON.parse(servicesList))
     console.log('podsList', JSON.parse(podsList))
-    console.log('componentStatus', JSON.parse(componentStatus))
 
     // console.log('events', events)
     // console.log('getCPUUsageByNode', getCPUUsageByNode)

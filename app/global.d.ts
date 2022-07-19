@@ -26,7 +26,6 @@ declare global {
       getDeploymentsList: () => Promise<any>
       getServicesList: () => Promise<any>
       getPodsList: () => Promise<any>
-      getComponentStatus: () => Promise<any>
     };
   }
 }

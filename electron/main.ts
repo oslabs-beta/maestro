@@ -42,6 +42,9 @@ app.on("window-all-closed", () => {
 
 // TO DO: Type data/responses
 
+/* K8 API */ 
+
+// gets list of all nodes (incl. status) in the k8s cluster
 ipcMain.handle('getNodesList', async () => {
   try {
     const data = await k8sApiCore.listNode('default')
@@ -52,6 +55,7 @@ ipcMain.handle('getNodesList', async () => {
   }
 });
 
+// gets list of all namespaces in the k8s cluster
 ipcMain.handle('getNamespacesList', async () => {
   try {
     const data = await k8sApiCore.listNamespace()
@@ -64,6 +68,7 @@ ipcMain.handle('getNamespacesList', async () => {
   }
 });
 
+// gets list of all deployments in the k8s cluster
 ipcMain.handle('getDeploymentsList', async () => {
   try {
     const data = await k8sApiApps.listDeploymentForAllNamespaces()
@@ -74,6 +79,7 @@ ipcMain.handle('getDeploymentsList', async () => {
   }
 });
 
+// gets list of all services in the k8s cluster
 ipcMain.handle('getServicesList', async () => {
   try {
     const data = await k8sApiCore.listServiceForAllNamespaces()
@@ -84,6 +90,7 @@ ipcMain.handle('getServicesList', async () => {
   }
 });
 
+// gets list of all pods in the k8s cluster
 ipcMain.handle('getPodsList', async () => {
   try {
     const data = await k8sApiCore.listPodForAllNamespaces()
@@ -94,29 +101,9 @@ ipcMain.handle('getPodsList', async () => {
   }
 });
 
-ipcMain.handle('getComponentStatus', async () => {
-  try {
-    const data = await k8sApiCore.listComponentStatus()
-    return data.body
-  }
-  catch (err) {
-    console.log(`Error in 'getComponentStatus' function: ERROR: ${err}`);
-  }
-})
+/* Kubectl command line calls */
 
-// fetch alerts from Prometheus for Alerts page
-ipcMain.handle("getAlerts", async () => {
-  try {
-    const response = await fetch(`${prometheusURL}/rules`);
-    const data: any = await response.json();
-    const formattedAlerts = formatAlerts(data);
-    return formattedAlerts;
-  } 
-  catch (err) {
-    console.log(`Error in 'getAlerts' function: ERROR: ${err}`);
-  }
-});
-
+// gets list of events for all namespaces
 ipcMain.handle("getEvents", () => {
   try {
     const response: any = child_process.execSync("kubectl get events --all-namespaces", { encoding: "utf8" });
@@ -129,8 +116,23 @@ ipcMain.handle("getEvents", () => {
   }
 });
 
-//Namespace
-//get cpu usage by namespace (%)
+/* Prometheus API */
+
+// gets alerts from Prometheus for alerts page
+ipcMain.handle("getAlerts", async () => {
+  try {
+    const response = await fetch(`${prometheusURL}/rules`);
+    const data: any = await response.json();
+    const formattedAlerts = formatAlerts(data);
+    return formattedAlerts;
+  } 
+  catch (err) {
+    console.log(`Error in 'getAlerts' function: ERROR: ${err}`);
+  }
+});
+
+// NAMESPACE METRICS
+// gets cpu usage by namespace (%)
 ipcMain.handle("getCPUUsageByNamespace", async (event, namespace: string) => {
   try {
     const { startDateTime, endDateTime } = getStartAndEndDateTime();
@@ -144,7 +146,7 @@ ipcMain.handle("getCPUUsageByNamespace", async (event, namespace: string) => {
   }
 });
 
-//get memory usage by namespace (GB)
+// gets memory usage by namespace (GB)
 ipcMain.handle('getMemoryUsageByNamespace', async(event, namespace: string) => {
   try {
     const { startDateTime, endDateTime } = getStartAndEndDateTime();
@@ -158,7 +160,7 @@ ipcMain.handle('getMemoryUsageByNamespace', async(event, namespace: string) => {
   }
 });
 
-//get network I/O recieved by namespace
+// gets network I/O recieved by namespace
 ipcMain.handle('bytesRecievedByNamespace', async(event, namespace: string) => {
   try {
     const { startDateTime, endDateTime } = getStartAndEndDateTime();
@@ -171,7 +173,7 @@ ipcMain.handle('bytesRecievedByNamespace', async(event, namespace: string) => {
   } 
 });
 
-//get network I/O transmitted by namespace
+// gets network I/O transmitted by namespace
 ipcMain.handle('bytesTransmittedByNamespace', async(event, namespace: string) => {
   try {
     const { startDateTime, endDateTime } = getStartAndEndDateTime();
@@ -184,8 +186,8 @@ ipcMain.handle('bytesTransmittedByNamespace', async(event, namespace: string) =>
   }
 });
 
-//Node metrics
-//get cpu usage by node (%)
+// NODE METRICS
+// gets cpu usage by node (%)
 ipcMain.handle("getCPUUsageByNode", async (event, namespace: string) => {
   try {
     const { startDateTime, endDateTime } = getStartAndEndDateTime();
@@ -198,7 +200,7 @@ ipcMain.handle("getCPUUsageByNode", async (event, namespace: string) => {
   }
 });
 
-//get memory usage by node (GB)
+// gets memory usage by node (GB)
 ipcMain.handle("getMemoryUsageByNode", async (event, namespace: string) => {
   try {
     const { startDateTime, endDateTime } = getStartAndEndDateTime();
@@ -211,7 +213,7 @@ ipcMain.handle("getMemoryUsageByNode", async (event, namespace: string) => {
   }
 });
 
-//get network I/O recieved by node
+// gets network I/O recieved by node
 ipcMain.handle("bytesRecievedByNode", async (event, namespace: string) => {
   try {
     const { startDateTime, endDateTime } = getStartAndEndDateTime();
@@ -224,7 +226,7 @@ ipcMain.handle("bytesRecievedByNode", async (event, namespace: string) => {
   }
 });
 
-//get network I/O transmitted by node
+// gets network I/O transmitted by node
 ipcMain.handle("bytesTransmittedByNode", async (event, namespace: string) => {
   try {
     const { startDateTime, endDateTime } = getStartAndEndDateTime();
@@ -237,8 +239,8 @@ ipcMain.handle("bytesTransmittedByNode", async (event, namespace: string) => {
   }
 });
 
-//pod metrics
-//get cpu usage by pod (%)
+// POD METRICS
+// gets cpu usage by pod (%)
 ipcMain.handle("getCPUUsageByPod", async (event, namespace: string) => {
   try {
     const { startDateTime, endDateTime } = getStartAndEndDateTime();
@@ -251,7 +253,7 @@ ipcMain.handle("getCPUUsageByPod", async (event, namespace: string) => {
   }
 });
 
-//get memory usage by pod (GB)
+// gets memory usage by pod (GB)
 ipcMain.handle("getMemoryUsageByPod", async (event, namespace: string) => {
   try {
     const { startDateTime, endDateTime } = getStartAndEndDateTime();
@@ -265,7 +267,7 @@ ipcMain.handle("getMemoryUsageByPod", async (event, namespace: string) => {
   }
 });
 
-//get network I/O recieved by pod
+// gets network I/O recieved by pod
 ipcMain.handle("bytesRecievedByPod", async (event, namespace: string) => {
   try {
     const { startDateTime, endDateTime } = getStartAndEndDateTime();
@@ -278,7 +280,7 @@ ipcMain.handle("bytesRecievedByPod", async (event, namespace: string) => {
   }
 });
 
-//get network I/O transmitted by pod
+// gets network I/O transmitted by pod
 ipcMain.handle("bytesTransmittedByPod", async (event, namespace: string) => {
   try {
     const { startDateTime, endDateTime } = getStartAndEndDateTime();

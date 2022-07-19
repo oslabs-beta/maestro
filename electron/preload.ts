@@ -41,6 +41,4 @@ contextBridge.exposeInMainWorld('electron', {
     ipcRenderer.invoke('getServicesList'),
   getPodsList: async () => 
     ipcRenderer.invoke('getPodsList'),
-  getComponentStatus: async () => 
-    ipcRenderer.invoke('getComponentStatus'),
 });
