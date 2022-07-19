@@ -1,5 +1,5 @@
-import React from 'react'
-import GraphContainer from './GraphContainer'
+import React from 'react';
+import GraphContainer from './GraphContainer';
 
 function MetricsContainer() {
   return (
@@ -9,4 +9,4 @@ function MetricsContainer() {
   )
 }
 
-export default MetricsContainer
+export default MetricsContainer;

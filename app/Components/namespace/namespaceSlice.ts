@@ -8,7 +8,7 @@ interface NamespaceState {
 const initialState: NamespaceState = {
   currentNamespace: '',
   allNamespaces: []
-}
+};
 
 export const getNamespacesForState = createAsyncThunk<string[]>(
   'namespace/getNamespaces',
@@ -37,8 +37,8 @@ export const namespaceSlice = createSlice({
       state.error = action.error.message
     })
   }
-})
+});
 
-export const { setCurrentNamespace } = namespaceSlice.actions
+export const { setCurrentNamespace } = namespaceSlice.actions;
 export default namespaceSlice.reducer;
 
