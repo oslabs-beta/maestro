@@ -9,11 +9,6 @@ declare global {
     electron: {
       getAlerts: () => Promise<fetchData>;
       getEvents: () => Promise<any>;
-      getNamespaces: () => Promise<any>;
-      getNodes: () => Promise<any>;
-      getServices: () => Promise<any>;
-      getPods: () => Promise<any>;
-      getDeployments: () => Promise<any>;
       getCPUUsageByNode: (namespace: string) => Promise<any>
       getMemoryUsageByNode: (namespace: string) => Promise<any>
       bytesRecievedByNode: (namespace: string) => Promise<any>
@@ -32,7 +27,6 @@ declare global {
       getServicesList: () => Promise<any>
       getPodsList: () => Promise<any>
       getComponentStatus: () => Promise<any>
-      // Add any additional "APIs" here
     };
   }
 }

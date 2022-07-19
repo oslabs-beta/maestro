@@ -16,7 +16,7 @@ const initialState: NamespaceState = {
 export const getNamespacesForState = createAsyncThunk<string[]>(
   'namespace/getNamespaces',
   async (_, thunkAPI) => {
-    const res = await window.electron.getNamespaces()
+    const res = await window.electron.getNamespacesList()
     return res
   }
 );

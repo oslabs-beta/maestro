@@ -1,21 +1,12 @@
 
 import { contextBridge, ipcRenderer } from 'electron';
 
+// makes the functions from main.ts available in the frontend via context bridge
 contextBridge.exposeInMainWorld('electron', {
   getAlerts: async () =>
     ipcRenderer.invoke('getAlerts'),
   getEvents: async () =>
     ipcRenderer.invoke('getEvents'),
-  getNamespaces: async () =>
-    ipcRenderer.invoke('getNamespaces'),
-  getNodes: async () =>
-    ipcRenderer.invoke('getNodes'),
-  getServices: async () =>
-    ipcRenderer.invoke('getServices'),
-  getPods: async () =>
-    ipcRenderer.invoke('getPods'),
-  getDeployments: async () =>
-    ipcRenderer.invoke('getDeployments'),
   getCPUUsageByNode: async (namespace: string) => 
     ipcRenderer.invoke('getCPUUsageByNode', namespace),
   getMemoryUsageByNode: async (namespace: string) => 

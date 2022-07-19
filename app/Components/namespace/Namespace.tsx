@@ -20,7 +20,7 @@ const Namespace: React.FC = () => {
   }, []);
 
   const getNamespaces = async () => {
-    const namespaces = await window.electron.getNamespaces();
+    const namespaces = await window.electron.getNamespacesList();
     setNamespaces(namespaces);
   };
 
