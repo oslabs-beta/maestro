@@ -4,30 +4,27 @@ import Namespace from "../../Components/namespace/Namespace";
 import SidebarContainer from "../../Containers/SidebarContainer";
 import MainContainer from "./MainContainer";
 
-
 const DashboardContainer = () => {
-    return (
+  return (
     <Router>
-         
-        <div className="dashboard">
-           <SidebarContainer />
-            <div> 
-                <div className="home-container">
-                    <div className="header">
-                        <div className="header-elements">
-                            <Namespace />
-                            <h1 className="logo">Maestro</h1>
-                        </div>
-                    </div>
-                </div>
-                <div className="main-container">
-                    <MainContainer />
-                </div>
+      <div className="dashboard">
+        <SidebarContainer />
+        <div> 
+          <div className="home-container">
+            <div className="header">
+              <div className="header-elements">
+                <Namespace />
+                <h1 className="logo">Maestro</h1>
+              </div>
             </div>
+          </div>
+          <div className="main-container">
+            <MainContainer />
+          </div>
         </div>
+      </div>
     </Router>
-    );
+  );
 }
-//className="//className="homepage"main-container"
-//className="home-container"
-export default DashboardContainer
+
+export default DashboardContainer;
