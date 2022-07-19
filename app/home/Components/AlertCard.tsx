@@ -27,7 +27,6 @@ const AlertCard = ({ group, state, name, severity, description, summary }: Alert
          <div className='alert-description'>Group:</div>
          <div className='alert-content-group'>{group}</div>
         </div>
-
         <div className='alert-line'>
          <div className='alert-description'>Name:</div>
          <div className='alert-content-name'>{name}</div>

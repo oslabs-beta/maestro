@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
 
@@ -11,20 +11,16 @@ interface StatusBubbleProps {
 
 const statusBubble = ({ name, status, type}: StatusBubbleProps): JSX.Element => {
   const [statusColor, setStatusColor] = useState('#3371e3')
-if(type == 'nodes'){
-  //add node status handling 
-  console.log(status.length,"its nodes")
-}
-
-if(type == 'pods'){
-  if(status !== 'Running'){
-    const color = '#e3d733';
-    console.log(status, "Not running")
-    setStatusColor(color)
+  if (type == 'nodes') {
+    //add node status handling 
   }
-  
-  
-}
+
+  if (type == 'pods') {
+    if (status !== 'Running') {
+      const color = '#e3d733';
+      setStatusColor(color);
+    } 
+  }
 
   return (
     <div className='boxes'>
@@ -33,7 +29,6 @@ if(type == 'pods'){
      </Tooltip>
     </div>
   )
-    
 }
 
-export default statusBubble
+export default statusBubble;
