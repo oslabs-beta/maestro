@@ -37,4 +37,4 @@ const EventCard = ({ last_seen, message, object, reason, severity }: EventCard):
   )
 }
 
-export default EventCard
+export default EventCard;

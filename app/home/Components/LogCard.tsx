@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function LogCard() {
   return (
@@ -6,4 +6,4 @@ function LogCard() {
   )
 }
 
-export default LogCard
+export default LogCard;

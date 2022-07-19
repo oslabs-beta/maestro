@@ -28,7 +28,7 @@ interface LineChart {
     chartData?: any,
     title?: any,
     label?: any
-}
+};
 
 const LineChart = ({ chartData, title, label }: LineChart): JSX.Element => {
   // React hooks for collapsing/expanding legend
@@ -73,13 +73,13 @@ const LineChart = ({ chartData, title, label }: LineChart): JSX.Element => {
 
   // Format chart data for line chart with varying colors
   const objArr:any = [];
-  const zeroPad: any = (num: number, places: number) => String(num).padStart(places, '0')
+  const zeroPad: any = (num: number, places: number) => String(num).padStart(places, '0');
   let now: Date = new Date();
   let nowHours = now.getHours();
   let nowMinutes = now.getMinutes();
-  const times = []
+  const times = [];
   for (let i = 1; i <= 12; i++){
-    times.push(`${zeroPad((nowHours + i * 2) % 24, 2)}:${nowMinutes}`)
+    times.push(`${zeroPad((nowHours + i * 2) % 24, 2)}:${nowMinutes}`);
   }
   
   for(let i = 0; i < chartData.length; i++){
