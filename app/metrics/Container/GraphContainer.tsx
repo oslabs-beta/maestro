@@ -1,8 +1,10 @@
 /* eslint-disable max-len */
-import React, { useState, useEffect } from 'react';
-import LineChart from '../../home/Components/LineChartTemplate';
-
+import React, { useState, useEffect } from 'react'
+import LineChart from '../../home/Components/LineChartTemplate'
+import { useAppSelector } from '../../state/hooks'
+  
 function GraphContainer() {
+  const namespace: string = useAppSelector(state => state.namespace.currentNamespace) 
   const [memoryUsageByNode, setMemoryUsageByNode] = useState([]);
   const [memoryUsageByNamespace, setMemoryUsageByNamespace] = useState([]);
   const [memoryUsageByPod, setMemoryUsageByPod] = useState([]);
@@ -45,8 +47,8 @@ function GraphContainer() {
   };
 
   useEffect(() => {
-    setStateForData();
-  }, []);
+    setStateForData(namespace)
+  }, [namespace])
 
   return (
     <div className="graph-container">

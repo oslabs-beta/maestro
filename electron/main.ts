@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow, ipcMain, protocol } from "electron";
 const fetch: any = (...args: any) =>
   import("node-fetch").then(({ default: fetch }: any) => fetch(...args));
 import * as child_process from "child_process";
@@ -8,6 +8,7 @@ import { formatk8sApiData } from "./dataController/formatData/formatk8sApiData";
 import { formatAlerts } from "./dataController/formatData/formatAlerts";
 import { formatEvents } from "./dataController/formatData/formatEvents";
 import * as k8s from '@kubernetes/client-node';
+import path from 'path'
 // K8s API
 const kc = new k8s.KubeConfig();
 kc.loadFromDefault();

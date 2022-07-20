@@ -39,7 +39,7 @@ function LineChart({ chartData }: LineChartType): JSX.Element {
     plugins: {
       legend: {
         display: buttonClicked,
-        position: 'left' as const,
+        position: 'bottom' as const,
       },
       datalabels: {
         // hide datalabels for all datasets

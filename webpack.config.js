@@ -25,6 +25,21 @@ module.exports = {
       test: /\.s?css$/,
       use: ['style-loader', 'css-loader', 'postcss-loader'],
     },
+    {
+      test: /\.(jpg|jpeg|png|ttf|svg|gif)$/,
+      use: [
+        'file-loader',
+        {
+          loader: 'image-webpack-loader',
+          options: {
+            mozjpeg: {
+              quality: 10,
+            },
+          },
+        },
+      ],
+      exclude: /node_modules/,
+    },
   ],
   },
   mode: 'development', 
