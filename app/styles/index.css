@@ -79,6 +79,8 @@ body {
 
 .logo {
   margin: 0;
+  font-family: "Nunito", sans-serif;
+  color: #333;
 }
 
 .events-container {
