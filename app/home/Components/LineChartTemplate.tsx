@@ -77,7 +77,7 @@ function LineChart({ chartData }: LineChartType): JSX.Element {
   const nowMinutes = now.getMinutes();
   const times = [];
   for (let i = 1; i <= 12; i++) {
-    times.push(`${zeroPad((nowHours + i * 2) % 24, 2)}:${nowMinutes}`);
+    times.push(`${zeroPad((nowHours + i * 2) % 24, 2)}:${zeroPad(nowMinutes, 2)}`);
   }
 
   for (let i = 0; i < chartData.length; i++) {
