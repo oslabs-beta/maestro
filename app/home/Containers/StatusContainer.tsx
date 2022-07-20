@@ -1,6 +1,6 @@
-import React from 'react'
-import HomeGraphContainer from './/HomeGraphContainer'
-import BubblesContainer from './BubblesContainer'
+import React from 'react';
+import HomeGraphContainer from './/HomeGraphContainer';
+import BubblesContainer from './BubblesContainer';
 
 function StatusContainer() {
   return (
@@ -8,7 +8,7 @@ function StatusContainer() {
       <BubblesContainer />
       <HomeGraphContainer />
     </div>
-  )
-}
+  );
+};
 
-export default StatusContainer
+export default StatusContainer;

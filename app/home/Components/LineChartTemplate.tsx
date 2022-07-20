@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import React, { useState } from 'react';
 import {
   Chart as ChartJS,
@@ -10,9 +11,8 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import mdColors from './utils/GraphColors';
 import { Button } from '@mui/material';
-
+import mdColors from './utils/GraphColors';
 
 ChartJS.register(
   CategoryScale,
@@ -21,19 +21,17 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
-interface LineChart {
-    chartData?: any,
-    title?: any,
-    label?: any
-};
+interface LineChartType {
+  chartData: any,
+}
 
-const LineChart = ({ chartData, title, label }: LineChart): JSX.Element => {
+function LineChart({ chartData }: LineChartType): JSX.Element {
   // React hooks for collapsing/expanding legend
   const [buttonClicked, setButtonClicked] = useState(false);
-  
+
   const options: any = {
     responsive: true,
     pointRadius: 0,
@@ -55,7 +53,7 @@ const LineChart = ({ chartData, title, label }: LineChart): JSX.Element => {
         },
         ticks: {
           color: '#797676',
-        }
+        },
       },
       y: {
         grid: {
@@ -63,7 +61,7 @@ const LineChart = ({ chartData, title, label }: LineChart): JSX.Element => {
         },
         ticks: {
           color: '#797676',
-        }
+        },
       },
     },
   };
@@ -72,26 +70,26 @@ const LineChart = ({ chartData, title, label }: LineChart): JSX.Element => {
   if (!chartData) return <div>No data available in </div>;
 
   // Format chart data for line chart with varying colors
-  const objArr:any = [];
+  const objArr: any = [];
   const zeroPad: any = (num: number, places: number) => String(num).padStart(places, '0');
-  let now: Date = new Date();
-  let nowHours = now.getHours();
-  let nowMinutes = now.getMinutes();
+  const now: Date = new Date();
+  const nowHours = now.getHours();
+  const nowMinutes = now.getMinutes();
   const times = [];
-  for (let i = 1; i <= 12; i++){
+  for (let i = 1; i <= 12; i++) {
     times.push(`${zeroPad((nowHours + i * 2) % 24, 2)}:${nowMinutes}`);
   }
-  
-  for(let i = 0; i < chartData.length; i++){
+
+  for (let i = 0; i < chartData.length; i++) {
     const colors: any = mdColors;
     objArr.push({
       data: chartData[i][1].timeSeriesValues,
       label: chartData[i][0],
-      borderColor: `${colors[i * 3 % mdColors.length]}`,
+      borderColor: `${colors[(i * 3) % mdColors.length]}`,
     });
-  };
+  }
 
-  const data:any = {
+  const data: any = {
     labels: times,
     datasets: objArr,
   };
@@ -106,14 +104,14 @@ const LineChart = ({ chartData, title, label }: LineChart): JSX.Element => {
       <Line options={options} data={data} />
       <Button
         onClick={handleLegendClick}
-        variant='outlined'
-        size='small'
+        variant="outlined"
+        size="small"
         sx={{ marginTop: 1, marginBottom: 3 }}
       >
         Show/Hide Legend
       </Button>
     </div>
   );
-};
+}
 
 export default LineChart;
