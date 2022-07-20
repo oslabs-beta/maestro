@@ -41,16 +41,6 @@ app.on("window-all-closed", () => {
   }
 });
 
-// app.on('ready', () => {
-//   protocol.interceptFileProtocol('file', (request: any, callback: any) => {
-//     const url = request.url.substr(7)    /* all urls start with 'file://' */
-//     callback({ path: path.normalize(`${__dirname}/${url}`)})
-//   }, (err: any) => {
-//     if (err) console.error('Failed to register protocol')
-//   })
-//   createWindow()
-// })
-
 // TO DO: Type data/responses
 
 /* K8 API */ 
