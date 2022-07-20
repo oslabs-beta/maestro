@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import EventsCardContainer from './EventsCardContainer'
-import Select from 'react-select'
+import React, { useState } from 'react';
+import EventsCardContainer from './EventsCardContainer';
+import Select from 'react-select';
 import { customSelectTheme, customSelectThemeSeverity } from '../Components/utils/customSelectTheme';
 
 const eventTypes: any = [
@@ -13,19 +13,19 @@ const severityTypes: any = [
   {value:'warning', label: 'Warning'},
   {value:'normal', label: 'Normal'},
   {value:'all', label: 'All'}
-]
+];
 
 function EventsContainer() {
   const [eventOption, setEventOption] = useState('events');
-  const [severityOption, setSeverityOption] = useState('all')
+  const [severityOption, setSeverityOption] = useState('all');
 
   const handleEventChange = (e: any) => {
-    setEventOption(e.value)
-  }
+    setEventOption(e.value);
+  };
 
   const handleSeverityChange = (e: any) => {
-    setSeverityOption(e.value)
-  }
+    setSeverityOption(e.value);
+  };
 
   return (
     <div className='events-container'>
@@ -46,13 +46,13 @@ function EventsContainer() {
           options={severityTypes}
           placeholder='Severity'
         />
-    </div>
+      </div>
       <EventsCardContainer 
         eventType={eventOption}
         severity={severityOption} 
       />
     </div>
-  )
-}
+  );
+};
 
-export default EventsContainer
+export default EventsContainer;

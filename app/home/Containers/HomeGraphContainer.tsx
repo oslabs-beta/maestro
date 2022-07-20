@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
-import HomeGraphCard from '../Components/HomeGraphCard'
-import Select from 'react-select'
+import React, { useState } from 'react';
+import HomeGraphCard from '../Components/HomeGraphCard';
+import Select from 'react-select';
 import { customSelectTheme } from '../Components/utils/customSelectTheme';
-
 
 function HomeGraphContainer() {
   const dataOptions: any = [
@@ -10,23 +9,25 @@ function HomeGraphContainer() {
     {value:'CPU', label: 'CPU'},
     {value:'Bytes', label: 'Bytes'}
   ]; 
+
   const sourceOptions: any = [
     {value:'Namespace', label:'Namespace'}, 
     {value:'Nodes', label: 'Nodes'},
     {value:'Pods', label: 'Pods'}
   ];
+
   //state for chosen data type
   const [dataChoice, setDataChoice] = useState('Memory');
-
   //state for chosen source 
   const [sourceChoice, setSourceChoice] = useState('Pods');
   
 const handleDataSelect = (e: any) =>{
-  setDataChoice(e.value)
-}
+  setDataChoice(e.value);
+};
+
 const handleSourceSelect = (e: any) =>{
-  setSourceChoice(e.value)
-}
+  setSourceChoice(e.value);
+};
   
   return (
     <div>
@@ -50,7 +51,7 @@ const handleSourceSelect = (e: any) =>{
         <HomeGraphCard type={dataChoice} source={sourceChoice} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomeGraphContainer 
+export default HomeGraphContainer;
