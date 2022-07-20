@@ -1,4 +1,4 @@
-![Maestro Logo](.app/assets/logo-cube.png?raw=true)
+![Maestro Logo](./app/assets/logo-cube.png?raw=true)
 
 # MAESTRO
 
