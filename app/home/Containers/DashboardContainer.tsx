@@ -14,7 +14,7 @@ const DashboardContainer = () => {
             <div className="header">
               <div className="header-elements">
                 <Namespace />
-                <h1 className="logo">Maestro</h1>
+                <h1 className="logo">MAESTRO</h1>
               </div>
             </div>
           </div>
