@@ -1,5 +1,7 @@
 
 import { contextBridge, ipcRenderer } from 'electron';
+import path from 'path';
+
 
 // makes the functions from main.ts available in the frontend via context bridge
 contextBridge.exposeInMainWorld('electron', {

@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow, ipcMain, protocol } from "electron";
 const fetch: any = (...args: any) =>
   import("node-fetch").then(({ default: fetch }: any) => fetch(...args));
 import * as child_process from "child_process";
@@ -8,6 +8,7 @@ import { formatk8sApiData } from "./dataController/formatData/formatk8sApiData";
 import { formatAlerts } from "./dataController/formatData/formatAlerts";
 import { formatEvents } from "./dataController/formatData/formatEvents";
 import * as k8s from '@kubernetes/client-node';
+import path from 'path'
 // K8s API
 const kc = new k8s.KubeConfig();
 kc.loadFromDefault();
@@ -39,6 +40,16 @@ app.on("window-all-closed", () => {
     app.quit();
   }
 });
+
+// app.on('ready', () => {
+//   protocol.interceptFileProtocol('file', (request: any, callback: any) => {
+//     const url = request.url.substr(7)    /* all urls start with 'file://' */
+//     callback({ path: path.normalize(`${__dirname}/${url}`)})
+//   }, (err: any) => {
+//     if (err) console.error('Failed to register protocol')
+//   })
+//   createWindow()
+// })
 
 // TO DO: Type data/responses
 
