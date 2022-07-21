@@ -41,7 +41,7 @@ Users must have Prometheus installed on their Kubernetes cluster.
 
 ## The Team
 
-- Peter Kennedy [Github]() [LinkedIn]()
+- Peter Kennedy [Github](https://github.com/peterkennedy97) [LinkedIn](https://www.linkedin.com/in/peter-kennedy/)
 - Aliya Yano [Github](https://github.com/ajyano22) [LinkedIn](https://www.linkedin.com/in/aliya-yano-8a2548126/)
 - Jakob Schillinger [Github](https://github.com/gandalf77)
 - Alex Ryu [Github](https://github.com/RyuBoyCoding) [LinkedIn](www.linkedin.com/in/ryu-alex)
