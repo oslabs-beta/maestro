@@ -21,6 +21,10 @@ Users must have Prometheus installed on their Kubernetes cluster.
 
 ### 2. Clone this repo using the following command
 
+```
+https://github.com/oslabs-beta/maestro.git
+```
+
 ### 3. Make sure your cluster is ported forward to port 9090 using the following command
 
 ### 4. In the Maestro directory in your terminal, run the following commands
