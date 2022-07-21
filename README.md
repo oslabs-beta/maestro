@@ -11,7 +11,7 @@ Maestro is an open-source monitoring tool for keeping track of the health of you
 ## Features
 
 1. At a glance overview of nodes, pods, services, and deployments
-2. Log GUI to quickly view alerts and events in an easy to read format, with the abiity to sort by severity
+2. Log GUI to quickly view alerts and events in an easy to read format, with the ability to sort by severity
 3. Graphs displaying key metrics such at CPU usage, memory usage, and network I/O
 
 
