@@ -20,6 +20,7 @@ Maestro is an open-source monitoring tool for keeping track of the health of you
 
 3. Graphs displaying key metrics such at CPU usage, memory usage, and network I/O
 
+![metrics](./app/assets/metrics-page.gif)
 
 ## Getting Started
 
