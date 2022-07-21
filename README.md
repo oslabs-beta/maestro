@@ -6,19 +6,19 @@ A Kubernetes monitoring tool built on electron.
 
 ## Summary
 
-Maestro is an open-source monitoring tool for keeping track of the health of your Kubernetes cluster. Maestro is lightweight and allows users to view key metrics at a glance. This tool leverages the K8s API to obtain important cluster data, and promQL queries to scrape key metrics.
+Maestro is an open-source monitoring tool for keeping track of the health of your Kubernetes cluster. Maestro is lightweight and allows users to view key metrics at a glance. This tool leverages the K8s API to obtain important cluster data, and promQL queries to scrape key metrics and display them in a digestible format.
 
 ## Features
 
-1. At a glance overview of nodes, pods, services, and deployments
+1. At a glance overview of nodes, pods, services, and deployments visualized as cubes. Hover over any cube to see which node, pod, deployment, or servie you are looking at.
 
 ![props](./app/assets/Node-pod-overview.gif)
 
-2. Log GUI to quickly view alerts and events in an easy to read format, with the ability to sort by severity
+2. Log GUI to quickly view alerts and events in an easy to read format, with the ability to sort by severity.
 
 ![logs](./app/assets/homepage-logs3.gif)
 
-3. Graphs displaying key metrics such at CPU usage, memory usage, and network I/O
+3. Graphs displaying key metrics such at CPU usage, memory usage, and network I/O. Multi-colored line graphs map to corresponding properties in the legend, where you can remove properties tht you wwant to get a more narrowly focused graph.
 
 ![metrics](./app/assets/metrics-page.gif)
 
