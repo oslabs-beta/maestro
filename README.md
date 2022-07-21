@@ -16,7 +16,7 @@ Maestro is an open-source monitoring tool for keeping track of the health of you
 
 2. Log GUI to quickly view alerts and events in an easy to read format, with the ability to sort by severity
 
-![logs](./app/assets/homepage-logs2 (1).gif)
+![logs](./app/assets/homepage-logs3.gif)
 
 3. Graphs displaying key metrics such at CPU usage, memory usage, and network I/O
 
