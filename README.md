@@ -10,7 +10,7 @@ Maestro is an open-source monitoring tool for keeping track of the health of you
 
 ## Features
 
-1. At a glance overview of nodes, pods, services, and deployments visualized as cubes. Hover over any cube to see which node, pod, deployment, or servie you are looking at.
+1. At a glance overview of nodes, pods, services, and deployments visualized as cubes. Hover over any cube to see which node, pod, deployment, or service you are looking at.
 
 ![props](./app/assets/Node-pod-overview.gif)
 
@@ -18,7 +18,7 @@ Maestro is an open-source monitoring tool for keeping track of the health of you
 
 ![logs](./app/assets/homepage-logs3.gif)
 
-3. Graphs displaying key metrics such at CPU usage, memory usage, and network I/O. Multi-colored line graphs map to corresponding properties in the legend, where you can remove properties tht you wwant to get a more narrowly focused graph.
+3. Graphs displaying key metrics such at CPU usage, memory usage, and network I/O. Multi-colored line graphs map to corresponding properties in the legend, where you can remove properties tht you want to get a more narrowly focused graph.
 
 ![metrics](./app/assets/metrics-page.gif)
 
