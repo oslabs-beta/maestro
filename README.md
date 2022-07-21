@@ -1,4 +1,4 @@
-![Maestro Logo](./app/assets/logo-cube.png?raw=true)
+![Maestro Logo](./app/assets/MaestroSmall.png?raw=true)
 
 # MAESTRO
 
@@ -6,17 +6,26 @@ A Kubernetes monitoring tool built on electron.
 
 ## Summary
 
-Maestro is an open-source monitoring tool for keeping track of the health of your Kubernetes cluster.
+Maestro is an open-source monitoring tool for keeping track of the health of your Kubernetes cluster. Maestro is lightweight and allows users to view key metrics at a glance. This tool leverages the K8s API to obtain important cluster data, and promQL queries to scrape key metrics.
 
 ## Features
+
+
 
 
 
 ## Getting Started
 
 ### 1. Prerequisites
+Users must have Prometheus installed on their Kubernetes cluster.
 
+### 2. Clone this repo using the following command
 
+### 3. Make sure your cluster is ported forward to port 9090 using the following command
+
+### 4. In the Maestro directory in your terminal, run the following commands
+
+### 5. Enjoy your Maestro experience!
 
 ## Built With
 
@@ -34,5 +43,5 @@ Maestro is an open-source monitoring tool for keeping track of the health of you
 
 - Peter Kennedy [Github]() [LinkedIn]()
 - Aliya Yano [Github](https://github.com/ajyano22) [LinkedIn](https://www.linkedin.com/in/aliya-yano-8a2548126/)
-- Jakob Schillinger [Github](https://github.com/gandalf77) [LinkedIn]()
+- Jakob Schillinger [Github](https://github.com/gandalf77)
 - Alex Ryu [Github](https://github.com/RyuBoyCoding) [LinkedIn](www.linkedin.com/in/ryu-alex)
