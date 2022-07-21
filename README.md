@@ -10,8 +10,9 @@ Maestro is an open-source monitoring tool for keeping track of the health of you
 
 ## Features
 
-
-
+1. At a glance overview of nodes, pods, services, and deployments
+2. Log GUI to quickly view alerts and events in an easy to read format, with the abiity to sort by severity
+3. Graphs displaying key metrics such at CPU usage, memory usage, and network I/O
 
 
 ## Getting Started
@@ -27,7 +28,17 @@ https://github.com/oslabs-beta/maestro.git
 
 ### 3. Make sure your cluster is ported forward to port 9090 using the following command
 
+```
+kubectl port-forward -n default svc/prometheus-kube-prometheus-prometheus 9090 
+```
+
 ### 4. In the Maestro directory in your terminal, run the following commands
+
+```
+npm install
+npm run webpack-start
+npm run start
+```
 
 ### 5. Enjoy your Maestro experience!
 
